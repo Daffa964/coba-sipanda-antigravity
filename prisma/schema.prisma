@@ -1,0 +1,70 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Posyandu {
+  id        String   @id @default(cuid())
+  name      String   @unique // e.g., "Posyandu RW 01"
+  users     User[]
+  anak      Anak[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum Role {
+  BIDAN
+  KADER
+}
+
+enum Gender {
+  LAKI_LAKI
+  PEREMPUAN
+}
+
+model User {
+  id         String    @id @default(cuid())
+  name       String
+  email      String    @unique
+  password   String
+  role       Role
+  posyanduId String?
+  posyandu   Posyandu? @relation(fields: [posyanduId], references: [id])
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+}
+
+model Anak {
+  id           String        @id @default(cuid())
+  nik          String        @unique
+  name         String
+  placeOfBirth String?
+  dateOfBirth  DateTime
+  gender       Gender
+  parentName   String
+  posyanduId   String
+  posyandu     Posyandu      @relation(fields: [posyanduId], references: [id])
+  measurements Measurement[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+model Measurement {
+  id          String   @id @default(cuid())
+  anakId      String
+  anak        Anak     @relation(fields: [anakId], references: [id])
+  date        DateTime @default(now())
+  weight      Float // kg
+  height      Float // cm
+  ageInMonths Int
+  zScoreBBTB  String? // Status Gizi (BB/TB)
+  zScoreBBU   String? // Status Gizi (BB/U)
+  zScoreTBU   String? // Status Gizi (TB/U)
+  notes       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
