@@ -9,7 +9,7 @@ datasource db {
 
 model Posyandu {
   id        String   @id @default(cuid())
-  name      String   @unique // e.g., "Posyandu RW 01"
+  name      String   @unique
   users     User[]
   anak      Anak[]
   createdAt DateTime @default(now())
@@ -58,12 +58,12 @@ model Measurement {
   anakId      String
   anak        Anak     @relation(fields: [anakId], references: [id])
   date        DateTime @default(now())
-  weight      Float // kg
-  height      Float // cm
+  weight      Float
+  height      Float
   ageInMonths Int
-  zScoreBBTB  String? // Status Gizi (BB/TB)
-  zScoreBBU   String? // Status Gizi (BB/U)
-  zScoreTBU   String? // Status Gizi (TB/U)
+  zScoreBBTB  String?
+  zScoreBBU   String?
+  zScoreTBU   String?
   notes       String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
