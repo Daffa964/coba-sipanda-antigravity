@@ -8,12 +8,14 @@ datasource db {
 }
 
 model Posyandu {
-  id        String   @id @default(cuid())
-  name      String   @unique
+  id        String   @id @default(cuid()) @map("posyandu_id")
+  name      String   @unique @map("nama")
   users     User[]
   anak      Anak[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now()) @map("tanggal_dibuat")
+  updatedAt DateTime @updatedAt @map("tanggal_diubah")
+
+  @@map("posyandu")
 }
 
 enum Role {
@@ -27,44 +29,50 @@ enum Gender {
 }
 
 model User {
-  id         String    @id @default(cuid())
-  name       String
+  id         String    @id @default(cuid()) @map("user_id")
+  name       String    @map("nama")
   email      String    @unique
   password   String
   role       Role
-  posyanduId String?
+  posyanduId String?   @map("posyandu_id")
   posyandu   Posyandu? @relation(fields: [posyanduId], references: [id])
-  createdAt  DateTime  @default(now())
-  updatedAt  DateTime  @updatedAt
+  createdAt  DateTime  @default(now()) @map("tanggal_dibuat")
+  updatedAt  DateTime  @updatedAt @map("tanggal_diubah")
+
+  @@map("user")
 }
 
 model Anak {
-  id           String        @id @default(cuid())
+  id           String        @id @default(cuid()) @map("anak_id")
   nik          String        @unique
-  name         String
-  placeOfBirth String?
-  dateOfBirth  DateTime
-  gender       Gender
-  parentName   String
-  posyanduId   String
+  name         String        @map("nama")
+  placeOfBirth String?       @map("tempat_lahir")
+  dateOfBirth  DateTime      @map("tanggal_lahir")
+  gender       Gender        @map("jenis_kelamin")
+  parentName   String        @map("nama_orangtua")
+  posyanduId   String        @map("posyandu_id")
   posyandu     Posyandu      @relation(fields: [posyanduId], references: [id])
   measurements Measurement[]
-  createdAt    DateTime      @default(now())
-  updatedAt    DateTime      @updatedAt
+  createdAt    DateTime      @default(now()) @map("tanggal_dibuat")
+  updatedAt    DateTime      @updatedAt @map("tanggal_diubah")
+
+  @@map("anak")
 }
 
 model Measurement {
-  id          String   @id @default(cuid())
-  anakId      String
+  id          String   @id @default(cuid()) @map("pengukuran_id")
+  anakId      String   @map("anak_id")
   anak        Anak     @relation(fields: [anakId], references: [id])
-  date        DateTime @default(now())
-  weight      Float
-  height      Float
-  ageInMonths Int
-  zScoreBBTB  String?
-  zScoreBBU   String?
-  zScoreTBU   String?
-  notes       String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  date        DateTime @default(now()) @map("tanggal")
+  weight      Float    @map("berat_badan")
+  height      Float    @map("tinggi_badan")
+  ageInMonths Int      @map("usia_bulan")
+  zScoreBBTB  String?  @map("z_score_bbtb")
+  zScoreBBU   String?  @map("z_score_bbu")
+  zScoreTBU   String?  @map("z_score_tbu")
+  notes       String?  @map("catatan")
+  createdAt   DateTime @default(now()) @map("tanggal_dibuat")
+  updatedAt   DateTime @updatedAt @map("tanggal_diubah")
+
+  @@map("pengukuran")
 }

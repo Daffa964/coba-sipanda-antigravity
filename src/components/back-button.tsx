@@ -1,20 +1,42 @@
-import { verifySession } from '@/lib/auth'
-import { cookies } from 'next/headers'
-import Link from 'next/link'
+'use client'
 
-export default async function BackButton() {
-  const cookieStore = await cookies()
-  const cookie = cookieStore.get('session')?.value
-  const session = cookie ? await verifySession(cookie) : null
-  
-  let href = '/dashboard/anak'
-  if (session?.role === 'KADER') {
-     href = `/posyandu/${session.posyanduId}`
+import { useRouter } from 'next/navigation'
+
+interface BackButtonProps {
+  href?: string
+  className?: string
+  label?: string
+}
+
+export default function BackButton({ href, className = "", label = "Kembali" }: BackButtonProps) {
+  const router = useRouter()
+
+  const handleBack = () => {
+    if (href) {
+      router.push(href)
+    } else {
+      router.back()
+    }
   }
 
   return (
-    <Link href={href} className="hover:text-indigo-600 transition">
-       Data Anak
-    </Link>
+    <button
+      onClick={handleBack}
+      className={`inline-flex items-center gap-2 px-4 py-2 text-sm font-bold text-stone-600 bg-white rounded-xl border border-stone-200 shadow-sm hover:bg-stone-50 hover:text-teal-600 transition-all active:scale-95 ${className}`}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="w-4 h-4"
+      >
+        <path d="M15 18l-6-6 6-6" />
+      </svg>
+      {label}
+    </button>
   )
 }

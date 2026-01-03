@@ -4,6 +4,8 @@ import { getMeasurementHistory } from '@/actions/measurement'
 import MeasurementHistory from '@/components/measurement-history'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import BackButton from '@/components/back-button'
+import ParentRecommendation from '@/components/parent-recommendation'
 
 export default async function PublicChildPage({ params }: { params: { id: string } }) {
   const { id } = await params
@@ -32,9 +34,7 @@ export default async function PublicChildPage({ params }: { params: { id: string
                 <div className="h-8 w-8 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500"></div>
                 <span className="font-bold text-gray-900 tracking-tight">SI-PANDA Public</span>
              </div>
-             <Link href="/" className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 bg-indigo-50 px-3 py-1.5 rounded-full transition">
-                Halaman Utama
-             </Link>
+             <BackButton href="/" label="Kembali ke Utama" className="text-xs bg-indigo-50 border-indigo-100 text-indigo-600 hover:bg-indigo-100" />
           </div>
        </header>
 
@@ -65,8 +65,22 @@ export default async function PublicChildPage({ params }: { params: { id: string
                          <div className="font-bold text-gray-800 text-lg truncate px-2">{anak.posyandu.name}</div>
                      </div>
                   </div>
+
                </div>
            </div>
+
+           {/* Recommendation Card */}
+           {historyData.length > 0 && (
+             <div className="mb-8 shadow-xl shadow-indigo-50/50">
+               <ParentRecommendation 
+                 statuses={[
+                   historyData[0].zScoreBBU, 
+                   historyData[0].zScoreTBU, 
+                   historyData[0].zScoreBBTB
+                 ].filter(Boolean) as string[]} 
+               />
+             </div>
+           )}
 
            {/* History */}
            <div className="bg-white rounded-3xl p-6 md:p-8 shadow-lg shadow-gray-100/50 border border-gray-100">

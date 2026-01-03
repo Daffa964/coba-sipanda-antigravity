@@ -1,18 +1,45 @@
 'use client'
 
 import { useState } from 'react'
-import { createAnak } from '@/actions/anak'
-import { useRouter } from 'next/navigation'
+import { createAnak, updateAnak } from '@/actions/anak'
 
 type Posyandu = {
   id: string
   name: string
 }
 
-export default function AnakForm({ posyanduList, defaultPosyanduId }: { posyanduList?: Posyandu[], defaultPosyanduId?: string }) {
+type AnakData = {
+  id: string
+  name: string
+  nik: string
+  placeOfBirth?: string
+  dateOfBirth: Date | string
+  gender: string
+  parentName: string
+  posyanduId: string
+}
+
+interface AnakFormProps {
+  posyanduList?: Posyandu[]
+  defaultPosyanduId?: string
+  onSuccess?: () => void
+  isModal?: boolean
+  editData?: AnakData
+}
+
+export default function AnakForm({ posyanduList, defaultPosyanduId, onSuccess, isModal = false, editData }: AnakFormProps) {
   const [error, setError] = useState<string | null>(null)
   const [success, setSuccess] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
+
+  const isEditMode = !!editData
+
+  // Format date for input
+  const formatDateForInput = (date: Date | string | undefined) => {
+    if (!date) return ''
+    const d = new Date(date)
+    return d.toISOString().split('T')[0]
+  }
 
   async function handleSubmit(formData: FormData) {
     setLoading(true)
@@ -23,21 +50,35 @@ export default function AnakForm({ posyanduList, defaultPosyanduId }: { posyandu
       formData.append('posyanduId', defaultPosyanduId)
     }
 
-    const res = await createAnak(null, formData)
+    const action = isEditMode ? updateAnak : createAnak
+    const res = await action(null, formData)
     
     if (res.success) {
       setSuccess(res.message || 'Berhasil')
-      window.location.reload() 
+      if (onSuccess) {
+        setTimeout(() => {
+             onSuccess()
+             setSuccess(null)
+        }, 1500)
+      } else {
+        window.location.reload() 
+      }
     } else {
       setError(res.error || 'Gagal')
     }
     setLoading(false)
   }
 
+  const containerClasses = isModal 
+    ? "p-6" 
+    : "bg-white p-6 rounded-2xl shadow-lg border border-gray-100 h-fit sticky top-8"
+
   return (
-    <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 h-fit sticky top-8">
+    <div className={containerClasses}>
       <div className="mb-6">
-        <h3 className="text-xl font-bold text-gray-900">Tambah Data Anak</h3>
+        <h3 className="text-xl font-bold text-gray-900">
+          {isEditMode ? 'Edit Data Anak' : 'Tambah Data Anak'}
+        </h3>
         <p className="text-sm text-gray-500">Lengkapi formulir di bawah ini.</p>
       </div>
       
@@ -55,17 +96,30 @@ export default function AnakForm({ posyanduList, defaultPosyanduId }: { posyandu
       )}
 
       <form action={handleSubmit} className="space-y-5">
+        {/* Hidden ID for edit mode */}
+        {isEditMode && <input type="hidden" name="id" value={editData.id} />}
         
         {/* Primary Info */}
         <div className="space-y-4">
           <div>
             <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5 pl-1">Identitas Anak</label>
-            <input name="name" type="text" placeholder="Nama Lengkap Anak" required 
+            <input 
+              name="name" 
+              type="text" 
+              placeholder="Nama Lengkap Anak" 
+              required 
+              defaultValue={editData?.name || ''}
               className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:bg-white focus:ring-2 focus:ring-indigo-100 focus:border-indigo-500 outline-none transition" 
             />
           </div>
           <div>
-            <input name="nik" type="text" maxLength={16} placeholder="Nomor Induk Kependudukan (NIK)" required 
+            <input 
+              name="nik" 
+              type="text" 
+              maxLength={16} 
+              placeholder="Nomor Induk Kependudukan (NIK)" 
+              required 
+              defaultValue={editData?.nik || ''}
               className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:bg-white focus:ring-2 focus:ring-indigo-100 focus:border-indigo-500 outline-none transition font-mono text-sm" 
             />
           </div>
@@ -74,13 +128,21 @@ export default function AnakForm({ posyanduList, defaultPosyanduId }: { posyandu
         <div className="grid grid-cols-2 gap-4">
           <div>
             <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5 pl-1">Kelahiran</label>
-            <input name="placeOfBirth" type="text" placeholder="Tempat Lahir" 
+            <input 
+              name="placeOfBirth" 
+              type="text" 
+              placeholder="Tempat Lahir" 
+              defaultValue={editData?.placeOfBirth || ''}
               className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:bg-white focus:ring-2 focus:ring-indigo-100 focus:border-indigo-500 outline-none transition" 
             />
           </div>
           <div>
             <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5 pl-1">&nbsp;</label>
-            <input name="dateOfBirth" type="date" required 
+            <input 
+              name="dateOfBirth" 
+              type="date" 
+              required 
+              defaultValue={formatDateForInput(editData?.dateOfBirth)}
               className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 focus:bg-white focus:ring-2 focus:ring-indigo-100 focus:border-indigo-500 outline-none transition" 
             />
           </div>
@@ -90,21 +152,36 @@ export default function AnakForm({ posyanduList, defaultPosyanduId }: { posyandu
         <div className="space-y-4">
            <div>
             <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5 pl-1">Informasi Lainnya</label>
-            <select name="gender" required className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 focus:bg-white focus:ring-2 focus:ring-indigo-100 focus:border-indigo-500 outline-none transition appearance-none">
+            <select 
+              name="gender" 
+              required 
+              defaultValue={editData?.gender || 'LAKI_LAKI'}
+              className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 focus:bg-white focus:ring-2 focus:ring-indigo-100 focus:border-indigo-500 outline-none transition appearance-none"
+            >
               <option value="LAKI_LAKI">Laki-laki</option>
               <option value="PEREMPUAN">Perempuan</option>
             </select>
           </div>
 
           <div>
-            <input name="parentName" type="text" placeholder="Nama Ibu Kandung / Wali" required 
+            <input 
+              name="parentName" 
+              type="text" 
+              placeholder="Nama Ibu Kandung / Wali" 
+              required 
+              defaultValue={editData?.parentName || ''}
               className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:bg-white focus:ring-2 focus:ring-indigo-100 focus:border-indigo-500 outline-none transition" 
             />
           </div>
 
           {!defaultPosyanduId && posyanduList && (
              <div>
-              <select name="posyanduId" required className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 focus:bg-white focus:ring-2 focus:ring-indigo-100 focus:border-indigo-500 outline-none transition appearance-none">
+              <select 
+                name="posyanduId" 
+                required 
+                defaultValue={editData?.posyanduId || ''}
+                className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 focus:bg-white focus:ring-2 focus:ring-indigo-100 focus:border-indigo-500 outline-none transition appearance-none"
+              >
                 <option value="">Pilih Lokasi Posyandu</option>
                 {posyanduList.map(p => (
                   <option key={p.id} value={p.id}>{p.name}</option>
@@ -124,7 +201,7 @@ export default function AnakForm({ posyanduList, defaultPosyanduId }: { posyandu
                 </svg>
                 Menyimpan...
              </span>
-          ) : 'Simpan Data Anak'}
+          ) : isEditMode ? 'Simpan Perubahan' : 'Simpan Data Anak'}
         </button>
       </form>
     </div>

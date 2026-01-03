@@ -1,149 +1,210 @@
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 
-export default function Home() {
+export default function LandingPage() {
   return (
-    <div className="flex min-h-screen flex-col font-sans overflow-x-hidden selection:bg-teal-200 selection:text-teal-900">
-      {/* Navbar */}
-      <header className="sticky top-0 z-50 w-full border-b border-stone-100 bg-[#FDFBF7]/80 backdrop-blur-md">
-        <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
-          <div className="flex items-center gap-3">
-            <div className="flex items-center justify-center h-10 w-10 rounded-2xl bg-teal-100 text-teal-600 shadow-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-                  <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
-                </svg>
+    <div className="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden font-display bg-white">
+      {/* Top Navigation Bar */}
+      <header className="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-md border-b border-gray-100 pb-2 md:pb-0">
+        <div className="flex justify-center w-full">
+          <div className="flex max-w-[1280px] flex-1 items-center justify-between px-4 py-3 md:px-10">
+            <Link href="#home" className="flex items-center gap-2 text-text-main group cursor-pointer">
+              <div className="text-primary group-hover:scale-110 transition-transform">
+                <span className="material-symbols-outlined text-3xl">child_care</span>
+              </div>
+              <h2 className="text-lg font-bold leading-tight tracking-[-0.015em]">SI-PANDA</h2>
+            </Link>
+            <div className="hidden md:flex items-center gap-8">
+              <nav className="flex items-center gap-6">
+                <Link className="text-sm font-medium hover:text-primary transition-colors text-text-main" href="#home">Beranda</Link>
+                <Link className="text-sm font-medium hover:text-primary transition-colors text-text-main" href="#features">Keunggulan</Link>
+                <Link className="text-sm font-medium hover:text-primary transition-colors text-text-main" href="#contact">Kontak</Link>
+              </nav>
+              <Link href="/login" className="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-6 bg-primary hover:bg-primary-dark transition-colors text-text-main text-sm font-bold leading-normal tracking-[0.015em]">
+                <span className="truncate">Masuk</span>
+              </Link>
             </div>
-            <span className="text-xl font-extrabold tracking-tight text-stone-800">
-              SI-PANDA
-            </span>
           </div>
-          <nav className="flex gap-6 sm:gap-8">
-            <Link className="text-sm font-bold text-stone-500 hover:text-teal-600 transition-colors" href="#features">
-              Fitur
-            </Link>
-            <Link className="text-sm font-bold text-stone-500 hover:text-teal-600 transition-colors" href="#contact">
-              Kontak
-            </Link>
-          </nav>
         </div>
       </header>
-
-      <main className="flex-1">
+      
+      <main className="flex-1 flex flex-col items-center w-full scroll-smooth">
         {/* Hero Section */}
-        <section className="w-full py-20 md:py-32 lg:py-40 relative">
-           {/* Soft Blobs Background */}
-           <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-             <div className="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-yellow-100/60 rounded-full mix-blend-multiply filter blur-[80px] animate-blob"></div>
-             <div className="absolute top-[10%] right-[-10%] w-[500px] h-[500px] bg-teal-100/60 rounded-full mix-blend-multiply filter blur-[80px] animate-blob animation-delay-2000"></div>
-             <div className="absolute bottom-[-10%] left-[20%] w-[500px] h-[500px] bg-orange-100/60 rounded-full mix-blend-multiply filter blur-[80px] animate-blob animation-delay-4000"></div>
-           </div>
-          
-          <div className="container px-4 md:px-6 relative z-10 mx-auto">
-            <div className="flex flex-col items-center space-y-8 text-center">
-              <div className="inline-flex items-center rounded-full border border-teal-100 bg-white px-4 py-1.5 text-sm font-bold text-teal-600 shadow-sm mb-2 hover:bg-teal-50 transition-colors cursor-default">
-                 <span className="flex h-2 w-2 rounded-full bg-teal-500 mr-2 animate-pulse"></span>
-                 Sistem Informasi Pemantau Gizi Anak Desa
+        <section id="home" className="w-full max-w-[1280px] px-4 md:px-10 py-12 md:py-20 scroll-mt-24">
+          <div className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-16">
+            {/* Text Content */}
+            <div className="flex flex-col gap-6 flex-1 text-left items-start">
+              <div className="flex flex-col gap-4">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary-dark text-xs font-bold uppercase tracking-wider w-fit">
+                  <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                  Desa Kramat Sehat
+                </div>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight tracking-[-0.033em] text-text-main">
+                  Pantau Tumbuh Kembang <span className="text-primary">Anak</span> Desa Kramat
+                </h1>
+                <p className="text-base md:text-lg text-text-secondary font-normal leading-relaxed max-w-xl">
+                  Sistem Informasi Pelayanan Anak dan Balita (SI-PANDA). Solusi digital untuk pencatatan gizi, pencegahan stunting, dan pemantauan kesehatan generasi masa depan kita.
+                </p>
               </div>
-              
-              <h1 className="text-5xl font-black tracking-tight sm:text-6xl md:text-7xl text-stone-800 max-w-4xl">
-                Tumbuh Kembang <br/>
-                <span className="text-teal-500 relative whitespace-nowrap">
-                  Anak Sehat
-                  <svg className="absolute -bottom-2 w-full h-3 text-yellow-300 -z-10" viewBox="0 0 100 10" preserveAspectRatio="none">
-                    <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="8" fill="none" />
-                  </svg>
-                </span>
-                , Masa Depan Kuat
-              </h1>
-              
-              <p className="mx-auto max-w-[700px] text-stone-500 md:text-xl font-medium leading-relaxed">
-                Pantau kesehatan si buah hati dengan data yang akurat. Mari bersama cegah stunting demi generasi Indonesia Emas.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 w-full justify-center pt-4">
-                <Link
-                  className="inline-flex h-14 items-center justify-center rounded-2xl bg-teal-500 px-8 text-base font-bold text-white shadow-lg shadow-teal-500/30 transition-all hover:bg-teal-600 hover:scale-[1.02] hover:shadow-xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-teal-500/30 ring-offset-2 ring-offset-[#FDFBF7]"
-                  href="/login"
-                >
-                  Masuk Sebagai Petugas
+              <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto pt-2">
+                <Link href="/login" className="flex items-center justify-center h-12 px-8 rounded-lg bg-primary hover:bg-primary-dark text-text-main text-base font-bold transition-all transform hover:scale-105 shadow-lg shadow-primary/20">
+                  <span>Masuk ke Sistem</span>
+                  <span className="material-symbols-outlined ml-2 text-sm font-bold">login</span>
                 </Link>
-                <Link
-                  className="inline-flex h-14 items-center justify-center rounded-2xl border-2 border-stone-200 bg-white px-8 text-base font-bold text-stone-600 shadow-sm transition-all hover:border-teal-200 hover:text-teal-600 hover:bg-teal-50/50 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-stone-200"
-                  href="#scan"
-                >
-                  Scan QR Orang Tua
+                <Link href="#features" className="flex items-center justify-center h-12 px-8 rounded-lg border border-[#dce5df] bg-white hover:bg-gray-50 text-text-main text-base font-bold transition-all">
+                  <span>Pelajari Lebih Lanjut</span>
                 </Link>
+              </div>
+              <div className="flex items-center gap-4 mt-4 text-sm text-text-secondary">
+                <div className="flex -space-x-3">
+                   {/* Avatars */}
+                   <div className="w-8 h-8 rounded-full border-2 border-white bg-gray-200 overflow-hidden">
+                      <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvQeOT2odrCjS1XMy25tuctDyTokxd9OBtuRzvw5-xkO9cZU3r_kn6MdCWbRhRPutyKMgiohmLAcr3sUaPaQnf9E9NJ_YIaY2w3zI99pbqssMNGqRYlAJyhLULyTYY0CCPWyf8K4-xJ8VJQ55snGIREVU0vMPB3f-YC0J6b1A7lYL4lKDOUPqWGClNbAWjUroEeFj4Ph0-FfQnX25iyNSRTdlFod8U9P7_otQ49tgdc07euJTr4tkyrrxO4GH49qKyDKijNU1dPfY" alt="User 1" className="w-full h-full object-cover"/>
+                   </div>
+                   <div className="w-8 h-8 rounded-full border-2 border-white bg-gray-300 overflow-hidden">
+                      <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZb0pIwHq3OWWO-md9oQst189Aszic6Zm93LPR38aVn3E6SuxLHDt_imwXg6VKDaFWJ8EUM5x_zn491OpsQAx-HOH3jRdJiFJS6kH7VwWLHVj_QgiO5fCePVnyn9MlPxzZ4oFkuJM5WWeZk3nTEpoWqE29ilAO-Cx9-ksWLYoJSCfwX-5omKrwpbp05BpGhIjufBi7f5QB5C-ABk7cKfQfjRF7M6L1Q-WBM1-UdjYzL6QbnnxtzqaQ_JOfJd-LA2co4Bmj4xlR7-Y" alt="User 2" className="w-full h-full object-cover"/>
+                   </div>
+                   <div className="w-8 h-8 rounded-full border-2 border-white bg-gray-400 overflow-hidden">
+                      <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkRCLgM5H0hxMlF5aCfJ0L6qeQiM1qfjWNX-Z-pc9IcVkkZESgRTRMR4Z741gWmnFRKMwf9B7y-LTLkdZiuerTjBU89kwbMvkOEcWQp_ayZ__rjpwqF_YCo8r3QN3gF8I361L8cRDC2xTS5eP5T0XFiBRxCMYwOMv6r2mY5ssCIfv4nCyc_wsA7TUAXPVJSNo6XrQKuoMg9VPzvrGqZK45EhqCGsdj7ktBAVvMTgJoqA-5NNwYmiWar0nJRnt6EdehHvt1xI8qgxU" alt="User 3" className="w-full h-full object-cover"/>
+                   </div>
+                </div>
+                <p>Digunakan oleh <span className="font-bold text-text-main">15+ Kader Posyandu</span></p>
+              </div>
+            </div>
+            {/* Hero Image */}
+            <div className="flex-1 w-full lg:h-auto">
+              <div className="relative w-full aspect-[4/3] lg:aspect-square rounded-2xl overflow-hidden shadow-2xl bg-gray-100 group">
+                <div className="absolute inset-0 bg-center bg-cover transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuAOZdj3FevVq4cvaR8OP0RMEE4SGgsosCUAPBpjhaJyXEGceoIDU_Z8rRx14crsmqxou38-RhUlFhRN3OvfGrK3D546SLnw18lncKhMTqfeBp2NlcnrEW5yty65jCssd2sno97Wky7iV9ubnvuBdZ07itJlrWZ-XoYO8iNps4O1UsMEd8wqBDfGkDuQ_sRNyb-0s6PSZ16hjT6iHbWwpHlyBWS87ljQ_QYLp2vJRPVwb7xXH3Fl2uiud1gi8quhf6dlL-yr2sWZYwI")' }}>
+                </div>
+                {/* Floating Card Badge */}
+                <div className="absolute bottom-6 left-6 right-6 bg-gray-50/95 backdrop-blur px-6 py-4 rounded-xl shadow-lg border border-primary/20">
+                  <div className="flex items-center gap-4">
+                    <div className="p-3 bg-primary/20 rounded-full text-primary">
+                      <span className="material-symbols-outlined">favorite</span>
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold text-text-secondary uppercase">Status Gizi</p>
+                      <p className="text-lg font-bold text-text-main">Terpantau Baik</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Features Section */}
-        <section id="features" className="w-full py-24 bg-white rounded-t-[3rem] shadow-[0_-10px_40px_rgba(0,0,0,0.02)] relative z-10 border-t border-stone-50">
-          <div className="container px-4 md:px-6 mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl font-black tracking-tight sm:text-4xl text-stone-800 mb-4">Fitur Sahabat Keluarga</h2>
-              <p className="max-w-[600px] mx-auto text-stone-500 text-lg">
-                Teknologi yang dirancang dengan kasih sayang untuk mempermudah pemantauan gizi.
-              </p>
+        {/* Feature Section */}
+        <section id="features" className="w-full bg-gray-50 py-20 scroll-mt-20">
+          <div className="flex justify-center w-full px-4 md:px-10">
+            <div className="flex flex-col max-w-[1280px] flex-1 gap-12">
+              <div className="flex flex-col gap-4 text-center items-center">
+                <h2 className="text-text-main tracking-tight text-3xl md:text-4xl font-black leading-tight max-w-[720px]">
+                  Keunggulan Sistem SI-PANDA
+                </h2>
+                <p className="text-text-secondary text-base md:text-lg font-normal leading-normal max-w-[720px]">
+                  Teknologi yang memudahkan pemantauan kesehatan anak demi masa depan Desa Kramat yang lebih baik.
+                </p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+                {/* Feature 1 */}
+                <div className="flex flex-col gap-4 rounded-xl border border-[#dce5df] bg-white p-8 shadow-sm hover:shadow-md transition-shadow group cursor-default">
+                  <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-2 group-hover:scale-110 transition-transform">
+                    <span className="material-symbols-outlined text-3xl">fact_check</span>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <h3 className="text-text-main text-xl font-bold leading-tight">Data Akurat</h3>
+                    <p className="text-text-secondary text-base font-normal leading-relaxed">
+                      Pencatatan data pengukuran tinggi dan berat badan yang presisi dan terintegrasi untuk setiap balita di desa.
+                    </p>
+                  </div>
+                </div>
+                {/* Feature 2 */}
+                <div className="flex flex-col gap-4 rounded-xl border border-[#dce5df] bg-white p-8 shadow-sm hover:shadow-md transition-shadow group cursor-default">
+                  <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-2 group-hover:scale-110 transition-transform">
+                    <span className="material-symbols-outlined text-3xl">query_stats</span>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <h3 className="text-text-main text-xl font-bold leading-tight">Monitoring Real-time</h3>
+                    <p className="text-text-secondary text-base font-normal leading-relaxed">
+                      Dasbor interaktif untuk memantau status gizi dan grafik tumbuh kembang anak secara langsung kapan saja.
+                    </p>
+                  </div>
+                </div>
+                {/* Feature 3 */}
+                <div className="flex flex-col gap-4 rounded-xl border border-[#dce5df] bg-white p-8 shadow-sm hover:shadow-md transition-shadow group cursor-default">
+                  <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-2 group-hover:scale-110 transition-transform">
+                    <span className="material-symbols-outlined text-3xl">summarize</span>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <h3 className="text-text-main text-xl font-bold leading-tight">Laporan Mudah</h3>
+                    <p className="text-text-secondary text-base font-normal leading-relaxed">
+                      Kemudahan bagi kader posyandu dalam mengunduh dan menyusun laporan kegiatan bulanan secara otomatis.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
-            
-            <div className="grid max-w-6xl mx-auto gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              {/* Feature 1 */}
-              <div className="group relative bg-[#FDFBF7] p-8 rounded-[2rem] border border-stone-100 transition-all hover:shadow-xl hover:shadow-teal-500/5 hover:-translate-y-1">
-                <div className="w-14 h-14 bg-teal-100 rounded-2xl flex items-center justify-center text-teal-600 mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" /></svg>
-                </div>
-                <h3 className="text-xl font-bold text-stone-800 mb-3">Pencatatan Digital</h3>
-                <p className="text-stone-500 leading-relaxed">
-                  Data posyandu tersimpan dengan rapi dan aman. Ucapkan selamat tinggal pada tumpukan kertas yang membingungkan.
+          </div>
+        </section>
+
+        {/* Stats/CTA Section */}
+        <section id="cta" className="w-full py-16 px-4 md:px-10 bg-white">
+          <div className="max-w-[1280px] mx-auto bg-primary rounded-2xl overflow-hidden relative shadow-2xl shadow-primary/30">
+            {/* Decorative pattern overlay */}
+            <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#111714 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
+            <div className="relative flex flex-col md:flex-row items-center justify-between p-10 md:p-16 gap-8">
+              <div className="flex flex-col gap-4 max-w-2xl">
+                <h2 className="text-text-main text-3xl md:text-4xl font-black leading-tight">
+                  Mari wujudkan generasi Desa Kramat bebas stunting!
+                </h2>
+                <p className="text-text-main/80 text-lg font-medium">
+                  Bergabung dengan sistem digitalisasi posyandu kami.
                 </p>
               </div>
-
-              {/* Feature 2 */}
-              <div className="group relative bg-[#FDFBF7] p-8 rounded-[2rem] border border-stone-100 transition-all hover:shadow-xl hover:shadow-orange-500/5 hover:-translate-y-1">
-                <div className="w-14 h-14 bg-orange-100 rounded-2xl flex items-center justify-center text-orange-600 mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
-                </div>
-                <h3 className="text-xl font-bold text-stone-800 mb-3">Analisis Pintar</h3>
-                <p className="text-stone-500 leading-relaxed">
-                  Kalkulasi status gizi otomatis standar WHO. Deteksi dini stunting dan gizi buruk secara real-time.
-                </p>
-              </div>
-
-              {/* Feature 3 */}
-              <div className="group relative bg-[#FDFBF7] p-8 rounded-[2rem] border border-stone-100 transition-all hover:shadow-xl hover:shadow-yellow-500/5 hover:-translate-y-1">
-                 <div className="w-14 h-14 bg-yellow-100 rounded-2xl flex items-center justify-center text-yellow-600 mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 4v1m6 11h2m-6 0h-2v4h-4v-4H8m13-4V4a1 1 0 00-1-1h-3.75a1 1 0 00-.829.44l-1.436 2.126 1.094 3.281 2.38-2.38M10 20l4-16m2 16l4 16M6 9h14M4 20h14" /></svg>
-                </div>
-                <h3 className="text-xl font-bold text-stone-800 mb-3">Akses Mudah</h3>
-                <p className="text-stone-500 leading-relaxed">
-                  Orang tua dapat memantau grafik pertumbuhan anak kapan saja hanya dengan scan QR Code.
-                </p>
+              <div className="shrink-0">
+                <Link href="/login" className="flex min-w-[160px] cursor-pointer items-center justify-center rounded-lg h-14 px-8 bg-text-main hover:bg-black text-white text-base font-bold transition-all shadow-xl hover:shadow-2xl hover:scale-105 active:scale-95">
+                    Masuk Sekarang
+                </Link>
               </div>
             </div>
           </div>
         </section>
       </main>
-      
-      <footer className="w-full py-10 bg-white border-t border-stone-100">
-        <div className="container px-4 md:px-6 mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-2">
-             <div className="h-8 w-8 rounded-xl bg-teal-100 flex items-center justify-center text-teal-600">
-                <span className="font-bold text-lg">P</span>
-             </div>
-             <p className="text-sm font-semibold text-stone-400">
-               © 2025 SI-PANDA Desa Kramat
-             </p>
+
+      {/* Footer */}
+      <footer id="contact" className="w-full bg-white border-t border-gray-100">
+        <div className="flex justify-center w-full px-4 md:px-10 py-12">
+          <div className="max-w-[1280px] w-full flex flex-col gap-8">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+              <div className="flex flex-col gap-2">
+                <div className="flex items-center justify-center md:justify-start gap-2 text-text-main">
+                  <span className="material-symbols-outlined text-primary text-2xl">child_care</span>
+                  <h2 className="text-lg font-bold">SI-PANDA</h2>
+                </div>
+                <p className="text-text-secondary text-sm max-w-xs">
+                  Sistem Informasi Pelayanan Anak dan Balita Desa Kramat.
+                </p>
+              </div>
+              <div className="flex flex-wrap justify-center gap-8">
+                <Link className="text-text-secondary hover:text-primary transition-colors text-sm font-medium" href="#">Kebijakan Privasi</Link>
+                <Link className="text-text-secondary hover:text-primary transition-colors text-sm font-medium" href="#">Syarat & Ketentuan</Link>
+                <Link className="text-text-secondary hover:text-primary transition-colors text-sm font-medium" href="#">Pusat Bantuan</Link>
+              </div>
+              <div className="flex gap-4">
+                <a className="text-text-secondary hover:text-primary transition-colors" href="#">
+                  <span className="material-symbols-outlined">share</span>
+                </a>
+                <a className="text-text-secondary hover:text-primary transition-colors" href="#">
+                  <span className="material-symbols-outlined">language</span>
+                </a>
+              </div>
+            </div>
+            <div className="border-t border-gray-100 w-full pt-8 text-center">
+              <p className="text-text-secondary text-sm font-normal">
+                © 2024 Pemerintah Desa Kramat. Didukung oleh Puskesmas setempat.
+              </p>
+            </div>
           </div>
-          <nav className="flex gap-6">
-            <Link className="text-sm font-medium text-stone-400 hover:text-stone-600 transition-colors" href="#">
-              Privasi
-            </Link>
-            <Link className="text-sm font-medium text-stone-400 hover:text-stone-600 transition-colors" href="#">
-              Syarat & Ketentuan
-            </Link>
-          </nav>
         </div>
       </footer>
     </div>

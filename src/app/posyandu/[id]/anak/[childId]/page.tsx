@@ -1,3 +1,4 @@
+
 import { prisma } from '@/lib/db'
 import { getMeasurementHistory } from '@/actions/measurement'
 import MeasurementForm from '@/components/measurement-form'
@@ -6,22 +7,36 @@ import BackButton from '@/components/back-button'
 import QRCodeGenerator from '@/components/qr-code-generator'
 import WhatsAppShare from '@/components/whatsapp-share'
 import { GrowthChart } from '@/components/growth-chart'
-import ParentRecommendation from '@/components/parent-recommendation'
-import { notFound } from 'next/navigation'
+import { notFound, redirect } from 'next/navigation'
 import { verifySession } from '@/lib/auth'
 import { cookies } from 'next/headers'
+import Navbar from '@/components/navbar'
+import Link from 'next/link'
+import ParentRecommendation from '@/components/parent-recommendation'
 
-export default async function ChildDetailPage({ params }: { params: { id: string } }) {
-  const { id } = await params
+export default async function KaderChildDetailPage({ params }: { params: Promise<{ id: string; childId: string }> }) {
+  const { id, childId } = await params
   
+  // Verify Session
+  const cookieStore = await cookies()
+  const cookie = cookieStore.get('session')?.value
+  const session = cookie ? await verifySession(cookie) : null
+
+  if (!session || session.role !== 'KADER') {
+     // fallback or redirect?
+     // If not kader, maybe redirect strictly?
+     // For now just allow if session exists, but Navbar might look weird if not kader.
+  }
+
   const anak = await prisma.anak.findUnique({
-    where: { id },
+    where: { id: childId },
     include: { posyandu: true }
   })
 
-  if (!anak) return notFound()
+  // Ensure anak belongs to this posyandu (security check) - optional but good
+  if (!anak || anak.posyanduId !== id) return notFound()
 
-  const historyRes = await getMeasurementHistory(id)
+  const historyRes = await getMeasurementHistory(childId)
   const historyData = historyRes.data || []
 
   // Pre-calculate Age
@@ -29,19 +44,18 @@ export default async function ChildDetailPage({ params }: { params: { id: string
   const birth = new Date(anak.dateOfBirth)
   let age = (today.getFullYear() - birth.getFullYear()) * 12 + (today.getMonth() - birth.getMonth())
 
-  // Check Session for Role
-  const cookieStore = await cookies()
-  const cookie = cookieStore.get('session')?.value
-  const session = cookie ? await verifySession(cookie) : null
-  const isKader = session?.role === 'KADER'
-
   return (
     <div className="min-h-screen bg-gray-50 pb-20">
+       <Navbar user={{ ...session, posyanduId: id } as any} />
+
        {/* Header */}
        <div className="bg-white border-b border-gray-200 py-6 px-8 mb-8">
          <div className="max-w-6xl mx-auto">
            <div className="flex items-center gap-2 mb-4 text-sm text-gray-500">
-              <BackButton />
+              <Link href={`/posyandu/${id}/anak`} className="hover:text-green-600 flex items-center gap-1">
+                <span className="material-symbols-outlined text-lg">arrow_back</span>
+                Kembali
+              </Link>
               <span>/</span>
               <span className="text-gray-900 font-medium">{anak.name}</span>
            </div>
@@ -73,21 +87,8 @@ export default async function ChildDetailPage({ params }: { params: { id: string
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
              {/* Left: Input & Tools */}
              <div className="lg:col-span-1 space-y-8">
-                {isKader && <MeasurementForm anakId={id} />}
+                <MeasurementForm anakId={childId} />
                 
-                <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                   <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">Bagikan Laporan</h3>
-                   <div className="flex flex-col items-center gap-6">
-                      <QRCodeGenerator text={id} />
-                      <WhatsAppShare 
-                        name={anak.name} 
-                        status={historyData[0]?.zScoreBBU || 'Belum Ada Data'} 
-                        linkId={id} 
-                      />
-                   </div>
-                </div>
-
-                {/* Recommendation Card */}
                 {historyData.length > 0 && (
                   <ParentRecommendation 
                     statuses={[

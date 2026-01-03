@@ -123,3 +123,79 @@ export async function getPosyanduList() {
     return []
   }
 }
+
+export async function updateAnak(prevState: any, formData: FormData) {
+  const id = formData.get('id') as string
+  
+  const data = {
+    name: formData.get('name'),
+    nik: formData.get('nik'),
+    placeOfBirth: formData.get('placeOfBirth'),
+    dateOfBirth: formData.get('dateOfBirth'),
+    gender: formData.get('gender'),
+    parentName: formData.get('parentName'),
+    posyanduId: formData.get('posyanduId'),
+  }
+
+  // Validate
+  const validated = AnakSchema.safeParse(data)
+  if (!validated.success) {
+    return { success: false, error: validated.error.issues[0].message }
+  }
+
+  try {
+    // Check if NIK is used by another child
+    const existing = await prisma.anak.findFirst({
+      where: { 
+        nik: validated.data.nik,
+        NOT: { id }
+      },
+    })
+    if (existing) {
+      return { success: false, error: 'NIK sudah digunakan anak lain' }
+    }
+
+    await prisma.anak.update({
+      where: { id },
+      data: {
+        name: validated.data.name,
+        nik: validated.data.nik,
+        placeOfBirth: validated.data.placeOfBirth || '',
+        dateOfBirth: new Date(validated.data.dateOfBirth),
+        gender: validated.data.gender,
+        parentName: validated.data.parentName,
+        posyanduId: validated.data.posyanduId,
+      },
+    })
+
+    revalidatePath('/dashboard/anak')
+    revalidatePath(`/posyandu/${validated.data.posyanduId}`)
+    return { success: true, message: 'Data anak berhasil diperbarui' }
+  } catch (error) {
+    console.error('Update anak error:', error)
+    return { success: false, error: 'Gagal memperbarui data anak' }
+  }
+}
+
+export async function deleteAnak(id: string) {
+  try {
+    // Delete related measurements first
+    await prisma.measurement.deleteMany({
+      where: { anakId: id }
+    })
+    
+    // Delete the child
+    const deleted = await prisma.anak.delete({
+      where: { id }
+    })
+
+    revalidatePath('/dashboard/anak')
+    revalidatePath(`/posyandu/${deleted.posyanduId}`)
+    return { success: true, message: 'Data anak berhasil dihapus' }
+  } catch (error) {
+    console.error('Delete anak error:', error)
+    return { success: false, error: 'Gagal menghapus data anak' }
+  }
+}
+
+

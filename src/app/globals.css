@@ -1,5 +1,31 @@
 @import "tailwindcss";
 
+@theme {
+    --color-primary: #20df6c;
+    --color-background-light: #ffffff;
+    --color-background-dark: #112117;
+    --color-surface-dark: #1C2E24;
+    --color-text-main: #111714;
+    --color-text-secondary: #648772;
+    --color-text-dark: #ffffff;
+    --color-text-muted: #a0b3a8;
+    --color-primary-dark: #1dbc5b;
+    --font-display: "Public Sans", sans-serif;
+    --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+    @keyframes pulse {
+
+        0%,
+        100% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: .5;
+        }
+    }
+}
+
 body {
-    @apply bg-[#FDFBF7] text-stone-800 antialiased;
+    @apply bg-background-light text-text-main antialiased transition-colors duration-200;
 }
