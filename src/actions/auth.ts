@@ -4,7 +4,7 @@ import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { prisma } from '@/lib/db'
 import { signSession } from '@/lib/auth'
-import { compare } from 'bcrypt'
+import bcrypt from 'bcryptjs'
 
 export async function login(prevState: any, formData: FormData) {
   const email = formData.get('email') as string
@@ -23,7 +23,7 @@ export async function login(prevState: any, formData: FormData) {
       return { error: 'Email tidak ditemukan' }
     }
 
-    const passwordValid = await compare(password, user.password)
+    const passwordValid = await bcrypt.compare(password, user.password)
     if (!passwordValid) {
       return { error: 'Password salah' }
     }

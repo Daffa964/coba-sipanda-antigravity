@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/db'
 import { signSession } from '@/lib/auth'
-import { compare } from 'bcrypt'
+import bcrypt from 'bcryptjs'
 
 export async function POST(request: Request) {
   try {
@@ -22,7 +22,7 @@ export async function POST(request: Request) {
     }
 
     // Verify Password
-    const passwordValid = await compare(password, user.password)
+    const passwordValid = await bcrypt.compare(password, user.password)
     if (!passwordValid) {
       return NextResponse.json({ error: 'Password salah' }, { status: 401 })
     }
