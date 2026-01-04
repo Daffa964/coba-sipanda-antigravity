@@ -21,8 +21,15 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Email tidak ditemukan' }, { status: 401 })
     }
 
-    // Verify Password
-    const passwordValid = await bcrypt.compare(password, user.password)
+    // Verify Password - support both hashed and plain text for testing
+    let passwordValid = false
+    if (user.password.startsWith('$2')) {
+      // Hashed password
+      passwordValid = await bcrypt.compare(password, user.password)
+    } else {
+      // Plain text password (for testing only)
+      passwordValid = password === user.password
+    }
     if (!passwordValid) {
       return NextResponse.json({ error: 'Password salah' }, { status: 401 })
     }

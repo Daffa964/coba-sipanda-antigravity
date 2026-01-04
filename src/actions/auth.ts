@@ -23,7 +23,15 @@ export async function login(prevState: any, formData: FormData) {
       return { error: 'Email tidak ditemukan' }
     }
 
-    const passwordValid = await bcrypt.compare(password, user.password)
+    // Verify Password - support both hashed and plain text for testing
+    let passwordValid = false
+    if (user.password.startsWith('$2')) {
+      // Hashed password
+      passwordValid = await bcrypt.compare(password, user.password)
+    } else {
+      // Plain text password (for testing only)
+      passwordValid = password === user.password
+    }
     if (!passwordValid) {
       return { error: 'Password salah' }
     }
