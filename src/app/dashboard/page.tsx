@@ -16,81 +16,81 @@ export default async function DashboardPage() {
     redirect(`/posyandu/${session.posyanduId}`)
   }
 
-  // Fetch Data
-  const anaks = await prisma.anak.findMany({
-    include: {
-      posyandu: true,
-      measurements: {
-        orderBy: { date: 'desc' },
-        take: 1
-      }
-    }
-  })
-
-  // Calculate Stats
-  const totalBalita = anaks.length
-  
+  // Initialize default values
+  let anaks: any[] = []
+  let kaders: any[] = []
+  let totalBalita = 0
   let giziBaikCount = 0
   let kurangGiziCount = 0
   let stuntingCount = 0
-
-  // For Chart Data (Group by Posyandu -> RW)
   const posyanduStats: Record<string, { total: number, normal: number, kurang: number, stunting: number }> = {}
-
-  // For Intervention Table
   const interventionList: any[] = []
 
-  anaks.forEach(anak => {
-    const lastMeasure = anak.measurements[0]
-    const posyanduName = anak.posyandu.name // e.g. "Posyandu RW 01"
-
-    if (!posyanduStats[posyanduName]) {
-      posyanduStats[posyanduName] = { total: 0, normal: 0, kurang: 0, stunting: 0 }
-    }
-    posyanduStats[posyanduName].total += 1
-
-    let isStunting = false
-    let isKurangGizi = false
-
-    if (lastMeasure) {
-      if (lastMeasure.zScoreBBU === 'Normal') {
-         giziBaikCount++
-         posyanduStats[posyanduName].normal += 1
+  try {
+    // Fetch Data
+    anaks = await prisma.anak.findMany({
+      include: {
+        posyandu: true,
+        measurements: {
+          orderBy: { date: 'desc' },
+          take: 1
+        }
       }
-      if (lastMeasure.zScoreBBU === 'Kurang Gizi' || lastMeasure.zScoreBBU === 'Gizi Buruk') {
-        kurangGiziCount++
-        isKurangGizi = true
-        posyanduStats[posyanduName].kurang += 1
-      }
-      if (lastMeasure.zScoreTBU === 'Pendek (Stunted)' || lastMeasure.zScoreTBU === 'Sangat Pendek') {
-        stuntingCount++
-        isStunting = true
-        posyanduStats[posyanduName].stunting += 1
-      }
-      // If normal (simplified logic, if not caught above, assume normal/other)
-      // Note: A child can be both Stunted and Kurang Gizi.
-    } else {
-        // No measurement, count as access data or unknown
-        // For this chart logic, let's treat no measurement as just total count but no status
-    }
+    })
 
-    if (isStunting || isKurangGizi) {
-        interventionList.push({
-            ...anak,
-            status: isStunting ? 'Stunting' : 'Kurang Gizi', // Priority to Stunting label or combine
-            age: lastMeasure?.ageInMonths || 0
-        })
-    }
-  })
+    // Calculate Stats
+    totalBalita = anaks.length
+
+    anaks.forEach(anak => {
+      const lastMeasure = anak.measurements?.[0]
+      const posyanduName = anak.posyandu?.name || 'Unknown' // e.g. "Posyandu RW 01"
+
+      if (!posyanduStats[posyanduName]) {
+        posyanduStats[posyanduName] = { total: 0, normal: 0, kurang: 0, stunting: 0 }
+      }
+      posyanduStats[posyanduName].total += 1
+
+      let isStunting = false
+      let isKurangGizi = false
+
+      if (lastMeasure) {
+        if (lastMeasure.zScoreBBU === 'Normal') {
+           giziBaikCount++
+           posyanduStats[posyanduName].normal += 1
+        }
+        if (lastMeasure.zScoreBBU === 'Kurang Gizi' || lastMeasure.zScoreBBU === 'Gizi Buruk') {
+          kurangGiziCount++
+          isKurangGizi = true
+          posyanduStats[posyanduName].kurang += 1
+        }
+        if (lastMeasure.zScoreTBU === 'Pendek' || lastMeasure.zScoreTBU === 'Pendek (Stunted)' || lastMeasure.zScoreTBU === 'Sangat Pendek') {
+          stuntingCount++
+          isStunting = true
+          posyanduStats[posyanduName].stunting += 1
+        }
+      }
+
+      if (isStunting || isKurangGizi) {
+          interventionList.push({
+              ...anak,
+              status: isStunting ? 'Stunting' : 'Kurang Gizi',
+              age: lastMeasure?.ageInMonths || 0
+          })
+      }
+    })
+
+    // Fetch Kaders for "Active Kader" list
+    kaders = await prisma.user.findMany({
+      where: { role: 'KADER' },
+      include: { posyandu: true }
+    })
+  } catch (error) {
+    console.error('Dashboard data fetch error:', error)
+    // Continue with empty data rather than crashing
+  }
 
   // Format Chart Data
   const labels = Object.keys(posyanduStats).sort()
-  
-  // Fetch Kaders for "Active Kader" list
-  const kaders = await prisma.user.findMany({
-    where: { role: 'KADER' },
-    include: { posyandu: true }
-  })
   
   // Date Formatter
   const currentDate = new Date().toLocaleDateString('id-ID', { month: 'long', year: 'numeric' })
