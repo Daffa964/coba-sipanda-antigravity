@@ -78,7 +78,7 @@ export default async function ChildDetailPage({ params }: { params: { id: string
                 <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
                    <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4">Bagikan Laporan</h3>
                    <div className="flex flex-col items-center gap-6">
-                      <QRCodeGenerator text={id} />
+                      <QRCodeGenerator text={id} childName={anak.name} posyanduName={anak.posyandu.name} />
                       <WhatsAppShare 
                         name={anak.name} 
                         status={historyData[0]?.zScoreBBU || 'Belum Ada Data'} 
