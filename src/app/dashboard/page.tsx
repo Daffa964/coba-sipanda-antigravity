@@ -17,76 +17,97 @@ export default async function DashboardPage() {
   }
 
   // Initialize default values
-  let anaks: any[] = []
   let kaders: any[] = []
   let totalBalita = 0
   let giziBaikCount = 0
   let kurangGiziCount = 0
   let stuntingCount = 0
   const posyanduStats: Record<string, { total: number, normal: number, kurang: number, stunting: number }> = {}
-  const interventionList: any[] = []
+  let interventionList: any[] = []
 
   try {
-    // Fetch Data
-    anaks = await prisma.anak.findMany({
-      include: {
-        posyandu: true,
-        measurements: {
-          orderBy: { date: 'desc' },
-          take: 1
-        }
-      }
+    // 1. Get Total Balita Efficiently
+    totalBalita = await prisma.anak.count()
+
+    // 2. Get Stats per Posyandu using Raw SQL for performance
+    // This avoids fetching all 1000+ records to Node.js
+    const statsQuery = await prisma.$queryRaw`
+      SELECT 
+        p.nama as posyandu_name,
+        COUNT(a.anak_id) as total,
+        COUNT(CASE WHEN m.z_score_bbu = 'Normal' THEN 1 END) as normal,
+        COUNT(CASE WHEN m.z_score_bbu IN ('Kurang Gizi', 'Gizi Buruk') THEN 1 END) as kurang,
+        COUNT(CASE WHEN m.z_score_tbu IN ('Pendek', 'Pendek (Stunted)', 'Sangat Pendek') THEN 1 END) as stunting
+      FROM anak a
+      JOIN posyandu p ON a.posyandu_id = p.posyandu_id
+      LEFT JOIN (
+          SELECT DISTINCT ON (anak_id) *
+          FROM pengukuran
+          ORDER BY anak_id, tanggal DESC
+      ) m ON a.anak_id = m.anak_id
+      GROUP BY p.nama
+    ` as any[]
+
+    // Process stats
+    statsQuery.forEach(stat => {
+      const name = stat.posyandu_name
+      const total = Number(stat.total)
+      const normal = Number(stat.normal)
+      const kurang = Number(stat.kurang)
+      const stunting = Number(stat.stunting)
+
+      posyanduStats[name] = { total, normal, kurang, stunting }
+      
+      // Accumulate global stats
+      giziBaikCount += normal
+      kurangGiziCount += kurang
+      stuntingCount += stunting
     })
 
-    // Calculate Stats
-    totalBalita = anaks.length
+    // 3. Get Intervention List (Stunting OR Kurang Gizi)
+    // Fetch top 50 to avoid huge payload
+    const interventionQuery = await prisma.$queryRaw`
+      WITH LatestMeasure AS (
+          SELECT DISTINCT ON (anak_id) *
+          FROM pengukuran
+          ORDER BY anak_id, tanggal DESC
+      )
+      SELECT 
+        a.anak_id as id,
+        a.nama as name,
+        a.nama_orangtua as "parentName",
+        p.nama as "posyanduName",
+        m.usia_bulan as age,
+        CASE 
+            WHEN m.z_score_tbu IN ('Pendek', 'Pendek (Stunted)', 'Sangat Pendek') THEN 'Stunting'
+            ELSE 'Kurang Gizi'
+        END as status
+      FROM LatestMeasure m
+      JOIN anak a ON m.anak_id = a.anak_id
+      JOIN posyandu p ON a.posyandu_id = p.posyandu_id
+      WHERE 
+        m.z_score_bbu IN ('Kurang Gizi', 'Gizi Buruk') 
+        OR m.z_score_tbu IN ('Pendek', 'Pendek (Stunted)', 'Sangat Pendek')
+      LIMIT 50
+    ` as any[]
 
-    anaks.forEach(anak => {
-      const lastMeasure = anak.measurements?.[0]
-      const posyanduName = anak.posyandu?.name || 'Unknown' // e.g. "Posyandu RW 01"
-
-      if (!posyanduStats[posyanduName]) {
-        posyanduStats[posyanduName] = { total: 0, normal: 0, kurang: 0, stunting: 0 }
-      }
-      posyanduStats[posyanduName].total += 1
-
-      let isStunting = false
-      let isKurangGizi = false
-
-      if (lastMeasure) {
-        if (lastMeasure.zScoreBBU === 'Normal') {
-           giziBaikCount++
-           posyanduStats[posyanduName].normal += 1
-        }
-        if (lastMeasure.zScoreBBU === 'Kurang Gizi' || lastMeasure.zScoreBBU === 'Gizi Buruk') {
-          kurangGiziCount++
-          isKurangGizi = true
-          posyanduStats[posyanduName].kurang += 1
-        }
-        if (lastMeasure.zScoreTBU === 'Pendek' || lastMeasure.zScoreTBU === 'Pendek (Stunted)' || lastMeasure.zScoreTBU === 'Sangat Pendek') {
-          stuntingCount++
-          isStunting = true
-          posyanduStats[posyanduName].stunting += 1
-        }
-      }
-
-      if (isStunting || isKurangGizi) {
-          interventionList.push({
-              ...anak,
-              status: isStunting ? 'Stunting' : 'Kurang Gizi',
-              age: lastMeasure?.ageInMonths || 0
-          })
-      }
-    })
+    interventionList = interventionQuery.map(item => ({
+      id: item.id,
+      name: item.name,
+      parentName: item.parentName,
+      posyandu: { name: item.posyanduName }, // Match expected structure
+      status: item.status,
+      age: item.age
+    }))
 
     // Fetch Kaders for "Active Kader" list
     kaders = await prisma.user.findMany({
       where: { role: 'KADER' },
-      include: { posyandu: true }
+      include: { posyandu: true },
+      take: 20 // Limit to 20 active kaders
     })
   } catch (error) {
     console.error('Dashboard data fetch error:', error)
-    // Continue with empty data rather than crashing
   }
 
   // Format Chart Data
