@@ -43,7 +43,7 @@ export default function LandingPage() {
                   Pantau Tumbuh Kembang <span className="text-primary">Anak</span> Desa Kramat
                 </h1>
                 <p className="text-base md:text-lg text-text-secondary font-normal leading-relaxed max-w-xl">
-                  Sistem Informasi Pelayanan Anak dan Balita (SI-PANDA). Solusi digital untuk pencatatan gizi, pencegahan stunting, dan pemantauan kesehatan generasi masa depan kita.
+                  Sistem Informasi Pemantau Gizi Anak Desa (SI-PANDA). Solusi digital untuk pencatatan gizi, pencegahan stunting, dan pemantauan kesehatan generasi masa depan kita.
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto pt-2">
@@ -182,7 +182,7 @@ export default function LandingPage() {
                   <h2 className="text-lg font-bold">SI-PANDA</h2>
                 </div>
                 <p className="text-text-secondary text-sm max-w-xs">
-                  Sistem Informasi Pelayanan Anak dan Balita Desa Kramat.
+                  Sistem Informasi Pemantau Gizi Anak Desa Kramat.
                 </p>
               </div>
               <div className="flex flex-wrap justify-center gap-8">

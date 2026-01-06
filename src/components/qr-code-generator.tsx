@@ -86,7 +86,7 @@ export default function QRCodeGenerator({ text, childName, posyanduName }: QRCod
       
       ctx.font = '11px Inter, sans-serif'
       ctx.fillStyle = 'rgba(255, 255, 255, 0.9)'
-      ctx.fillText('Sistem Informasi Pantau Anak Desa', width / 2, cardY + 46)
+      ctx.fillText('Sistem Informasi Pemantau Gizi Anak Desa', width / 2, cardY + 46)
 
       // Posyandu name badge
       if (posyanduName) {
