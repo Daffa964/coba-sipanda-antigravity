@@ -9,8 +9,8 @@ export default function LandingPage() {
         <div className="flex justify-center w-full">
           <div className="flex max-w-[1280px] flex-1 items-center justify-between px-4 py-3 md:px-10">
             <Link href="#home" className="flex items-center gap-2 text-text-main group cursor-pointer">
-              <div className="group-hover:scale-110 transition-transform">
-                <img src="/logo-sipanda.png" alt="SI-PANDA" width={40} height={40} className="object-contain w-10 h-10" />
+              <div className="text-primary group-hover:scale-110 transition-transform">
+                <span className="material-symbols-outlined text-3xl">child_care</span>
               </div>
               <h2 className="text-lg font-bold leading-tight tracking-[-0.015em]">SI-PANDA</h2>
             </Link>
@@ -178,7 +178,7 @@ export default function LandingPage() {
             <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
               <div className="flex flex-col gap-2">
                 <div className="flex items-center justify-center md:justify-start gap-2 text-text-main">
-                  <img src="/logo-sipanda.png" alt="SI-PANDA" width={32} height={32} className="object-contain w-8 h-8" />
+                  <span className="material-symbols-outlined text-primary text-2xl">child_care</span>
                   <h2 className="text-lg font-bold">SI-PANDA</h2>
                 </div>
                 <p className="text-text-secondary text-sm max-w-xs">
