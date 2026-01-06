@@ -2,6 +2,7 @@
 import { prisma } from '@/lib/db'
 import { getMeasurementHistory } from '@/actions/measurement'
 import MeasurementHistory from '@/components/measurement-history'
+import { GrowthChart } from '@/components/growth-chart'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import BackButton from '@/components/back-button'
@@ -79,6 +80,38 @@ export default async function PublicChildPage({ params }: { params: { id: string
                    historyData[0].zScoreBBTB
                  ].filter(Boolean) as string[]} 
                />
+             </div>
+           )}
+
+           {/* Growth Chart Section */}
+           {historyData.length > 0 && (
+             <div className="mb-8">
+               <div className="bg-white rounded-3xl p-6 md:p-8 shadow-lg shadow-gray-100/50 border border-gray-100">
+                 <div className="flex items-center justify-between mb-6">
+                   <div>
+                     <h2 className="text-xl font-bold text-gray-900">Grafik Pertumbuhan</h2>
+                     <p className="text-sm text-gray-500">Perkembangan berat dan tinggi badan anak</p>
+                   </div>
+                   <div className="w-10 h-10 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-600">
+                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
+                     </svg>
+                   </div>
+                 </div>
+                 <GrowthChart 
+                   measurements={historyData.map(h => ({
+                     id: h.id,
+                     date: h.date,
+                     ageInMonths: h.ageInMonths,
+                     weight: h.weight,
+                     height: h.height,
+                     zScoreBBU: h.zScoreBBU,
+                     zScoreTBU: h.zScoreTBU,
+                     zScoreBBTB: h.zScoreBBTB
+                   }))} 
+                   gender={anak.gender as 'LAKI_LAKI' | 'PEREMPUAN'} 
+                 />
+               </div>
              </div>
            )}
 
