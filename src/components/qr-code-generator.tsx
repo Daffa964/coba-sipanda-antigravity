@@ -26,88 +26,141 @@ export default function QRCodeGenerator({ text, childName, posyanduName }: QRCod
     setIsDownloading(true)
 
     try {
-      // Create canvas for download
+      // Create canvas for download - ATM Card Format (Landscape)
       const canvas = document.createElement('canvas')
       const ctx = canvas.getContext('2d')
       if (!ctx) return
 
-      // Set canvas size for high quality
-      const width = 400
-      const height = 520
+      // ATM Card Size: 85.6mm x 53.98mm ratio ≈ 1.586
+      // Using 600x378 for good resolution
+      const width = 600
+      const height = 340
       canvas.width = width
       canvas.height = height
 
-      // Background gradient
+      // Background gradient (soft green)
       const gradient = ctx.createLinearGradient(0, 0, width, height)
       gradient.addColorStop(0, '#e8f5e9')
       gradient.addColorStop(1, '#c8e6c9')
       ctx.fillStyle = gradient
       ctx.fillRect(0, 0, width, height)
 
-      // Add decorative circles
-      ctx.fillStyle = 'rgba(76, 175, 80, 0.1)'
+      // Decorative circles
+      ctx.fillStyle = 'rgba(76, 175, 80, 0.08)'
       ctx.beginPath()
-      ctx.arc(-30, -30, 120, 0, Math.PI * 2)
+      ctx.arc(-50, -50, 150, 0, Math.PI * 2)
       ctx.fill()
       ctx.beginPath()
-      ctx.arc(width + 30, height + 30, 150, 0, Math.PI * 2)
+      ctx.arc(width + 50, height + 50, 180, 0, Math.PI * 2)
       ctx.fill()
 
       // White card background
-      const cardX = 20
-      const cardY = 20
-      const cardWidth = width - 40
-      const cardHeight = height - 40
+      const cardX = 16
+      const cardY = 16
+      const cardWidth = width - 32
+      const cardHeight = height - 32
       const radius = 16
 
       ctx.fillStyle = '#ffffff'
-      ctx.shadowColor = 'rgba(0, 0, 0, 0.1)'
-      ctx.shadowBlur = 20
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.12)'
+      ctx.shadowBlur = 16
       ctx.shadowOffsetY = 4
       ctx.beginPath()
       ctx.roundRect(cardX, cardY, cardWidth, cardHeight, radius)
       ctx.fill()
       ctx.shadowColor = 'transparent'
 
-      // Header bar with gradient
-      const headerGradient = ctx.createLinearGradient(cardX, cardY, cardX + cardWidth, cardY)
-      headerGradient.addColorStop(0, '#2E7D32')
-      headerGradient.addColorStop(1, '#43A047')
+      // Left side: Header bar (vertical strip)
+      const headerWidth = 180
+      const headerGradient = ctx.createLinearGradient(cardX, cardY, cardX + headerWidth, cardY)
+      headerGradient.addColorStop(0, '#1B5E20')
+      headerGradient.addColorStop(1, '#2E7D32')
       ctx.fillStyle = headerGradient
       ctx.beginPath()
-      ctx.roundRect(cardX, cardY, cardWidth, 60, [radius, radius, 0, 0])
+      ctx.roundRect(cardX, cardY, headerWidth, cardHeight, [radius, 0, 0, radius])
       ctx.fill()
 
-      // Header text - SI-PANDA
+      // SI-PANDA Logo Text (vertical left side)
+      ctx.save()
       ctx.fillStyle = '#ffffff'
-      ctx.font = 'bold 18px Inter, sans-serif'
+      ctx.font = 'bold 14px Inter, sans-serif'
       ctx.textAlign = 'center'
-      ctx.fillText('SI-PANDA', width / 2, cardY + 28)
-      
+      ctx.translate(cardX + 24, cardY + cardHeight / 2)
+      ctx.rotate(-Math.PI / 2)
+      ctx.fillText('SI-PANDA', 0, 0)
+      ctx.restore()
+
+      // QR Code Section (left center)
+      const qrSize = 140
+      const qrX = cardX + 40
+      const qrY = cardY + (cardHeight - qrSize) / 2
+
+      // QR Background
+      ctx.fillStyle = '#ffffff'
+      ctx.beginPath()
+      ctx.roundRect(qrX - 8, qrY - 8, qrSize + 16, qrSize + 16, 10)
+      ctx.fill()
+
+      // Right side content
+      const rightX = cardX + headerWidth + 24
+      const contentWidth = cardWidth - headerWidth - 48
+
+      // Title
+      ctx.fillStyle = '#1B5E20'
+      ctx.font = 'bold 18px Inter, sans-serif'
+      ctx.textAlign = 'left'
+      ctx.fillText('Kartu Pemantauan Gizi', rightX, cardY + 40)
+
+      // Subtitle
+      ctx.fillStyle = '#66BB6A'
       ctx.font = '11px Inter, sans-serif'
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.9)'
-      ctx.fillText('Sistem Informasi Pemantau Gizi Anak Desa', width / 2, cardY + 46)
+      ctx.fillText('Sistem Informasi Pemantau Gizi Anak Desa', rightX, cardY + 58)
 
-      // Posyandu name badge
-      if (posyanduName) {
-        ctx.fillStyle = '#FFF3E0'
-        const badgeWidth = 160
-        const badgeX = (width - badgeWidth) / 2
-        ctx.beginPath()
-        ctx.roundRect(badgeX, cardY + 75, badgeWidth, 28, 14)
-        ctx.fill()
-        
-        ctx.fillStyle = '#E65100'
-        ctx.font = 'bold 12px Inter, sans-serif'
-        ctx.fillText(posyanduName, width / 2, cardY + 94)
-      }
+      // Divider line
+      ctx.strokeStyle = '#E8F5E9'
+      ctx.lineWidth = 2
+      ctx.beginPath()
+      ctx.moveTo(rightX, cardY + 72)
+      ctx.lineTo(rightX + contentWidth, cardY + 72)
+      ctx.stroke()
 
-      // Child name
-      if (childName) {
-        ctx.fillStyle = '#1B5E20'
-        ctx.font = 'bold 16px Inter, sans-serif'
-        ctx.fillText(childName, width / 2, cardY + 130)
-      }
+      // Child Name Label
+      ctx.fillStyle = '#9E9E9E'
+      ctx.font = '10px Inter, sans-serif'
+      ctx.fillText('NAMA ANAK', rightX, cardY + 95)
+
+      // Child Name Value
+      ctx.fillStyle = '#212121'
+      ctx.font = 'bold 16px Inter, sans-serif'
+      ctx.fillText(childName || '-', rightX, cardY + 115)
+
+      // Posyandu Label
+      ctx.fillStyle = '#9E9E9E'
+      ctx.font = '10px Inter, sans-serif'
+      ctx.fillText('POSYANDU', rightX, cardY + 145)
+
+      // Posyandu Value
+      ctx.fillStyle = '#212121'
+      ctx.font = 'bold 14px Inter, sans-serif'
+      ctx.fillText(posyanduName || '-', rightX, cardY + 163)
+
+      // Instruction box
+      ctx.fillStyle = '#FFF8E1'
+      ctx.beginPath()
+      ctx.roundRect(rightX, cardY + 185, contentWidth, 50, 8)
+      ctx.fill()
+
+      ctx.fillStyle = '#F57C00'
+      ctx.font = '11px Inter, sans-serif'
+      ctx.textAlign = 'center'
+      ctx.fillText('📱 Scan QR Code untuk melihat', rightX + contentWidth / 2, cardY + 207)
+      ctx.fillText('data kesehatan anak', rightX + contentWidth / 2, cardY + 223)
+
+      // Footer
+      ctx.fillStyle = '#BDBDBD'
+      ctx.font = '9px Inter, sans-serif'
+      ctx.textAlign = 'left'
+      ctx.fillText('© SI-PANDA Desa Kramat • ' + new Date().toLocaleDateString('id-ID'), rightX, cardY + cardHeight - 20)
 
       // QR Code - render from SVG
       const svgElement = qrRef.current.querySelector('svg')
@@ -118,30 +171,12 @@ export default function QRCodeGenerator({ text, childName, posyanduName }: QRCod
         
         const img = new Image()
         img.onload = () => {
-          // QR Code border
-          ctx.fillStyle = '#f5f5f5'
-          ctx.beginPath()
-          ctx.roundRect((width - 180) / 2, cardY + 145, 180, 180, 12)
-          ctx.fill()
-          
           // Draw QR code
-          ctx.drawImage(img, (width - 160) / 2, cardY + 155, 160, 160)
-          
-          // Instruction text
-          ctx.fillStyle = '#757575'
-          ctx.font = '12px Inter, sans-serif'
-          ctx.fillText('Scan QR Code untuk melihat', width / 2, cardY + 355)
-          ctx.fillText('data kesehatan anak', width / 2, cardY + 372)
-
-          // Footer
-          ctx.fillStyle = '#BDBDBD'
-          ctx.font = '10px Inter, sans-serif'
-          ctx.fillText('© SI-PANDA Desa Kramat', width / 2, cardY + 420)
-          ctx.fillText(new Date().toLocaleDateString('id-ID'), width / 2, cardY + 435)
+          ctx.drawImage(img, qrX, qrY, qrSize, qrSize)
 
           // Download
           const link = document.createElement('a')
-          link.download = `QR_${childName?.replace(/\s+/g, '_') || 'anak'}_${posyanduName?.replace(/\s+/g, '_') || 'posyandu'}.png`
+          link.download = `Kartu_Gizi_${childName?.replace(/\s+/g, '_') || 'anak'}.png`
           link.href = canvas.toDataURL('image/png')
           link.click()
           
