@@ -26,16 +26,20 @@ export default function QRCodeGenerator({ text, childName, posyanduName }: QRCod
     setIsDownloading(true)
 
     try {
-      // Create canvas for download - ATM Card Format (Landscape)
+      // Create canvas for download - ATM Card Format (HD - 2x scale)
       const canvas = document.createElement('canvas')
       const ctx = canvas.getContext('2d')
       if (!ctx) return
 
-      // ATM Card Size
-      const width = 600
-      const height = 320
+      // HD Resolution - 2x scale for crisp output
+      const scale = 2
+      const width = 600 * scale
+      const height = 320 * scale
       canvas.width = width
       canvas.height = height
+      
+      // Scale all drawing operations
+      ctx.scale(scale, scale)
 
       // Background gradient (soft green)
       const gradient = ctx.createLinearGradient(0, 0, width, height)
