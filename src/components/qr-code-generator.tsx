@@ -33,13 +33,17 @@ export default function QRCodeGenerator({ text, childName, posyanduName }: QRCod
 
       // HD Resolution - 2x scale for crisp output
       const scale = 2
-      const width = 600 * scale
-      const height = 320 * scale
-      canvas.width = width
-      canvas.height = height
+      const baseWidth = 600
+      const baseHeight = 320
+      canvas.width = baseWidth * scale
+      canvas.height = baseHeight * scale
       
       // Scale all drawing operations
       ctx.scale(scale, scale)
+
+      // Use base dimensions for all drawing (scale handles the HD output)
+      const width = baseWidth
+      const height = baseHeight
 
       // Background gradient (soft green)
       const gradient = ctx.createLinearGradient(0, 0, width, height)
