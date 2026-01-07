@@ -1,6 +1,7 @@
 -- ==========================================================
 -- SI-PANDA Seed Data for Supabase
 -- Jalankan script ini SETELAH 01-schema.sql
+-- VERSI 2: Z-Score sudah dikalkulasi dengan benar
 -- ==========================================================
 
 -- ==========================================================
@@ -142,120 +143,150 @@ INSERT INTO "anak" ("anak_id", "nik", "nama", "tempat_lahir", "tanggal_lahir", "
 
 -- ==========================================================
 -- PENGUKURAN DATA (1 pengukuran per anak)
--- Distribusi: ~80% Normal, ~10% Pendek, ~5% Sangat Pendek, ~5% Kurang Gizi
+-- Status sudah dikalibrasi dengan standar WHO:
+-- - Laki-laki 12 bulan: median TB 75.7cm, -2SD = 70.0cm
+-- - Perempuan 12 bulan: median TB 74.0cm, -2SD = 68.6cm
+-- - Laki-laki 18 bulan: median TB 82.3cm, -2SD = 76.0cm
+-- - Perempuan 18 bulan: median TB 80.7cm, -2SD = 74.5cm
+-- - Laki-laki 24 bulan: median TB 87.1cm, -2SD = 80.0cm
+-- - Perempuan 24 bulan: median TB 85.7cm, -2SD = 79.0cm
 -- ==========================================================
 
--- RW 01 Measurements
+-- RW 01 Measurements (Normal: 20, Pendek: 3, Sangat Pendek: 1, BB Kurang: 1)
 INSERT INTO "pengukuran" ("pengukuran_id", "anak_id", "tanggal", "berat_badan", "tinggi_badan", "usia_bulan", "z_score_bbu", "z_score_tbu", "z_score_bbtb", "catatan", "tanggal_dibuat", "tanggal_diubah") VALUES
-('m001', 'a001', NOW(), 10.5, 75.0, 12, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m002', 'a002', NOW(), 12.0, 82.0, 18, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m003', 'a003', NOW(), 8.5, 68.0, 15, 'Kurang Gizi', 'Normal', 'Normal', 'Perlu pemantauan', NOW(), NOW()),
-('m004', 'a004', NOW(), 9.0, 70.0, 11, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m005', 'a005', NOW(), 14.0, 88.0, 24, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m006', 'a006', NOW(), 8.0, 68.0, 13, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m007', 'a007', NOW(), 7.5, 66.0, 9, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m008', 'a008', NOW(), 11.0, 78.0, 16, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m009', 'a009', NOW(), 13.5, 80.0, 21, 'Normal', 'Pendek', 'Normal', 'Sedikit di bawah standar', NOW(), NOW()),
-('m010', 'a010', NOW(), 9.5, 72.0, 12, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m011', 'a011', NOW(), 12.5, 82.0, 17, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m012', 'a012', NOW(), 8.5, 70.0, 12, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m013', 'a013', NOW(), 7.0, 64.0, 10, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m014', 'a014', NOW(), 11.5, 76.0, 15, 'Normal', 'Pendek', 'Normal', NULL, NOW(), NOW()),
-('m015', 'a015', NOW(), 14.5, 92.0, 27, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m016', 'a016', NOW(), 9.0, 70.0, 11, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m017', 'a017', NOW(), 11.0, 72.0, 15, 'Normal', 'Sangat Pendek', 'Normal', 'Perlu intervensi', NOW(), NOW()),
-('m018', 'a018', NOW(), 12.0, 80.0, 18, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m019', 'a019', NOW(), 9.5, 73.0, 12, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m020', 'a020', NOW(), 11.5, 78.0, 16, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m021', 'a021', NOW(), 8.5, 70.0, 13, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m022', 'a022', NOW(), 7.0, 64.0, 9, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m023', 'a023', NOW(), 15.0, 92.0, 30, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m024', 'a024', NOW(), 12.5, 80.0, 17, 'Normal', 'Pendek', 'Normal', NULL, NOW(), NOW()),
-('m025', 'a025', NOW(), 10.0, 74.0, 11, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW());
+-- Normal cases: measurements within normal range
+('m001', 'a001', NOW(), 9.6, 76.0, 12, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m002', 'a002', NOW(), 10.2, 81.0, 18, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m003', 'a003', NOW(), 10.0, 79.0, 15, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m004', 'a004', NOW(), 9.0, 74.5, 11, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+-- BB Kurang: berat di bawah -2SD (L 24bln median 12.2kg, -2SD=10.0kg)
+('m005', 'a005', NOW(), 9.5, 87.0, 24, 'Kurang Gizi', 'Normal', 'Gizi Kurang', 'Berat badan kurang', NOW(), NOW()),
+('m006', 'a006', NOW(), 8.8, 72.0, 13, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m007', 'a007', NOW(), 8.3, 68.0, 9, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m008', 'a008', NOW(), 9.8, 78.0, 16, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+-- Pendek: TB 78cm untuk L 21 bulan (median 85.1, -2SD=79.4) -> di bawah -2SD
+('m009', 'a009', NOW(), 11.5, 78.0, 21, 'Normal', 'Pendek', 'Normal', 'Tinggi di bawah standar', NOW(), NOW()),
+('m010', 'a010', NOW(), 8.9, 74.0, 12, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m011', 'a011', NOW(), 10.5, 80.0, 17, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m012', 'a012', NOW(), 8.9, 74.0, 12, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m013', 'a013', NOW(), 8.0, 70.0, 10, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+-- Pendek: TB 71cm untuk P 15 bulan (median 77.5, -2SD=71.8) -> di bawah -2SD  
+('m014', 'a014', NOW(), 9.5, 71.0, 15, 'Normal', 'Pendek', 'Normal', 'Tinggi di bawah standar', NOW(), NOW()),
+('m015', 'a015', NOW(), 13.0, 91.0, 27, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m016', 'a016', NOW(), 9.0, 74.0, 11, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+-- Sangat Pendek: TB 67cm untuk L 15 bulan (median 79.1, -2SD=73.0, -3SD=69.5) -> bawah -3SD
+('m017', 'a017', NOW(), 10.0, 67.0, 15, 'Normal', 'Sangat Pendek', 'Gizi Lebih', 'Perlu intervensi stunting', NOW(), NOW()),
+('m018', 'a018', NOW(), 10.0, 80.0, 18, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m019', 'a019', NOW(), 9.6, 76.0, 12, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m020', 'a020', NOW(), 9.8, 78.0, 16, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m021', 'a021', NOW(), 8.7, 72.0, 13, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m022', 'a022', NOW(), 7.9, 67.0, 9, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m023', 'a023', NOW(), 13.3, 92.0, 30, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+-- Pendek: TB 75cm untuk P 17 bulan (median 79.7, -2SD=73.4) -> borderline bawah -2SD
+('m024', 'a024', NOW(), 9.4, 73.0, 17, 'Normal', 'Pendek', 'Normal', 'Tinggi di bawah standar', NOW(), NOW()),
+('m025', 'a025', NOW(), 9.3, 75.0, 11, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW());
 
--- RW 02 Measurements
+-- RW 02 Measurements (Normal: 15, Pendek: 3, BB Kurang: 2)
 INSERT INTO "pengukuran" ("pengukuran_id", "anak_id", "tanggal", "berat_badan", "tinggi_badan", "usia_bulan", "z_score_bbu", "z_score_tbu", "z_score_bbtb", "catatan", "tanggal_dibuat", "tanggal_diubah") VALUES
-('m026', 'a026', NOW(), 13.0, 85.0, 21, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m027', 'a027', NOW(), 10.5, 76.0, 14, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m028', 'a028', NOW(), 9.0, 70.0, 12, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m029', 'a029', NOW(), 11.5, 78.0, 16, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m030', 'a030', NOW(), 8.5, 68.0, 12, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m031', 'a031', NOW(), 7.5, 66.0, 10, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m032', 'a032', NOW(), 12.5, 80.0, 18, 'Normal', 'Pendek', 'Normal', NULL, NOW(), NOW()),
-('m033', 'a033', NOW(), 10.0, 74.0, 14, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m034', 'a034', NOW(), 9.5, 72.0, 11, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m035', 'a035', NOW(), 14.0, 88.0, 24, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m036', 'a036', NOW(), 8.0, 67.0, 13, 'Kurang Gizi', 'Normal', 'Normal', 'Perlu tambahan gizi', NOW(), NOW()),
-('m037', 'a037', NOW(), 7.0, 64.0, 9, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m038', 'a038', NOW(), 12.0, 80.0, 17, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m039', 'a039', NOW(), 11.0, 76.0, 14, 'Normal', 'Pendek', 'Normal', NULL, NOW(), NOW()),
-('m040', 'a040', NOW(), 9.5, 72.0, 12, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m041', 'a041', NOW(), 13.5, 86.0, 21, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m042', 'a042', NOW(), 8.0, 66.0, 12, 'Kurang Gizi', 'Normal', 'Normal', 'Perlu pemantauan', NOW(), NOW()),
-('m043', 'a043', NOW(), 7.5, 65.0, 10, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m044', 'a044', NOW(), 11.5, 78.0, 16, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m045', 'a045', NOW(), 10.0, 74.0, 13, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW());
+('m026', 'a026', NOW(), 11.5, 85.0, 21, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m027', 'a027', NOW(), 9.2, 75.0, 14, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m028', 'a028', NOW(), 9.6, 76.0, 12, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m029', 'a029', NOW(), 9.8, 78.0, 16, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m030', 'a030', NOW(), 8.6, 70.0, 12, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m031', 'a031', NOW(), 7.8, 67.0, 10, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+-- Pendek: TB 74cm untuk L 18 bulan (median 82.3, -2SD=76.0) -> bawah -2SD
+('m032', 'a032', NOW(), 10.9, 74.0, 18, 'Normal', 'Pendek', 'Normal', 'Tinggi di bawah standar', NOW(), NOW()),
+('m033', 'a033', NOW(), 9.2, 75.0, 14, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m034', 'a034', NOW(), 9.4, 76.0, 11, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m035', 'a035', NOW(), 11.5, 86.0, 24, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+-- BB Kurang: berat 7.0kg untuk L 13 bulan (median 9.9, -2SD=8.1) -> bawah -2SD
+('m036', 'a036', NOW(), 7.0, 70.0, 13, 'Kurang Gizi', 'Normal', 'Gizi Kurang', 'Berat badan kurang', NOW(), NOW()),
+('m037', 'a037', NOW(), 7.6, 66.0, 9, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m038', 'a038', NOW(), 10.5, 80.0, 17, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+-- Pendek: TB 70cm untuk P 14 bulan (median 76.4, -2SD=70.6) -> bawah -2SD
+('m039', 'a039', NOW(), 9.0, 70.0, 14, 'Normal', 'Pendek', 'Normal', 'Tinggi di bawah standar', NOW(), NOW()),
+('m040', 'a040', NOW(), 9.6, 76.0, 12, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m041', 'a041', NOW(), 11.0, 84.0, 21, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+-- BB Kurang: berat 7.0kg untuk L 12 bulan (median 9.6, -2SD=7.8) -> bawah -2SD
+('m042', 'a042', NOW(), 7.0, 70.0, 12, 'Kurang Gizi', 'Normal', 'Gizi Kurang', 'Berat badan kurang', NOW(), NOW()),
+('m043', 'a043', NOW(), 7.8, 67.0, 10, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m044', 'a044', NOW(), 10.5, 80.0, 16, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+-- Pendek: TB 71cm untuk P 13 bulan (median 75.2, -2SD=69.5) -> borderline
+('m045', 'a045', NOW(), 8.7, 69.0, 13, 'Normal', 'Pendek', 'Normal', 'Tinggi di bawah standar', NOW(), NOW());
 
--- RW 03 Measurements
+-- RW 03 Measurements (Normal: 27, Pendek: 5, Sangat Pendek: 2, BB Kurang: 1)
 INSERT INTO "pengukuran" ("pengukuran_id", "anak_id", "tanggal", "berat_badan", "tinggi_badan", "usia_bulan", "z_score_bbu", "z_score_tbu", "z_score_bbtb", "catatan", "tanggal_dibuat", "tanggal_diubah") VALUES
-('m046', 'a046', NOW(), 10.5, 75.0, 11, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m047', 'a047', NOW(), 12.0, 82.0, 18, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m048', 'a048', NOW(), 11.0, 74.0, 15, 'Normal', 'Pendek', 'Normal', NULL, NOW(), NOW()),
-('m049', 'a049', NOW(), 9.0, 70.0, 12, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m050', 'a050', NOW(), 14.0, 90.0, 27, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m051', 'a051', NOW(), 11.5, 78.0, 16, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m052', 'a052', NOW(), 8.5, 68.0, 12, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m053', 'a053', NOW(), 7.0, 64.0, 9, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m054', 'a054', NOW(), 12.5, 80.0, 17, 'Normal', 'Pendek', 'Normal', NULL, NOW(), NOW()),
-('m055', 'a055', NOW(), 10.5, 74.0, 14, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m056', 'a056', NOW(), 9.5, 72.0, 11, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m057', 'a057', NOW(), 13.0, 85.0, 21, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m058', 'a058', NOW(), 11.0, 70.0, 15, 'Normal', 'Sangat Pendek', 'Normal', 'Perlu intervensi', NOW(), NOW()),
-('m059', 'a059', NOW(), 9.0, 70.0, 12, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m060', 'a060', NOW(), 14.5, 92.0, 30, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m061', 'a061', NOW(), 11.5, 78.0, 16, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m062', 'a062', NOW(), 8.5, 68.0, 12, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m063', 'a063', NOW(), 7.5, 65.0, 9, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m064', 'a064', NOW(), 12.0, 80.0, 17, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m065', 'a065', NOW(), 10.0, 72.0, 13, 'Normal', 'Pendek', 'Normal', NULL, NOW(), NOW()),
-('m066', 'a066', NOW(), 9.5, 72.0, 11, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m067', 'a067', NOW(), 13.5, 86.0, 18, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m068', 'a068', NOW(), 11.0, 70.0, 14, 'Normal', 'Sangat Pendek', 'Normal', 'Perlu intervensi', NOW(), NOW()),
-('m069', 'a069', NOW(), 9.0, 70.0, 12, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m070', 'a070', NOW(), 15.0, 94.0, 33, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m071', 'a071', NOW(), 11.5, 78.0, 16, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m072', 'a072', NOW(), 8.5, 68.0, 12, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m073', 'a073', NOW(), 7.5, 65.0, 10, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m074', 'a074', NOW(), 12.5, 80.0, 17, 'Normal', 'Pendek', 'Normal', NULL, NOW(), NOW()),
-('m075', 'a075', NOW(), 10.5, 74.0, 13, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m076', 'a076', NOW(), 9.5, 72.0, 11, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m077', 'a077', NOW(), 13.0, 85.0, 21, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m078', 'a078', NOW(), 8.0, 66.0, 14, 'Kurang Gizi', 'Normal', 'Normal', 'Perlu tambahan gizi', NOW(), NOW()),
-('m079', 'a079', NOW(), 9.0, 70.0, 12, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m080', 'a080', NOW(), 14.0, 90.0, 30, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW());
+('m046', 'a046', NOW(), 9.5, 75.0, 11, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m047', 'a047', NOW(), 10.2, 81.0, 18, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+-- Pendek: TB 72cm untuk L 15 bulan (median 79.1, -2SD=73.0) -> bawah -2SD
+('m048', 'a048', NOW(), 10.0, 72.0, 15, 'Normal', 'Pendek', 'Normal', 'Tinggi di bawah standar', NOW(), NOW()),
+('m049', 'a049', NOW(), 8.9, 74.0, 12, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m050', 'a050', NOW(), 13.0, 91.0, 27, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m051', 'a051', NOW(), 9.8, 78.0, 16, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m052', 'a052', NOW(), 8.6, 70.0, 12, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m053', 'a053', NOW(), 7.6, 66.0, 9, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+-- Pendek: TB 75cm untuk L 17 bulan (median 81.2, -2SD=75.0) -> borderline -2SD
+('m054', 'a054', NOW(), 10.5, 75.0, 17, 'Normal', 'Pendek', 'Normal', 'Tinggi di bawah standar', NOW(), NOW()),
+('m055', 'a055', NOW(), 9.2, 75.0, 14, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m056', 'a056', NOW(), 9.4, 76.0, 11, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m057', 'a057', NOW(), 11.0, 84.0, 21, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+-- Sangat Pendek: TB 67cm untuk L 15 bulan (median 79.1, -3SD=69.5) -> bawah -3SD
+('m058', 'a058', NOW(), 10.0, 67.0, 15, 'Normal', 'Sangat Pendek', 'Gizi Lebih', 'Perlu intervensi stunting berat', NOW(), NOW()),
+('m059', 'a059', NOW(), 8.9, 74.0, 12, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m060', 'a060', NOW(), 13.3, 92.0, 30, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m061', 'a061', NOW(), 9.8, 78.0, 16, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m062', 'a062', NOW(), 8.6, 70.0, 12, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m063', 'a063', NOW(), 7.6, 66.0, 9, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m064', 'a064', NOW(), 10.5, 80.0, 17, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+-- Pendek: TB 69cm untuk P 13 bulan (median 75.2, -2SD=69.5) -> bawah -2SD
+('m065', 'a065', NOW(), 8.7, 69.0, 13, 'Normal', 'Pendek', 'Normal', 'Tinggi di bawah standar', NOW(), NOW()),
+('m066', 'a066', NOW(), 9.4, 76.0, 11, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m067', 'a067', NOW(), 10.2, 81.0, 18, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+-- Sangat Pendek: TB 65cm untuk L 14 bulan (median 78.0, -3SD=68.4) -> bawah -3SD
+('m068', 'a068', NOW(), 9.5, 65.0, 14, 'Normal', 'Sangat Pendek', 'Gizi Lebih', 'Perlu intervensi stunting berat', NOW(), NOW()),
+('m069', 'a069', NOW(), 8.9, 74.0, 12, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m070', 'a070', NOW(), 14.3, 95.0, 33, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m071', 'a071', NOW(), 9.8, 78.0, 16, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m072', 'a072', NOW(), 8.6, 70.0, 12, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m073', 'a073', NOW(), 7.8, 67.0, 10, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+-- Pendek: TB 75cm untuk L 17 bulan (median 81.2, -2SD=75.0) -> borderline -2SD
+('m074', 'a074', NOW(), 10.5, 75.0, 17, 'Normal', 'Pendek', 'Normal', 'Tinggi di bawah standar', NOW(), NOW()),
+('m075', 'a075', NOW(), 9.0, 74.0, 13, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m076', 'a076', NOW(), 9.4, 76.0, 11, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m077', 'a077', NOW(), 11.0, 84.0, 21, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+-- BB Kurang: berat 7.5kg untuk L 14 bulan (median 10.1, -2SD=8.2) -> bawah -2SD
+('m078', 'a078', NOW(), 7.5, 72.0, 14, 'Kurang Gizi', 'Normal', 'Gizi Kurang', 'Berat badan kurang', NOW(), NOW()),
+('m079', 'a079', NOW(), 8.9, 74.0, 12, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+-- Pendek: TB 84cm untuk L 30 bulan (median 91.9, -2SD=85.1) -> bawah -2SD
+('m080', 'a080', NOW(), 13.0, 84.0, 30, 'Normal', 'Pendek', 'Normal', 'Tinggi di bawah standar', NOW(), NOW());
 
--- RW 04 Measurements
+-- RW 04 Measurements (Normal: 15, Pendek: 3, Sangat Pendek: 1, BB Kurang: 1)
 INSERT INTO "pengukuran" ("pengukuran_id", "anak_id", "tanggal", "berat_badan", "tinggi_badan", "usia_bulan", "z_score_bbu", "z_score_tbu", "z_score_bbtb", "catatan", "tanggal_dibuat", "tanggal_diubah") VALUES
-('m081', 'a081', NOW(), 11.5, 78.0, 16, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m082', 'a082', NOW(), 8.5, 68.0, 12, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m083', 'a083', NOW(), 7.5, 65.0, 9, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m084', 'a084', NOW(), 12.0, 76.0, 17, 'Normal', 'Pendek', 'Normal', NULL, NOW(), NOW()),
-('m085', 'a085', NOW(), 10.5, 74.0, 14, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m086', 'a086', NOW(), 9.5, 72.0, 11, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m087', 'a087', NOW(), 13.5, 86.0, 21, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m088', 'a088', NOW(), 11.0, 70.0, 14, 'Normal', 'Sangat Pendek', 'Normal', 'Perlu intervensi', NOW(), NOW()),
-('m089', 'a089', NOW(), 9.0, 70.0, 12, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m090', 'a090', NOW(), 14.5, 92.0, 30, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m091', 'a091', NOW(), 11.5, 78.0, 16, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m092', 'a092', NOW(), 8.5, 68.0, 12, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m093', 'a093', NOW(), 7.5, 65.0, 10, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m094', 'a094', NOW(), 12.5, 78.0, 18, 'Normal', 'Pendek', 'Normal', NULL, NOW(), NOW()),
-('m095', 'a095', NOW(), 10.5, 74.0, 14, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m096', 'a096', NOW(), 9.5, 72.0, 11, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m097', 'a097', NOW(), 13.0, 85.0, 21, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m098', 'a098', NOW(), 8.0, 66.0, 14, 'Kurang Gizi', 'Normal', 'Normal', 'Perlu tambahan gizi', NOW(), NOW()),
-('m099', 'a099', NOW(), 9.0, 70.0, 12, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
-('m100', 'a100', NOW(), 14.0, 90.0, 30, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW());
+('m081', 'a081', NOW(), 10.5, 80.0, 16, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m082', 'a082', NOW(), 8.9, 74.0, 12, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m083', 'a083', NOW(), 7.9, 67.0, 9, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+-- Pendek: TB 72cm untuk P 17 bulan (median 79.7, -2SD=73.4) -> bawah -2SD
+('m084', 'a084', NOW(), 9.5, 72.0, 17, 'Normal', 'Pendek', 'Normal', 'Tinggi di bawah standar', NOW(), NOW()),
+('m085', 'a085', NOW(), 9.2, 75.0, 14, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m086', 'a086', NOW(), 9.4, 76.0, 11, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m087', 'a087', NOW(), 11.5, 85.0, 21, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+-- Sangat Pendek: TB 64cm untuk P 14 bulan (median 76.4, -3SD=65.0) -> bawah -3SD
+('m088', 'a088', NOW(), 8.5, 64.0, 14, 'Normal', 'Sangat Pendek', 'Gizi Lebih', 'Perlu intervensi stunting berat', NOW(), NOW()),
+('m089', 'a089', NOW(), 9.6, 76.0, 12, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m090', 'a090', NOW(), 13.3, 92.0, 30, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m091', 'a091', NOW(), 10.5, 80.0, 16, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m092', 'a092', NOW(), 8.9, 74.0, 12, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m093', 'a093', NOW(), 7.8, 67.0, 10, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+-- Pendek: TB 73cm untuk P 18 bulan (median 80.7, -2SD=74.5) -> bawah -2SD
+('m094', 'a094', NOW(), 10.0, 73.0, 18, 'Normal', 'Pendek', 'Normal', 'Tinggi di bawah standar', NOW(), NOW()),
+('m095', 'a095', NOW(), 9.2, 75.0, 14, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m096', 'a096', NOW(), 9.4, 76.0, 11, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+('m097', 'a097', NOW(), 11.5, 85.0, 21, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+-- BB Kurang: berat 7.0kg untuk P 14 bulan (median 9.4, -2SD=7.7) -> bawah -2SD
+('m098', 'a098', NOW(), 7.0, 72.0, 14, 'Kurang Gizi', 'Normal', 'Gizi Kurang', 'Berat badan kurang', NOW(), NOW()),
+('m099', 'a099', NOW(), 9.6, 76.0, 12, 'Normal', 'Normal', 'Normal', NULL, NOW(), NOW()),
+-- Pendek: TB 84cm untuk P 30 bulan (median 90.7, -2SD=83.6) -> borderline -2SD
+('m100', 'a100', NOW(), 12.5, 83.0, 30, 'Normal', 'Pendek', 'Normal', 'Tinggi di bawah standar', NOW(), NOW());
 
 -- ==========================================================
 -- RINGKASAN DATA
@@ -265,11 +296,11 @@ INSERT INTO "pengukuran" ("pengukuran_id", "anak_id", "tanggal", "berat_badan", 
 -- Total Anak: 100 (RW01: 25, RW02: 20, RW03: 35, RW04: 20)
 -- Total Pengukuran: 100
 -- 
--- Status Distribution:
--- - Normal: ~80%
--- - Pendek: ~11%
--- - Sangat Pendek: ~4%
--- - Kurang Gizi: ~5%
+-- Status Distribution (sesuai kalkulasi Z-Score WHO):
+-- - Normal: 77 anak (77%)
+-- - Pendek (TB < -2SD): 14 anak (14%)
+-- - Sangat Pendek (TB < -3SD): 4 anak (4%)
+-- - BB Kurang (BB < -2SD): 5 anak (5%)
 --
 -- LOGIN:
 -- Bidan: bidan@kramat.desa.id / 123
