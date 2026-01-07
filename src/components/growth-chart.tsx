@@ -55,8 +55,10 @@ const CustomDot = (props: any) => {
 
 const CustomTooltip = ({ active, payload, label, gender }: any) => {
   if (active && payload && payload.length) {
-    // Find actual measurement data (checks if 'date' exists in payload)
-    const measurement = payload.find((p: any) => p.payload.date)
+    // Find actual measurement data item (prioritize line data over range area)
+    const measurement = payload.find((p: any) => 
+      (p.dataKey === 'weight' || p.dataKey === 'height') && p.payload.date
+    ) || payload.find((p: any) => p.payload.date)
     
     // If hovering over empty space or just reference area, might be different
     if (!measurement) return null
