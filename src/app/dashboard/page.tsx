@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Navbar from '@/components/navbar'
 import DashboardInterventions from '@/components/dashboard-interventions'
+import StuntingAlertDialog from '@/components/stunting-alert-dialog'
 import { cookies } from 'next/headers'
 import { verifySession } from '@/lib/auth'
 import { redirect } from 'next/navigation'
@@ -116,10 +117,27 @@ export default async function DashboardPage() {
   // Date Formatter
   const currentDate = new Date().toLocaleDateString('id-ID', { month: 'long', year: 'numeric' })
 
+  // Prepare stunting children data for the alert dialog
+  const stuntingChildren = interventionList
+    .filter(a => a.status === 'Stunting')
+    .map(a => ({
+      id: a.id,
+      name: a.name,
+      parentName: a.parentName,
+      posyanduName: a.posyandu.name,
+      age: a.age
+    }))
+
   return (
     <div className="min-h-screen bg-gray-50 font-display pb-20">
         
        <Navbar user={session as any} />
+
+       {/* Stunting Alert Popup */}
+       <StuntingAlertDialog 
+         stuntingCount={stuntingCount} 
+         stuntingChildren={stuntingChildren} 
+       />
       
       <main className="flex-1 w-full max-w-[1440px] mx-auto px-4 md:px-10 py-8">
         
