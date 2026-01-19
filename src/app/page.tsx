@@ -147,6 +147,65 @@ export default function LandingPage() {
           </div>
         </section>
 
+        {/* Contact Section */}
+        <section id="contact" className="w-full py-20 px-4 md:px-10 bg-gray-50 scroll-mt-20">
+          <div className="max-w-[1280px] mx-auto">
+            <div className="flex flex-col gap-4 text-center items-center mb-12">
+              <h2 className="text-text-main tracking-tight text-3xl md:text-4xl font-black leading-tight">
+                Hubungi Kami
+              </h2>
+              <p className="text-text-secondary text-base md:text-lg font-normal leading-normal max-w-[720px]">
+                Jika Anda memiliki pertanyaan atau membutuhkan informasi lebih lanjut, silakan hubungi kami.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+              {/* WhatsApp */}
+              <a 
+                href="https://wa.me/6281234567890" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex flex-col items-center gap-4 rounded-xl border border-[#dce5df] bg-white p-8 shadow-sm hover:shadow-md hover:border-primary/30 transition-all group cursor-pointer"
+              >
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+                  <span className="material-symbols-outlined text-3xl">chat</span>
+                </div>
+                <div className="flex flex-col gap-1 text-center">
+                  <h3 className="text-text-main text-lg font-bold">WhatsApp</h3>
+                  <p className="text-text-secondary text-base">+62 812-3456-7890</p>
+                </div>
+              </a>
+              {/* Email */}
+              <a 
+                href="mailto:posyandu.kramat@gmail.com" 
+                className="flex flex-col items-center gap-4 rounded-xl border border-[#dce5df] bg-white p-8 shadow-sm hover:shadow-md hover:border-primary/30 transition-all group cursor-pointer"
+              >
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+                  <span className="material-symbols-outlined text-3xl">mail</span>
+                </div>
+                <div className="flex flex-col gap-1 text-center">
+                  <h3 className="text-text-main text-lg font-bold">Email</h3>
+                  <p className="text-text-secondary text-base">posyandu.kramat@gmail.com</p>
+                </div>
+              </a>
+              {/* Location */}
+              <a 
+                href="https://maps.google.com/?q=Jl.+Nganguk+Wali+No.1,+Kramat,+Kudus,+Jawa+Tengah" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex flex-col items-center gap-4 rounded-xl border border-[#dce5df] bg-white p-8 shadow-sm hover:shadow-md hover:border-primary/30 transition-all group cursor-pointer"
+              >
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+                  <span className="material-symbols-outlined text-3xl">location_on</span>
+                </div>
+                <div className="flex flex-col gap-1 text-center">
+                  <h3 className="text-text-main text-lg font-bold">Alamat</h3>
+                  <p className="text-text-secondary text-sm leading-relaxed">Jl. Nganguk Wali No.1, Nganguk, Kramat, Kec. Kota Kudus, Kabupaten Kudus, Jawa Tengah 59312</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </section>
+
         {/* Stats/CTA Section */}
         <section id="cta" className="w-full py-16 px-4 md:px-10 bg-white">
           <div className="max-w-[1280px] mx-auto bg-primary rounded-2xl overflow-hidden relative shadow-2xl shadow-primary/30">
@@ -172,7 +231,7 @@ export default function LandingPage() {
       </main>
 
       {/* Footer */}
-      <footer id="contact" className="w-full bg-white border-t border-gray-100">
+      <footer className="w-full bg-white border-t border-gray-100">
         <div className="flex justify-center w-full px-4 md:px-10 py-12">
           <div className="max-w-[1280px] w-full flex flex-col gap-8">
             {/* Main Footer Content */}
@@ -194,6 +253,7 @@ export default function LandingPage() {
                 <div className="flex flex-col gap-2">
                   <Link className="text-text-secondary hover:text-primary transition-colors text-sm font-medium" href="#home">Beranda</Link>
                   <Link className="text-text-secondary hover:text-primary transition-colors text-sm font-medium" href="#features">Keunggulan</Link>
+                  <Link className="text-text-secondary hover:text-primary transition-colors text-sm font-medium" href="#contact">Kontak</Link>
                   <Link className="text-text-secondary hover:text-primary transition-colors text-sm font-medium" href="/login">Masuk Sistem</Link>
                 </div>
               </div>
@@ -218,10 +278,15 @@ export default function LandingPage() {
                     <span className="material-symbols-outlined text-lg">mail</span>
                     <span>posyandu.kramat@gmail.com</span>
                   </a>
-                  <div className="flex items-start gap-2 text-text-secondary text-sm">
+                  <a 
+                    href="https://maps.google.com/?q=Jl.+Nganguk+Wali+No.1,+Kramat,+Kudus,+Jawa+Tengah" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-start gap-2 text-text-secondary hover:text-primary transition-colors text-sm"
+                  >
                     <span className="material-symbols-outlined text-lg">location_on</span>
-                    <span>Balai Desa Kramat, Kecamatan Contoh, Kabupaten Contoh</span>
-                  </div>
+                    <span>Jl. Nganguk Wali No.1, Kramat, Kudus</span>
+                  </a>
                 </div>
                 {/* Social Links */}
                 <div className="flex gap-3 mt-2">
@@ -242,7 +307,7 @@ export default function LandingPage() {
                     <span className="material-symbols-outlined text-xl">mail</span>
                   </a>
                   <a 
-                    href="https://maps.google.com/?q=Desa+Kramat" 
+                    href="https://maps.google.com/?q=Jl.+Nganguk+Wali+No.1,+Kramat,+Kudus,+Jawa+Tengah" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all"
@@ -257,7 +322,7 @@ export default function LandingPage() {
             {/* Bottom Bar */}
             <div className="border-t border-gray-100 w-full pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
               <p className="text-text-secondary text-sm font-normal">
-                © 2024 Pemerintah Desa Kramat. Didukung oleh Puskesmas setempat.
+                © 2024 Pemerintah Desa Kramat, Kudus. Didukung oleh Puskesmas setempat.
               </p>
               <div className="flex items-center gap-6">
                 <Link className="text-text-secondary hover:text-primary transition-colors text-sm" href="#home">Beranda</Link>
