@@ -103,3 +103,106 @@ export async function getMonthlyReport(
     return { success: false, error: 'Failed to generate report' }
   }
 }
+
+export async function getReportByNik(nik: string, posyanduId?: string) {
+  try {
+    // Build where clause for anak
+    const anakWhereClause: any = {
+      nik: nik
+    }
+    
+    if (posyanduId) {
+      anakWhereClause.posyanduId = posyanduId
+    }
+
+    // Find anak by NIK
+    const anak = await prisma.anak.findFirst({
+      where: anakWhereClause,
+      include: {
+        posyandu: true,
+        measurements: {
+          orderBy: {
+            date: 'desc'
+          }
+        }
+      }
+    })
+
+    if (!anak) {
+      return {
+        success: false,
+        error: 'Anak dengan NIK tersebut tidak ditemukan'
+      }
+    }
+
+    // Calculate stats from measurements
+    const measurements = anak.measurements
+    const totalMeasurements = measurements.length
+
+    let stuntingCount = 0
+    let wastingCount = 0
+    let underweightCount = 0
+    let normalCount = 0
+
+    measurements.forEach((m) => {
+      const isStunted = m.zScoreTBU?.includes('Pendek') || m.zScoreTBU?.includes('Sangat Pendek')
+      const isWasted = m.zScoreBBTB?.includes('Gizi Kurang') || m.zScoreBBTB?.includes('Gizi Buruk')
+      const isUnderweight = m.zScoreBBU?.includes('Kurang') || m.zScoreBBU?.includes('Buruk')
+
+      if (isStunted) stuntingCount++
+      if (isWasted) wastingCount++
+      if (isUnderweight) underweightCount++
+      if (!isStunted && !isWasted && !isUnderweight) normalCount++
+    })
+
+    // Get latest status
+    const latestMeasurement = measurements[0]
+    let currentStatus = 'Normal'
+    if (latestMeasurement) {
+      const isStunted = latestMeasurement.zScoreTBU?.includes('Pendek') || latestMeasurement.zScoreTBU?.includes('Sangat Pendek')
+      const isWasted = latestMeasurement.zScoreBBTB?.includes('Gizi Kurang') || latestMeasurement.zScoreBBTB?.includes('Gizi Buruk')
+      const isUnderweight = latestMeasurement.zScoreBBU?.includes('Kurang') || latestMeasurement.zScoreBBU?.includes('Buruk')
+      
+      if (isStunted) currentStatus = 'Stunting'
+      else if (isWasted) currentStatus = 'Wasting' 
+      else if (isUnderweight) currentStatus = 'Underweight'
+    }
+
+    // Format measurements for table display
+    const formattedMeasurements = measurements.map(m => ({
+      ...m,
+      anak: {
+        ...anak,
+        posyandu: anak.posyandu
+      }
+    }))
+
+    return {
+      success: true,
+      data: {
+        anak: {
+          id: anak.id,
+          nik: anak.nik,
+          name: anak.name,
+          dateOfBirth: anak.dateOfBirth,
+          gender: anak.gender,
+          parentName: anak.parentName,
+          posyandu: anak.posyandu
+        },
+        stats: {
+          totalMeasurements,
+          stuntingCount,
+          wastingCount,
+          underweightCount,
+          normalCount,
+          currentStatus
+        },
+        measurements: formattedMeasurements
+      }
+    }
+
+  } catch (error) {
+    console.error('Error fetching report by NIK:', error)
+    return { success: false, error: 'Gagal mengambil data laporan' }
+  }
+}
