@@ -191,8 +191,8 @@ export default function LaporanPage() {
         {/* NIK Report Tab */}
         {activeTab === 'nik' && (
           <>
-            {/* Search Input */}
-            <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6 mb-8">
+            {/* Search Input - Hidden when printing */}
+            <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6 mb-8 print:hidden">
               <h2 className="text-lg font-bold text-gray-900 mb-4">Cari Laporan Berdasarkan NIK</h2>
               <div className="flex flex-col sm:flex-row gap-4">
                 <div className="flex-1">
@@ -231,17 +231,24 @@ export default function LaporanPage() {
 
             {/* NIK Report Results */}
             {nikReportData && (
-              <div className="space-y-6">
+              <div className="space-y-6 print:space-y-2">
+                {/* Print Header - Only visible when printing */}
+                <div className="hidden print:block mb-4 text-center">
+                  <h1 className="text-xl font-bold text-black uppercase">Laporan Data Anak</h1>
+                  <p className="text-black text-sm">Posyandu Desa Kramat, Kudus</p>
+                  <div className="border-b-2 border-black mt-2"></div>
+                </div>
+
                 {/* Child Info Card */}
-                <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6 print:p-3 print:shadow-none print:border print:rounded-none">
+                  <div className="flex items-start gap-4 print:gap-2">
+                    <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary print:hidden">
                       <span className="material-symbols-outlined text-3xl">child_care</span>
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-bold text-gray-900">{nikReportData.anak.name}</h3>
-                      <p className="text-gray-500">NIK: {nikReportData.anak.nik}</p>
-                      <div className="mt-3 grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                      <h3 className="text-xl font-bold text-gray-900 print:text-base">{nikReportData.anak.name}</h3>
+                      <p className="text-gray-500 print:text-xs">NIK: {nikReportData.anak.nik}</p>
+                      <div className="mt-3 grid grid-cols-2 md:grid-cols-4 gap-4 text-sm print:mt-1 print:gap-2 print:text-xs">
                         <div>
                           <span className="text-gray-500">Tanggal Lahir</span>
                           <p className="font-medium text-gray-900">
@@ -266,7 +273,7 @@ export default function LaporanPage() {
                         </div>
                       </div>
                     </div>
-                    <div className={`px-4 py-2 rounded-full text-sm font-bold ${
+                    <div className={`px-4 py-2 rounded-full text-sm font-bold print:px-2 print:py-1 print:text-xs ${
                       nikReportData.stats.currentStatus === 'Normal' ? 'bg-green-100 text-green-700' :
                       nikReportData.stats.currentStatus === 'Stunting' ? 'bg-red-100 text-red-700' :
                       nikReportData.stats.currentStatus === 'Wasting' ? 'bg-orange-100 text-orange-700' :
@@ -277,33 +284,33 @@ export default function LaporanPage() {
                   </div>
                 </div>
 
-                {/* Stats Cards */}
-                <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-                  <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4">
-                    <p className="text-sm text-gray-500">Total Pengukuran</p>
-                    <p className="text-2xl font-bold text-gray-900">{nikReportData.stats.totalMeasurements}</p>
+                {/* Stats Cards - Compact for print */}
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-4 print:grid-cols-5 print:gap-1">
+                  <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 print:p-2 print:rounded-none print:shadow-none">
+                    <p className="text-sm text-gray-500 print:text-xs">Total Pengukuran</p>
+                    <p className="text-2xl font-bold text-gray-900 print:text-base">{nikReportData.stats.totalMeasurements}</p>
                   </div>
-                  <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4">
-                    <p className="text-sm text-gray-500">Normal</p>
-                    <p className="text-2xl font-bold text-green-600">{nikReportData.stats.normalCount}</p>
+                  <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 print:p-2 print:rounded-none print:shadow-none">
+                    <p className="text-sm text-gray-500 print:text-xs">Normal</p>
+                    <p className="text-2xl font-bold text-green-600 print:text-base">{nikReportData.stats.normalCount}</p>
                   </div>
-                  <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4">
-                    <p className="text-sm text-gray-500">Stunting</p>
-                    <p className="text-2xl font-bold text-red-600">{nikReportData.stats.stuntingCount}</p>
+                  <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 print:p-2 print:rounded-none print:shadow-none">
+                    <p className="text-sm text-gray-500 print:text-xs">Stunting</p>
+                    <p className="text-2xl font-bold text-red-600 print:text-base">{nikReportData.stats.stuntingCount}</p>
                   </div>
-                  <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4">
-                    <p className="text-sm text-gray-500">Wasting</p>
-                    <p className="text-2xl font-bold text-orange-600">{nikReportData.stats.wastingCount}</p>
+                  <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 print:p-2 print:rounded-none print:shadow-none">
+                    <p className="text-sm text-gray-500 print:text-xs">Wasting</p>
+                    <p className="text-2xl font-bold text-orange-600 print:text-base">{nikReportData.stats.wastingCount}</p>
                   </div>
-                  <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4">
-                    <p className="text-sm text-gray-500">Underweight</p>
-                    <p className="text-2xl font-bold text-yellow-600">{nikReportData.stats.underweightCount}</p>
+                  <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 print:p-2 print:rounded-none print:shadow-none">
+                    <p className="text-sm text-gray-500 print:text-xs">Underweight</p>
+                    <p className="text-2xl font-bold text-yellow-600 print:text-base">{nikReportData.stats.underweightCount}</p>
                   </div>
                 </div>
 
                 {/* Measurement History Table */}
-                <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
-                  <div className="p-6 border-b border-gray-200 flex justify-between items-center">
+                <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden print:shadow-none print:rounded-none">
+                  <div className="p-6 border-b border-gray-200 flex justify-between items-center print:hidden">
                     <h3 className="font-bold text-gray-900">Riwayat Pengukuran</h3>
                     <button 
                       onClick={handlePrint}
@@ -312,6 +319,9 @@ export default function LaporanPage() {
                       <span className="material-symbols-outlined text-[20px]">print</span>
                       Cetak
                     </button>
+                  </div>
+                  <div className="hidden print:block p-2 border-b border-gray-200">
+                    <h3 className="font-bold text-gray-900 text-sm">Riwayat Pengukuran</h3>
                   </div>
                   <ReportTable measurements={nikReportData.measurements || []} />
                 </div>
