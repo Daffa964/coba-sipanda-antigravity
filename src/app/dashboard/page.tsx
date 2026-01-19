@@ -107,43 +107,74 @@ export default async function DashboardPage() {
     const endOfMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 0)
 
     // Get kader activity stats - count measurements done by each kader this month
-    const kaderActivityQuery = await prisma.$queryRaw`
-      SELECT 
-        u.user_id,
-        u.nama as name,
-        u.username,
-        p.nama as posyandu_name,
-        p.posyandu_id,
-        (
-          SELECT COUNT(*)
-          FROM pengukuran m
-          JOIN anak a ON m.anak_id = a.anak_id
-          WHERE a.posyandu_id = p.posyandu_id
-          AND m.tanggal >= ${startOfMonth}
-          AND m.tanggal <= ${endOfMonth}
-        ) as measurements_this_month,
-        (
-          SELECT COUNT(*)
-          FROM anak a
-          WHERE a.posyandu_id = p.posyandu_id
-        ) as total_children,
-        u.created_at as joined_date
-      FROM "user" u
-      JOIN posyandu p ON u.posyandu_id = p.posyandu_id
-      WHERE u.role = 'KADER'
-      ORDER BY measurements_this_month DESC, p.nama ASC
-      LIMIT 20
-    ` as any[]
+    try {
+      const kaderActivityQuery = await prisma.$queryRaw`
+        SELECT 
+          u.user_id,
+          u.nama as name,
+          u.email,
+          p.nama as posyandu_name,
+          p.posyandu_id,
+          (
+            SELECT COUNT(*)
+            FROM pengukuran m
+            JOIN anak a ON m.anak_id = a.anak_id
+            WHERE a.posyandu_id = p.posyandu_id
+            AND m.tanggal >= ${startOfMonth}
+            AND m.tanggal <= ${endOfMonth}
+          ) as measurements_this_month,
+          (
+            SELECT COUNT(*)
+            FROM anak a
+            WHERE a.posyandu_id = p.posyandu_id
+          ) as total_children
+        FROM "user" u
+        JOIN posyandu p ON u.posyandu_id = p.posyandu_id
+        WHERE u.role = 'KADER'
+        ORDER BY measurements_this_month DESC, p.nama ASC
+        LIMIT 20
+      ` as any[]
 
-    kaders = kaderActivityQuery.map(k => ({
-      id: k.user_id,
-      name: k.name,
-      username: k.username,
-      posyandu: { name: k.posyandu_name, id: k.posyandu_id },
-      measurementsThisMonth: Number(k.measurements_this_month),
-      totalChildren: Number(k.total_children),
-      joinedDate: k.joined_date
-    }))
+      kaders = kaderActivityQuery.map(k => ({
+        id: k.user_id,
+        name: k.name,
+        email: k.email,
+        posyandu: { name: k.posyandu_name, id: k.posyandu_id },
+        measurementsThisMonth: Number(k.measurements_this_month),
+        totalChildren: Number(k.total_children)
+      }))
+    } catch (kaderError) {
+      console.error('Kader query error:', kaderError)
+      // Fallback to simpler query using Prisma ORM
+      const kaderList = await prisma.user.findMany({
+        where: { role: 'KADER', posyanduId: { not: null } },
+        include: { 
+          posyandu: {
+            include: {
+              anak: {
+                include: {
+                  measurements: {
+                    where: {
+                      date: { gte: startOfMonth, lte: endOfMonth }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        take: 20
+      })
+      
+      kaders = kaderList.map(k => ({
+        id: k.id,
+        name: k.name,
+        email: k.email,
+        posyandu: { name: k.posyandu?.name || '-', id: k.posyanduId },
+        measurementsThisMonth: k.posyandu?.anak.reduce((acc, a) => acc + a.measurements.length, 0) || 0,
+        totalChildren: k.posyandu?.anak.length || 0
+      }))
+    }
   } catch (error) {
     console.error('Dashboard data fetch error:', error)
   }
