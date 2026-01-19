@@ -101,12 +101,49 @@ export default async function DashboardPage() {
       age: item.age
     }))
 
-    // Fetch Kaders for "Active Kader" list
-    kaders = await prisma.user.findMany({
-      where: { role: 'KADER' },
-      include: { posyandu: true },
-      take: 20 // Limit to 20 active kaders
-    })
+    // Fetch Kaders for "Active Kader" list with activity data
+    const currentMonth = new Date()
+    const startOfMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth(), 1)
+    const endOfMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 0)
+
+    // Get kader activity stats - count measurements done by each kader this month
+    const kaderActivityQuery = await prisma.$queryRaw`
+      SELECT 
+        u.user_id,
+        u.nama as name,
+        u.username,
+        p.nama as posyandu_name,
+        p.posyandu_id,
+        (
+          SELECT COUNT(*)
+          FROM pengukuran m
+          JOIN anak a ON m.anak_id = a.anak_id
+          WHERE a.posyandu_id = p.posyandu_id
+          AND m.tanggal >= ${startOfMonth}
+          AND m.tanggal <= ${endOfMonth}
+        ) as measurements_this_month,
+        (
+          SELECT COUNT(*)
+          FROM anak a
+          WHERE a.posyandu_id = p.posyandu_id
+        ) as total_children,
+        u.created_at as joined_date
+      FROM "user" u
+      JOIN posyandu p ON u.posyandu_id = p.posyandu_id
+      WHERE u.role = 'KADER'
+      ORDER BY measurements_this_month DESC, p.nama ASC
+      LIMIT 20
+    ` as any[]
+
+    kaders = kaderActivityQuery.map(k => ({
+      id: k.user_id,
+      name: k.name,
+      username: k.username,
+      posyandu: { name: k.posyandu_name, id: k.posyandu_id },
+      measurementsThisMonth: Number(k.measurements_this_month),
+      totalChildren: Number(k.total_children),
+      joinedDate: k.joined_date
+    }))
   } catch (error) {
     console.error('Dashboard data fetch error:', error)
   }
@@ -255,24 +292,58 @@ export default async function DashboardPage() {
             <div className="bg-white rounded-xl border border-[#dce5df] shadow-sm p-0 flex flex-col overflow-hidden max-h-[500px]">
                 <div className="p-6 pb-2 border-b border-[#f0f4f2]">
                     <h3 className="text-lg font-bold text-gray-900">Keaktifan Kader</h3>
-                    <p className="text-sm text-gray-500 mb-4">Daftar kader per posyandu</p>
+                    <p className="text-sm text-gray-500 mb-4">Aktivitas pengukuran bulan ini</p>
                 </div>
                 <div className="flex-1 overflow-y-auto">
-                    {kaders.map((kader, i) => (
-                        <div key={kader.id} className="flex items-center justify-between p-4 border-b border-[#f0f4f2] hover:bg-gray-50 transition-colors">
-                            <div className="flex items-center gap-3">
-                                <div className="size-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-sm">{(i + 1).toString().padStart(2, '0')}</div>
-                                <div>
-                                    <p className="font-bold text-sm text-gray-900 truncate max-w-[120px]">{kader.posyandu?.name.replace('Posyandu ', '')}</p>
-                                    <p className="text-xs text-gray-500 truncate max-w-[120px]">{kader.name}</p>
+                    {kaders.map((kader: any, i: number) => {
+                        // Determine activity status based on measurements
+                        const measurements = kader.measurementsThisMonth || 0
+                        const totalChildren = kader.totalChildren || 0
+                        const coveragePercent = totalChildren > 0 ? Math.round((measurements / totalChildren) * 100) : 0
+                        
+                        let statusColor = 'bg-gray-100 text-gray-600'
+                        let statusText = 'Belum Ada'
+                        let dotColor = 'bg-gray-400'
+                        
+                        if (measurements > 0) {
+                            if (coveragePercent >= 80) {
+                                statusColor = 'bg-green-100 text-green-800'
+                                statusText = 'Sangat Aktif'
+                                dotColor = 'bg-green-600'
+                            } else if (coveragePercent >= 50) {
+                                statusColor = 'bg-blue-100 text-blue-800'
+                                statusText = 'Aktif'
+                                dotColor = 'bg-blue-600'
+                            } else if (coveragePercent >= 20) {
+                                statusColor = 'bg-yellow-100 text-yellow-800'
+                                statusText = 'Kurang Aktif'
+                                dotColor = 'bg-yellow-600'
+                            } else {
+                                statusColor = 'bg-orange-100 text-orange-800'
+                                statusText = 'Perlu Perhatian'
+                                dotColor = 'bg-orange-600'
+                            }
+                        }
+
+                        return (
+                            <div key={kader.id} className="flex items-center justify-between p-4 border-b border-[#f0f4f2] hover:bg-gray-50 transition-colors">
+                                <div className="flex items-center gap-3">
+                                    <div className="size-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-sm">{(i + 1).toString().padStart(2, '0')}</div>
+                                    <div>
+                                        <p className="font-bold text-sm text-gray-900 truncate max-w-[100px]">{kader.posyandu?.name?.replace('Posyandu ', '') || '-'}</p>
+                                        <p className="text-xs text-gray-500 truncate max-w-[100px]">{kader.name}</p>
+                                    </div>
+                                </div>
+                                <div className="flex flex-col items-end gap-1">
+                                    <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium ${statusColor}`}>
+                                        <span className={`size-1.5 rounded-full ${dotColor}`}></span>
+                                        {statusText}
+                                    </span>
+                                    <span className="text-[10px] text-gray-400">{measurements}/{totalChildren} ukur</span>
                                 </div>
                             </div>
-                            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                <span className="size-1.5 rounded-full bg-green-600"></span>
-                                Aktif
-                            </span>
-                        </div>
-                    ))}
+                        )
+                    })}
                     {kaders.length === 0 && <div className="p-4 text-center text-sm text-gray-500">Belum ada data kader</div>}
                 </div>
             </div>
