@@ -8,6 +8,12 @@ import ReportSummaryCards from '@/components/report-summary-cards'
 import ReportTable from '@/components/report-table'
 import { format } from 'date-fns'
 import { id as localeId } from 'date-fns/locale'
+import {
+  exportMonthlyReportToPDF,
+  exportMonthlyReportToExcel,
+  exportNikReportToPDF,
+  exportNikReportToExcel
+} from '@/lib/export-utils'
 
 type TabType = 'monthly' | 'nik'
 
@@ -73,6 +79,28 @@ export default function LaporanPage() {
 
   const handlePrint = () => {
     window.print()
+  }
+
+  // Export handlers for monthly report
+  const handleExportPDF = () => {
+    if (!reportData) return
+    exportMonthlyReportToPDF(reportData, selectedMonth, selectedYear, 'Desa Kramat')
+  }
+
+  const handleExportExcel = () => {
+    if (!reportData) return
+    exportMonthlyReportToExcel(reportData, selectedMonth, selectedYear, 'Desa Kramat')
+  }
+
+  // Export handlers for NIK report
+  const handleNikExportPDF = () => {
+    if (!nikReportData) return
+    exportNikReportToPDF(nikReportData)
+  }
+
+  const handleNikExportExcel = () => {
+    if (!nikReportData) return
+    exportNikReportToExcel(nikReportData)
   }
 
   const calculateAge = (dateOfBirth: Date) => {
@@ -152,10 +180,26 @@ export default function LaporanPage() {
                   />
                   <button 
                     onClick={handlePrint}
-                    className="flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg shadow-sm transition-colors text-sm font-medium"
+                    className="flex items-center gap-2 px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg shadow-sm transition-colors text-sm font-medium"
                   >
                     <span className="material-symbols-outlined text-[20px]">print</span>
-                    Cetak Laporan
+                    Cetak
+                  </button>
+                  <button 
+                    onClick={handleExportPDF}
+                    disabled={!reportData}
+                    className="flex items-center gap-2 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg shadow-sm transition-colors text-sm font-medium disabled:opacity-50"
+                  >
+                    <span className="material-symbols-outlined text-[20px]">picture_as_pdf</span>
+                    PDF
+                  </button>
+                  <button 
+                    onClick={handleExportExcel}
+                    disabled={!reportData}
+                    className="flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg shadow-sm transition-colors text-sm font-medium disabled:opacity-50"
+                  >
+                    <span className="material-symbols-outlined text-[20px]">table_view</span>
+                    Excel
                   </button>
                </div>
             </div>
@@ -310,15 +354,31 @@ export default function LaporanPage() {
 
                 {/* Measurement History Table */}
                 <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden print:shadow-none print:rounded-none">
-                  <div className="p-6 border-b border-gray-200 flex justify-between items-center print:hidden">
+                  <div className="p-6 border-b border-gray-200 flex flex-wrap justify-between items-center gap-3 print:hidden">
                     <h3 className="font-bold text-gray-900">Riwayat Pengukuran</h3>
-                    <button 
-                      onClick={handlePrint}
-                      className="flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg shadow-sm transition-colors text-sm font-medium"
-                    >
-                      <span className="material-symbols-outlined text-[20px]">print</span>
-                      Cetak
-                    </button>
+                    <div className="flex items-center gap-2">
+                      <button 
+                        onClick={handlePrint}
+                        className="flex items-center gap-2 px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg shadow-sm transition-colors text-sm font-medium"
+                      >
+                        <span className="material-symbols-outlined text-[20px]">print</span>
+                        Cetak
+                      </button>
+                      <button 
+                        onClick={handleNikExportPDF}
+                        className="flex items-center gap-2 px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg shadow-sm transition-colors text-sm font-medium"
+                      >
+                        <span className="material-symbols-outlined text-[20px]">picture_as_pdf</span>
+                        PDF
+                      </button>
+                      <button 
+                        onClick={handleNikExportExcel}
+                        className="flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg shadow-sm transition-colors text-sm font-medium"
+                      >
+                        <span className="material-symbols-outlined text-[20px]">table_view</span>
+                        Excel
+                      </button>
+                    </div>
                   </div>
                   <div className="hidden print:block p-2 border-b border-gray-200">
                     <h3 className="font-bold text-gray-900 text-sm">Riwayat Pengukuran</h3>
