@@ -73,9 +73,9 @@ export default function AnakList({ data, posyanduList, isKader, userPosyanduId }
           return { label: 'Stunting', color: 'danger' }
       if (combined.includes('pendek')) 
           return { label: 'Stunting', color: 'danger' }
-      if (combined.includes('gizi buruk') || combined.includes('severely underweight')) 
+      if (combined.includes('gizi buruk') || combined.includes('severely underweight') || combined.includes('bb sangat kurang')) 
           return { label: 'Gizi Buruk', color: 'danger' }
-      if (combined.includes('gizi kurang') || combined.includes('underweight')) 
+      if (combined.includes('gizi kurang') || combined.includes('underweight') || combined.includes('bb kurang')) 
           return { label: 'Kurang Gizi', color: 'warning' }
       if (combined.includes('kurus') || combined.includes('wasted'))
           return { label: 'Kurus', color: 'warning' }

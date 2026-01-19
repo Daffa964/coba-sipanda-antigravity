@@ -37,7 +37,7 @@ export default async function DashboardPage() {
         p.nama as posyandu_name,
         COUNT(a.anak_id) as total,
         COUNT(CASE WHEN m.z_score_bbu = 'Normal' THEN 1 END) as normal,
-        COUNT(CASE WHEN m.z_score_bbu IN ('Kurang Gizi', 'Gizi Buruk') THEN 1 END) as kurang,
+        COUNT(CASE WHEN m.z_score_bbu IN ('BB Kurang', 'BB Sangat Kurang') THEN 1 END) as kurang,
         COUNT(CASE WHEN m.z_score_tbu IN ('Pendek', 'Pendek (Stunted)', 'Sangat Pendek') THEN 1 END) as stunting
       FROM anak a
       JOIN posyandu p ON a.posyandu_id = p.posyandu_id
@@ -87,7 +87,7 @@ export default async function DashboardPage() {
       JOIN anak a ON m.anak_id = a.anak_id
       JOIN posyandu p ON a.posyandu_id = p.posyandu_id
       WHERE 
-        m.z_score_bbu IN ('Kurang Gizi', 'Gizi Buruk') 
+        m.z_score_bbu IN ('BB Kurang', 'BB Sangat Kurang') 
         OR m.z_score_tbu IN ('Pendek', 'Pendek (Stunted)', 'Sangat Pendek')
       LIMIT 50
     ` as any[]
