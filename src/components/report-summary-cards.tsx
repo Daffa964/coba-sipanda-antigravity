@@ -21,21 +21,22 @@ export default function ReportSummaryCards({ stats }: { stats: any }) {
         </div>
       </div>
 
-      {/* Wasting */}
-      <div className="bg-orange-50 p-4 rounded-xl border border-orange-100 shadow-sm">
-        <div className="text-orange-500 text-xs font-semibold uppercase tracking-wider mb-1">Wasting (Gizi Kurang)</div>
-        <div className="text-2xl font-bold text-orange-700">{stats.wastingCount}</div>
-        <div className="text-xs text-orange-400 mt-1">
-          {stats.totalChildrenMeasured > 0 
-            ? Math.round((stats.wastingCount / stats.totalChildrenMeasured) * 100) 
-            : 0}% prevalensi
+      {/* Wasting (BB/TB) */}
+      <div className="bg-amber-50 p-4 rounded-xl border border-amber-200 shadow-sm">
+        <div className="text-amber-600 text-xs font-semibold uppercase tracking-wider mb-1">Wasting (BB/TB)</div>
+        <div className="text-2xl font-bold text-amber-700">{stats.wastingCount}</div>
+        <div className="text-xs text-amber-500 mt-1">
+          Kurus untuk tingginya
         </div>
       </div>
 
-      {/* Underweight */}
-      <div className="bg-yellow-50 p-4 rounded-xl border border-yellow-100 shadow-sm">
-        <div className="text-yellow-600 text-xs font-semibold uppercase tracking-wider mb-1">Underweight</div>
-        <div className="text-2xl font-bold text-yellow-700">{stats.underweightCount}</div>
+      {/* Underweight (BB/U) */}
+      <div className="bg-orange-50 p-4 rounded-xl border border-orange-200 shadow-sm">
+        <div className="text-orange-600 text-xs font-semibold uppercase tracking-wider mb-1">Underweight (BB/U)</div>
+        <div className="text-2xl font-bold text-orange-700">{stats.underweightCount}</div>
+        <div className="text-xs text-orange-500 mt-1">
+          Kurang berat untuk umur
+        </div>
       </div>
     </div>
   )

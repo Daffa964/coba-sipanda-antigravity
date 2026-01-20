@@ -34,17 +34,35 @@ export default function ReportTable({ measurements }: { measurements: any[] }) {
               <td className="px-4 py-3">{m.weight}</td>
               <td className="px-4 py-3">{m.height}</td>
               <td className="px-4 py-3">
-                 <span className={`px-2 py-0.5 rounded-full text-xs font-bold ${m.zScoreBBU === 'Normal' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'}`}>
+                 <span className={`px-2 py-0.5 rounded-full text-xs font-bold ${
+                   m.zScoreBBU === 'Normal' 
+                     ? 'bg-green-100 text-green-700' 
+                     : m.zScoreBBU?.includes('Sangat') 
+                       ? 'bg-red-100 text-red-700'
+                       : 'bg-orange-100 text-orange-700'
+                 }`}>
                     {m.zScoreBBU}
                  </span>
               </td>
               <td className="px-4 py-3">
-                 <span className={`px-2 py-0.5 rounded-full text-xs font-bold ${m.zScoreTBU === 'Normal' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+                 <span className={`px-2 py-0.5 rounded-full text-xs font-bold ${
+                   m.zScoreTBU === 'Normal' 
+                     ? 'bg-green-100 text-green-700' 
+                     : m.zScoreTBU?.includes('Sangat') 
+                       ? 'bg-red-100 text-red-700'
+                       : 'bg-red-50 text-red-600'
+                 }`}>
                     {m.zScoreTBU}
                  </span>
               </td>
               <td className="px-4 py-3">
-                 <span className={`px-2 py-0.5 rounded-full text-xs font-bold ${m.zScoreBBTB === 'Normal' ? 'bg-green-100 text-green-700' : 'bg-orange-100 text-orange-700'}`}>
+                 <span className={`px-2 py-0.5 rounded-full text-xs font-bold ${
+                   m.zScoreBBTB === 'Gizi Baik' || m.zScoreBBTB === 'Normal'
+                     ? 'bg-emerald-100 text-emerald-700' 
+                     : m.zScoreBBTB?.includes('Buruk') || m.zScoreBBTB?.includes('Obesitas')
+                       ? 'bg-red-100 text-red-700'
+                       : 'bg-amber-100 text-amber-700'
+                 }`}>
                     {m.zScoreBBTB}
                  </span>
               </td>
