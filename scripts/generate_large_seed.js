@@ -166,7 +166,7 @@ let counter = 1;
 
 // Fixed counts for specific statuses
 const STUNTING_COUNT = 5;  // Exactly 5 stunting children
-const BB_KURANG_COUNT = 47; // Around 47 BB Kurang children
+const BB_KURANG_COUNT = 10; // Exactly 10 BB Kurang children
 
 for (const [posId, count] of Object.entries(POYSANDU_COUNTS)) {
     for (let i = 0; i < count; i++) {
