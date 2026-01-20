@@ -47,10 +47,17 @@ export default async function KaderPosyanduPage({ params }: { params: { id: stri
   anakList.forEach(anak => {
     const measure = anak.measurements[0]
     if (measure) {
-      if (measure.zScoreBBU === 'Normal') {
-        giziBaikCount++
-      } else if (measure.zScoreBBU === 'Kurang Gizi' || measure.zScoreBBU === 'Gizi Buruk' || measure.zScoreTBU === 'Pendek (Stunted)' || measure.zScoreTBU === 'Sangat Pendek') {
+      // Check for stunting (TB/U)
+      const isStunting = measure.zScoreTBU?.includes('Pendek') || measure.zScoreTBU === 'Sangat Pendek'
+      // Check for underweight (BB/U)
+      const isUnderweight = measure.zScoreBBU?.includes('Kurang') || measure.zScoreBBU?.includes('Sangat')
+      
+      if (isStunting || isUnderweight) {
         perluTindakLanjutCount++
+      }
+      
+      if (measure.zScoreBBU === 'Normal' && !isStunting) {
+        giziBaikCount++
       }
     }
   })
