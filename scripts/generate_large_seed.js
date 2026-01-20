@@ -174,12 +174,16 @@ for (const [posId, count] of Object.entries(POYSANDU_COUNTS)) {
         const birthplace = LOCATIONS[randomInt(0, LOCATIONS.length - 1)];
         const ageMonths = randomInt(1, 60);
         
-        // Approx birth date
-        const date = new Date();
-        date.setMonth(date.getMonth() - ageMonths);
-        const birthDate = date.toISOString().split('T')[0];
+        // Use a fixed measurement date (January 2026) for consistency
+        const measureDate = new Date('2026-01-19');
         
-        anakRows.push(`('${anakId}', '3328010100${idStr.padStart(6,'0')}', '${name.replace(/'/g, "''")}', '${birthplace}', '${birthDate}', '${gender}', '${parent}', '${posId}', NOW(), NOW())`);
+        // Calculate birth date from measurement date and ageMonths
+        const birthDate = new Date(measureDate);
+        birthDate.setMonth(birthDate.getMonth() - ageMonths);
+        const birthDateStr = birthDate.toISOString().split('T')[0];
+        const measureDateStr = measureDate.toISOString().split('T')[0];
+        
+        anakRows.push(`('${anakId}', '3328010100${idStr.padStart(6,'0')}', '${name.replace(/'/g, "''")}', '${birthplace}', '${birthDateStr}', '${gender}', '${parent}', '${posId}', NOW(), NOW())`);
         
         // MEASUREMENTS: Generate statuses
         let z_tbu = 'Normal';
@@ -198,7 +202,7 @@ for (const [posId, count] of Object.entries(POYSANDU_COUNTS)) {
         }
         
         if (Math.random() < 0.05) {
-             z_bbu = 'Kurang Gizi';
+             z_bbu = 'BB Kurang';
              targetWaz = randomFloat(-3, -2.1);
         }
         
@@ -211,7 +215,7 @@ for (const [posId, count] of Object.entries(POYSANDU_COUNTS)) {
         height = Math.round(height * 10) / 10;
         weight = Math.round(weight * 10) / 10;
         
-        measureRows.push(`('m${idStr}', '${anakId}', NOW(), ${weight}, ${height}, ${ageMonths}, '${z_bbu}', '${z_tbu}', 'Normal', NULL, NOW(), NOW())`);
+        measureRows.push(`('m${idStr}', '${anakId}', '${measureDateStr}', ${weight}, ${height}, ${ageMonths}, '${z_bbu}', '${z_tbu}', 'Gizi Baik', NULL, NOW(), NOW())`);
         
         counter++;
     }
