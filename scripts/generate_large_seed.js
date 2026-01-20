@@ -164,6 +164,10 @@ let anakRows = [];
 let measureRows = [];
 let counter = 1;
 
+// Fixed counts for specific statuses
+const STUNTING_COUNT = 5;  // Exactly 5 stunting children
+const BB_KURANG_COUNT = 47; // Around 47 BB Kurang children
+
 for (const [posId, count] of Object.entries(POYSANDU_COUNTS)) {
     for (let i = 0; i < count; i++) {
         const idStr = counter.toString().padStart(4, '0');
@@ -191,17 +195,14 @@ for (const [posId, count] of Object.entries(POYSANDU_COUNTS)) {
         let targetHaz = randomFloat(-1.5, 1.5); // Default Normal
         let targetWaz = randomFloat(-1.5, 1.5); // Default Normal
         
-        const rand = Math.random();
-        // 14% Pendek (Stunting), 4% Sangat Pendek, 5% BB Kurang
-        if (rand < 0.14) {
-             z_tbu = 'Pendek';
-             targetHaz = randomFloat(-2.9, -2.1);
-        } else if (rand < 0.18) {
+        // First 5 children are Stunting (Sangat Pendek)
+        if (counter <= STUNTING_COUNT) {
              z_tbu = 'Sangat Pendek';
              targetHaz = randomFloat(-4, -3.1);
         }
         
-        if (Math.random() < 0.05) {
+        // Next 47 children are BB Kurang (underweight)
+        if (counter > STUNTING_COUNT && counter <= STUNTING_COUNT + BB_KURANG_COUNT) {
              z_bbu = 'BB Kurang';
              targetWaz = randomFloat(-3, -2.1);
         }
