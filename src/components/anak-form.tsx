@@ -151,13 +151,14 @@ export default function AnakForm({ posyanduList, defaultPosyanduId, onSuccess, i
         {/* Secondary Info */}
         <div className="space-y-4">
            <div>
-            <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5 pl-1">Informasi Lainnya</label>
+            <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5 pl-1">Jenis Kelamin</label>
             <select 
               name="gender" 
               required 
-              defaultValue={editData?.gender || 'LAKI_LAKI'}
+              defaultValue={editData?.gender || ''}
               className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 focus:bg-white focus:ring-2 focus:ring-indigo-100 focus:border-indigo-500 outline-none transition appearance-none"
             >
+              <option value="" disabled>Pilih Jenis Kelamin</option>
               <option value="LAKI_LAKI">Laki-laki</option>
               <option value="PEREMPUAN">Perempuan</option>
             </select>
