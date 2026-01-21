@@ -520,7 +520,18 @@ data.forEach(rwData => {
                 // Get status labels
                 const statusBBU = getNutritionalStatus(zBBU);
                 const statusTBU = getStuntingStatus(zTBU);
-                const statusBBTB = getWastingStatus(zBBTB);
+                let statusBBTB = getWastingStatus(zBBTB);
+
+                // LOGIC OVERRIDE: Sync BB/TB with BB/U and TB/U
+                // If child is Underweight (BB Kurang/Sangat Kurang) AND Stunted (Pendek/Sangat Pendek)
+                // AND BB/TB is calculated as "Gizi Baik" (likely due to proportional smallness)
+                // THEN override to "Gizi Kurang" to reflect overall malnutrition risk.
+                const isUnderweight = ['BB Kurang', 'BB Sangat Kurang'].includes(statusBBU);
+                const isStunted = ['Pendek', 'Sangat Pendek', 'Sangat Pendek (Stunted)'].includes(statusTBU);
+                
+                if (isUnderweight && isStunted && statusBBTB === 'Gizi Baik') {
+                    statusBBTB = 'Gizi Kurang';
+                }
                 
                 allMeasurements.push({
                     pengukuran_id: measureId,
