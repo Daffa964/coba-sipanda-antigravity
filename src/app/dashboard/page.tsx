@@ -36,7 +36,7 @@ export default async function DashboardPage() {
       SELECT 
         p.nama as posyandu_name,
         COUNT(a.anak_id) as total,
-        COUNT(CASE WHEN m.z_score_bbu = 'Normal' THEN 1 END) as normal,
+        COUNT(CASE WHEN m.z_score_bbu IN ('Normal', 'Risiko BB Lebih') THEN 1 END) as normal,
         COUNT(CASE WHEN m.z_score_bbu IN ('BB Kurang', 'BB Sangat Kurang') THEN 1 END) as kurang,
         COUNT(CASE WHEN m.z_score_tbu IN ('Pendek', 'Pendek (Stunted)', 'Sangat Pendek') THEN 1 END) as stunting
       FROM anak a

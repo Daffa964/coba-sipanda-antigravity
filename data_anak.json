@@ -1,0 +1,4871 @@
+[
+    {
+        "rw": "01",
+        "data_anak": [
+            {
+                "nama_anak": "AL GHAZALI DIRGANTARA PURNAMA",
+                "nama_ibu": "IDA YUSTYANI",
+                "jenis_kelamin": "Laki-Laki",
+                "tempat_lahir": "Kudus",
+                "tanggal_lahir": "10/03/2021",
+                "alamat": "RT 3 / RW 1",
+                "riwayat_pertumbuhan": [
+                    {
+                        "bulan_ke": 24,
+                        "berat_badan": 12,
+                        "tinggi_badan": 83,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 27,
+                        "berat_badan": 12,
+                        "tinggi_badan": 86,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 29,
+                        "berat_badan": 13,
+                        "tinggi_badan": 87,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 30,
+                        "berat_badan": 13,
+                        "tinggi_badan": 88,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 31,
+                        "berat_badan": 13,
+                        "tinggi_badan": 90,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 32,
+                        "berat_badan": 12,
+                        "tinggi_badan": 90,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 33,
+                        "berat_badan": 13,
+                        "tinggi_badan": 90,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 34,
+                        "berat_badan": 13,
+                        "tinggi_badan": 91,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 36,
+                        "berat_badan": 14,
+                        "tinggi_badan": 92,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 42,
+                        "berat_badan": 14,
+                        "tinggi_badan": 96,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 45,
+                        "berat_badan": 15,
+                        "tinggi_badan": 98,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 51,
+                        "berat_badan": 17,
+                        "tinggi_badan": 102,
+                        "lila": 21,
+                        "liko": 53
+                    }
+                ]
+            },
+            {
+                "nama_anak": "ARCHI BIMA ARSHAKA",
+                "nama_ibu": "AGNES RUBIANTI",
+                "jenis_kelamin": "Laki-Laki",
+                "tempat_lahir": "Kabupaten Kudus",
+                "tanggal_lahir": "29/04/2025",
+                "alamat": "RT 5 / RW 1",
+                "riwayat_pertumbuhan": [
+                    {
+                        "bulan_ke": 4,
+                        "berat_badan": 6,
+                        "tinggi_badan": 60,
+                        "lila": 15,
+                        "liko": 41
+                    },
+                    {
+                        "bulan_ke": 7,
+                        "berat_badan": 7,
+                        "tinggi_badan": 64,
+                        "lila": 15,
+                        "liko": 44
+                    },
+                    {
+                        "bulan_ke": 8,
+                        "berat_badan": 8,
+                        "tinggi_badan": 66,
+                        "lila": 16,
+                        "liko": 44
+                    }
+                ]
+            },
+            {
+                "nama_anak": "ARDILLA CLEONA ISWARA",
+                "nama_ibu": "IKA ZULIANA",
+                "jenis_kelamin": "Perempuan",
+                "tempat_lahir": "KUDUS",
+                "tanggal_lahir": "10/10/2020",
+                "alamat": "RT 3 / RW 1",
+                "riwayat_pertumbuhan": [
+                    {
+                        "bulan_ke": 51,
+                        "berat_badan": 14,
+                        "tinggi_badan": 99,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 54,
+                        "berat_badan": 14,
+                        "tinggi_badan": 100,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 57,
+                        "berat_badan": 15,
+                        "tinggi_badan": 102,
+                        "lila": 17,
+                        "liko": 46
+                    },
+                    {
+                        "bulan_ke": 60,
+                        "berat_badan": 15,
+                        "tinggi_badan": 104,
+                        "lila": 17,
+                        "liko": 47
+                    }
+                ]
+            },
+            {
+                "nama_anak": "GILANG MAULANA MUSTHOFA",
+                "nama_ibu": "NIA ANGGRAENI",
+                "jenis_kelamin": "Laki-Laki",
+                "tempat_lahir": "KUDUS",
+                "tanggal_lahir": "13/05/2022",
+                "alamat": "RT 6 / RW 1",
+                "riwayat_pertumbuhan": [
+                    {
+                        "bulan_ke": 10,
+                        "berat_badan": 8,
+                        "tinggi_badan": 70,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 12,
+                        "berat_badan": 9,
+                        "tinggi_badan": 70,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 13,
+                        "berat_badan": 9,
+                        "tinggi_badan": 75,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 14,
+                        "berat_badan": 9,
+                        "tinggi_badan": 75,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 15,
+                        "berat_badan": 10,
+                        "tinggi_badan": 75,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 16,
+                        "berat_badan": 10,
+                        "tinggi_badan": 77,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 18,
+                        "berat_badan": 11,
+                        "tinggi_badan": 77,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 21,
+                        "berat_badan": 11,
+                        "tinggi_badan": 80,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 23,
+                        "berat_badan": 11,
+                        "tinggi_badan": 81,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 24,
+                        "berat_badan": 11,
+                        "tinggi_badan": 81,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 25,
+                        "berat_badan": 11,
+                        "tinggi_badan": 81,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 26,
+                        "berat_badan": 11,
+                        "tinggi_badan": 81,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 27,
+                        "berat_badan": 12,
+                        "tinggi_badan": 83,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 28,
+                        "berat_badan": 12,
+                        "tinggi_badan": 85,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 29,
+                        "berat_badan": 12,
+                        "tinggi_badan": 85,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 30,
+                        "berat_badan": 12,
+                        "tinggi_badan": 84,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 32,
+                        "berat_badan": 12,
+                        "tinggi_badan": 87,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 36,
+                        "berat_badan": 13,
+                        "tinggi_badan": 90,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 39,
+                        "berat_badan": 15,
+                        "tinggi_badan": 91,
+                        "lila": 16,
+                        "liko": 51
+                    },
+                    {
+                        "bulan_ke": 42,
+                        "berat_badan": 15,
+                        "tinggi_badan": 93,
+                        "lila": 16,
+                        "liko": 51
+                    }
+                ]
+            },
+            {
+                "nama_anak": "HARIS SUSILO",
+                "nama_ibu": "NOOR KHALIMAH FAUZIYAH",
+                "jenis_kelamin": "Laki-Laki",
+                "tempat_lahir": "KUDUS",
+                "tanggal_lahir": "18/10/2021",
+                "alamat": "RT 4 / RW 1",
+                "riwayat_pertumbuhan": [
+                    {
+                        "bulan_ke": 16,
+                        "berat_badan": 11,
+                        "tinggi_badan": 78,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 18,
+                        "berat_badan": 10,
+                        "tinggi_badan": 79,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 19,
+                        "berat_badan": 11,
+                        "tinggi_badan": 81,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 21,
+                        "berat_badan": 11,
+                        "tinggi_badan": 85,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 22,
+                        "berat_badan": 11,
+                        "tinggi_badan": 85,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 23,
+                        "berat_badan": 11,
+                        "tinggi_badan": 86,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 24,
+                        "berat_badan": 12,
+                        "tinggi_badan": 86,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 25,
+                        "berat_badan": 12,
+                        "tinggi_badan": 87,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 31,
+                        "berat_badan": 12,
+                        "tinggi_badan": 88,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 32,
+                        "berat_badan": 13,
+                        "tinggi_badan": 91,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 33,
+                        "berat_badan": 13,
+                        "tinggi_badan": 91,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 34,
+                        "berat_badan": 13,
+                        "tinggi_badan": 93,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 35,
+                        "berat_badan": 13,
+                        "tinggi_badan": 94,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 36,
+                        "berat_badan": 14,
+                        "tinggi_badan": 94,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 39,
+                        "berat_badan": 14,
+                        "tinggi_badan": 96,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 42,
+                        "berat_badan": 15,
+                        "tinggi_badan": 99,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 45,
+                        "berat_badan": 15,
+                        "tinggi_badan": 102,
+                        "lila": 17,
+                        "liko": 49
+                    }
+                ]
+            },
+            {
+                "nama_anak": "MAULANA QOSIM AL SHIDDIQ",
+                "nama_ibu": "INDAH SUSANTI",
+                "jenis_kelamin": "Laki-Laki",
+                "tempat_lahir": "KUDUS",
+                "tanggal_lahir": "26/02/2023",
+                "alamat": "RT 3 / RW 1",
+                "riwayat_pertumbuhan": [
+                    {
+                        "bulan_ke": 2,
+                        "berat_badan": 4,
+                        "tinggi_badan": 52,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 3,
+                        "berat_badan": 4,
+                        "tinggi_badan": 55,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 5,
+                        "berat_badan": 5,
+                        "tinggi_badan": 58,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 6,
+                        "berat_badan": 6,
+                        "tinggi_badan": 59,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 7,
+                        "berat_badan": 7,
+                        "tinggi_badan": 62,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 8,
+                        "berat_badan": 7,
+                        "tinggi_badan": 65,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 9,
+                        "berat_badan": 7,
+                        "tinggi_badan": 65,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 10,
+                        "berat_badan": 7,
+                        "tinggi_badan": 67,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 11,
+                        "berat_badan": 7,
+                        "tinggi_badan": 67,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 13,
+                        "berat_badan": 7,
+                        "tinggi_badan": 68,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 14,
+                        "berat_badan": 7,
+                        "tinggi_badan": 68,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 15,
+                        "berat_badan": 7,
+                        "tinggi_badan": 71,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 16,
+                        "berat_badan": 7,
+                        "tinggi_badan": 71,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 18,
+                        "berat_badan": 7,
+                        "tinggi_badan": 70,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 19,
+                        "berat_badan": 8,
+                        "tinggi_badan": 70,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 21,
+                        "berat_badan": 8,
+                        "tinggi_badan": 70,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 22,
+                        "berat_badan": 9,
+                        "tinggi_badan": 71,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 23,
+                        "berat_badan": 10,
+                        "tinggi_badan": 74,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 26,
+                        "berat_badan": 9,
+                        "tinggi_badan": 75,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 28,
+                        "berat_badan": 9,
+                        "tinggi_badan": 75,
+                        "lila": 14,
+                        "liko": 46
+                    },
+                    {
+                        "bulan_ke": 29,
+                        "berat_badan": 10,
+                        "tinggi_badan": 75,
+                        "lila": 14,
+                        "liko": 46
+                    },
+                    {
+                        "bulan_ke": 30,
+                        "berat_badan": 10,
+                        "tinggi_badan": 79,
+                        "lila": 14,
+                        "liko": 46
+                    },
+                    {
+                        "bulan_ke": 31,
+                        "berat_badan": 10,
+                        "tinggi_badan": 80,
+                        "lila": 14,
+                        "liko": 47
+                    },
+                    {
+                        "bulan_ke": 33,
+                        "berat_badan": 10,
+                        "tinggi_badan": 22,
+                        "lila": 15,
+                        "liko": 47
+                    }
+                ]
+            },
+            {
+                "nama_anak": "MUHAMMAD HUZAIFA SHAUQI ALFARIZQI",
+                "nama_ibu": "HENY SETYO HARIYANI",
+                "jenis_kelamin": "Laki-Laki",
+                "tempat_lahir": "KUDUS",
+                "tanggal_lahir": "28/01/2023",
+                "alamat": "RT 6 / RW 1",
+                "riwayat_pertumbuhan": [
+                    {
+                        "bulan_ke": 6,
+                        "berat_badan": 7,
+                        "tinggi_badan": 67,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 7,
+                        "berat_badan": 7,
+                        "tinggi_badan": 67,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 8,
+                        "berat_badan": 8,
+                        "tinggi_badan": 67,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 9,
+                        "berat_badan": 9,
+                        "tinggi_badan": 70,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 10,
+                        "berat_badan": 8,
+                        "tinggi_badan": 70,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 11,
+                        "berat_badan": 9,
+                        "tinggi_badan": 71,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 12,
+                        "berat_badan": 9,
+                        "tinggi_badan": 72,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 14,
+                        "berat_badan": 9,
+                        "tinggi_badan": 75,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 16,
+                        "berat_badan": 9,
+                        "tinggi_badan": 74,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 17,
+                        "berat_badan": 9,
+                        "tinggi_badan": 75,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 18,
+                        "berat_badan": 9,
+                        "tinggi_badan": 75,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 19,
+                        "berat_badan": 10,
+                        "tinggi_badan": 76,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 20,
+                        "berat_badan": 10,
+                        "tinggi_badan": 76,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 21,
+                        "berat_badan": 10,
+                        "tinggi_badan": 77,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 22,
+                        "berat_badan": 10,
+                        "tinggi_badan": 79,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 23,
+                        "berat_badan": 11,
+                        "tinggi_badan": 80,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 24,
+                        "berat_badan": 11,
+                        "tinggi_badan": 82,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 25,
+                        "berat_badan": 12,
+                        "tinggi_badan": 82,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 26,
+                        "berat_badan": 11,
+                        "tinggi_badan": 84,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 27,
+                        "berat_badan": 12,
+                        "tinggi_badan": 85,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 29,
+                        "berat_badan": 12,
+                        "tinggi_badan": 85,
+                        "lila": 15,
+                        "liko": 50
+                    },
+                    {
+                        "bulan_ke": 30,
+                        "berat_badan": 12,
+                        "tinggi_badan": 87,
+                        "lila": 16,
+                        "liko": 50
+                    },
+                    {
+                        "bulan_ke": 31,
+                        "berat_badan": 12,
+                        "tinggi_badan": 87,
+                        "lila": 16,
+                        "liko": 50
+                    },
+                    {
+                        "bulan_ke": 32,
+                        "berat_badan": 12,
+                        "tinggi_badan": 87,
+                        "lila": 16,
+                        "liko": 50
+                    },
+                    {
+                        "bulan_ke": 33,
+                        "berat_badan": 12,
+                        "tinggi_badan": 89,
+                        "lila": 16,
+                        "liko": 50
+                    },
+                    {
+                        "bulan_ke": 34,
+                        "berat_badan": 13,
+                        "tinggi_badan": 89,
+                        "lila": 17,
+                        "liko": 51
+                    },
+                    {
+                        "bulan_ke": 35,
+                        "berat_badan": 13,
+                        "tinggi_badan": 89,
+                        "lila": 17,
+                        "liko": 51
+                    }
+                ]
+            },
+            {
+                "nama_anak": "MUHAMMAD SHARGA AFKARI",
+                "nama_ibu": "TINA INDAH SULEKHAH",
+                "jenis_kelamin": "Laki-Laki",
+                "tempat_lahir": "KUDUS",
+                "tanggal_lahir": "29/02/2024",
+                "alamat": "RT 6 / RW 1",
+                "riwayat_pertumbuhan": [
+                    {
+                        "bulan_ke": 3,
+                        "berat_badan": 5,
+                        "tinggi_badan": 60,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 4,
+                        "berat_badan": 6,
+                        "tinggi_badan": 64,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 5,
+                        "berat_badan": 6,
+                        "tinggi_badan": 65,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 6,
+                        "berat_badan": 6,
+                        "tinggi_badan": 67,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 7,
+                        "berat_badan": 7,
+                        "tinggi_badan": 68,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 8,
+                        "berat_badan": 7,
+                        "tinggi_badan": 71,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 9,
+                        "berat_badan": 7,
+                        "tinggi_badan": 71,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 10,
+                        "berat_badan": 8,
+                        "tinggi_badan": 72,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 11,
+                        "berat_badan": 8,
+                        "tinggi_badan": 73,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 12,
+                        "berat_badan": 8,
+                        "tinggi_badan": 76,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 14,
+                        "berat_badan": 8,
+                        "tinggi_badan": 76,
+                        "lila": 16,
+                        "liko": 46
+                    },
+                    {
+                        "bulan_ke": 16,
+                        "berat_badan": 9,
+                        "tinggi_badan": 77,
+                        "lila": 16,
+                        "liko": 46
+                    },
+                    {
+                        "bulan_ke": 17,
+                        "berat_badan": 9,
+                        "tinggi_badan": 78,
+                        "lila": 16,
+                        "liko": 46
+                    },
+                    {
+                        "bulan_ke": 18,
+                        "berat_badan": 9,
+                        "tinggi_badan": 80,
+                        "lila": 14,
+                        "liko": 46
+                    },
+                    {
+                        "bulan_ke": 19,
+                        "berat_badan": 9,
+                        "tinggi_badan": 80,
+                        "lila": 14,
+                        "liko": 46
+                    },
+                    {
+                        "bulan_ke": 20,
+                        "berat_badan": 9,
+                        "tinggi_badan": 81,
+                        "lila": 14,
+                        "liko": 47
+                    },
+                    {
+                        "bulan_ke": 21,
+                        "berat_badan": 9,
+                        "tinggi_badan": 81,
+                        "lila": 15,
+                        "liko": 48
+                    },
+                    {
+                        "bulan_ke": 22,
+                        "berat_badan": 10,
+                        "tinggi_badan": 83,
+                        "lila": 15,
+                        "liko": 48
+                    }
+                ]
+            },
+            {
+                "nama_anak": "NARASYA ADYATAMA FAHENDRA",
+                "nama_ibu": "MUSAROFAH",
+                "jenis_kelamin": "Laki-Laki",
+                "tempat_lahir": "KUDUS",
+                "tanggal_lahir": "21/01/2025",
+                "alamat": "RT 2 / RW 1",
+                "riwayat_pertumbuhan": [
+                    {
+                        "bulan_ke": 3,
+                        "berat_badan": 5,
+                        "tinggi_badan": 58,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 4,
+                        "berat_badan": 6,
+                        "tinggi_badan": 60,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 6,
+                        "berat_badan": 6,
+                        "tinggi_badan": 62,
+                        "lila": 14,
+                        "liko": 41
+                    },
+                    {
+                        "bulan_ke": 7,
+                        "berat_badan": 7,
+                        "tinggi_badan": 67,
+                        "lila": 15,
+                        "liko": 43
+                    },
+                    {
+                        "bulan_ke": 8,
+                        "berat_badan": 8,
+                        "tinggi_badan": 67,
+                        "lila": 15,
+                        "liko": 44
+                    },
+                    {
+                        "bulan_ke": 9,
+                        "berat_badan": 9,
+                        "tinggi_badan": 69,
+                        "lila": 15,
+                        "liko": 44
+                    },
+                    {
+                        "bulan_ke": 10,
+                        "berat_badan": 9,
+                        "tinggi_badan": 70,
+                        "lila": 16,
+                        "liko": 46
+                    },
+                    {
+                        "bulan_ke": 11,
+                        "berat_badan": 10,
+                        "tinggi_badan": 75,
+                        "lila": 16,
+                        "liko": 46
+                    }
+                ]
+            },
+            {
+                "nama_anak": "NUFAIL ALTHAF SHAQUILLE",
+                "nama_ibu": "NOOR AINI ZAKIYAH",
+                "jenis_kelamin": "Laki-Laki",
+                "tempat_lahir": "Kudus",
+                "tanggal_lahir": "19/08/2024",
+                "alamat": "RT 6 / RW 1",
+                "riwayat_pertumbuhan": [
+                    {
+                        "bulan_ke": 2,
+                        "berat_badan": 5,
+                        "tinggi_badan": 57,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 3,
+                        "berat_badan": 6,
+                        "tinggi_badan": 61,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 5,
+                        "berat_badan": 6,
+                        "tinggi_badan": 67,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 8,
+                        "berat_badan": 8,
+                        "tinggi_badan": 70,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 9,
+                        "berat_badan": 8,
+                        "tinggi_badan": 70,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 10,
+                        "berat_badan": 8,
+                        "tinggi_badan": 71,
+                        "lila": 15,
+                        "liko": 46
+                    },
+                    {
+                        "bulan_ke": 11,
+                        "berat_badan": 8,
+                        "tinggi_badan": 74,
+                        "lila": 15,
+                        "liko": 47
+                    },
+                    {
+                        "bulan_ke": 12,
+                        "berat_badan": 9,
+                        "tinggi_badan": 76,
+                        "lila": 15,
+                        "liko": 47
+                    },
+                    {
+                        "bulan_ke": 13,
+                        "berat_badan": 8,
+                        "tinggi_badan": 76,
+                        "lila": 15,
+                        "liko": 47
+                    },
+                    {
+                        "bulan_ke": 15,
+                        "berat_badan": 9,
+                        "tinggi_badan": 76,
+                        "lila": 15,
+                        "liko": 47
+                    },
+                    {
+                        "bulan_ke": 16,
+                        "berat_badan": 9,
+                        "tinggi_badan": 77,
+                        "lila": 15,
+                        "liko": 47
+                    }
+                ]
+            },
+            {
+                "nama_anak": "QUIRINO ABQARY ZAYN AJI",
+                "nama_ibu": "TIFANI DIAHNISA HARDIANTI",
+                "jenis_kelamin": "Laki-Laki",
+                "tempat_lahir": "Kudus",
+                "tanggal_lahir": "04/04/2022",
+                "alamat": "RT 3 / RW 1",
+                "riwayat_pertumbuhan": [
+                    {
+                        "bulan_ke": 11,
+                        "berat_badan": 14,
+                        "tinggi_badan": 76,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 13,
+                        "berat_badan": 12,
+                        "tinggi_badan": 79,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 14,
+                        "berat_badan": 12,
+                        "tinggi_badan": 80,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 16,
+                        "berat_badan": 13,
+                        "tinggi_badan": 82,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 17,
+                        "berat_badan": 13,
+                        "tinggi_badan": 83,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 18,
+                        "berat_badan": 13,
+                        "tinggi_badan": 83,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 19,
+                        "berat_badan": 13,
+                        "tinggi_badan": 83,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 20,
+                        "berat_badan": 13,
+                        "tinggi_badan": 84,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 21,
+                        "berat_badan": 13,
+                        "tinggi_badan": 84,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 22,
+                        "berat_badan": 14,
+                        "tinggi_badan": 86,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 24,
+                        "berat_badan": 15,
+                        "tinggi_badan": 88,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 25,
+                        "berat_badan": 14,
+                        "tinggi_badan": 89,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 26,
+                        "berat_badan": 14,
+                        "tinggi_badan": 89,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 28,
+                        "berat_badan": 15,
+                        "tinggi_badan": 91,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 29,
+                        "berat_badan": 15,
+                        "tinggi_badan": 91,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 30,
+                        "berat_badan": 16,
+                        "tinggi_badan": 92,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 31,
+                        "berat_badan": 16,
+                        "tinggi_badan": 93,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 32,
+                        "berat_badan": 17,
+                        "tinggi_badan": 94,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 33,
+                        "berat_badan": 17,
+                        "tinggi_badan": 94,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 34,
+                        "berat_badan": 17,
+                        "tinggi_badan": 96,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 36,
+                        "berat_badan": 17,
+                        "tinggi_badan": 97,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 39,
+                        "berat_badan": 19,
+                        "tinggi_badan": 99,
+                        "lila": 19,
+                        "liko": 51
+                    },
+                    {
+                        "bulan_ke": 42,
+                        "berat_badan": 20,
+                        "tinggi_badan": 102,
+                        "lila": 21,
+                        "liko": 51
+                    }
+                ]
+            },
+            {
+                "nama_anak": "ZELMIRA ALSYAMEYZEA ARASELY",
+                "nama_ibu": "LINDA SILFIA RIZKI",
+                "jenis_kelamin": "Perempuan",
+                "tempat_lahir": "Kudus",
+                "tanggal_lahir": "11/12/2023",
+                "alamat": "RT 6 / RW 1",
+                "riwayat_pertumbuhan": [
+                    {
+                        "bulan_ke": 16,
+                        "berat_badan": 8,
+                        "tinggi_badan": 74,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 18,
+                        "berat_badan": 10,
+                        "tinggi_badan": 77,
+                        "lila": 16,
+                        "liko": 48
+                    },
+                    {
+                        "bulan_ke": 19,
+                        "berat_badan": 10,
+                        "tinggi_badan": 79,
+                        "lila": 16,
+                        "liko": 48
+                    },
+                    {
+                        "bulan_ke": 20,
+                        "berat_badan": 10,
+                        "tinggi_badan": 79,
+                        "lila": 16,
+                        "liko": 48
+                    },
+                    {
+                        "bulan_ke": 21,
+                        "berat_badan": 11,
+                        "tinggi_badan": 80,
+                        "lila": 16,
+                        "liko": 48
+                    },
+                    {
+                        "bulan_ke": 22,
+                        "berat_badan": 11,
+                        "tinggi_badan": 82,
+                        "lila": 16,
+                        "liko": 49
+                    },
+                    {
+                        "bulan_ke": 23,
+                        "berat_badan": 11,
+                        "tinggi_badan": 82,
+                        "lila": 16,
+                        "liko": 49
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "rw": "02",
+        "data_anak": [
+            {
+                "nama_anak": "AZMI ALIF SYAHRIZKY",
+                "nama_ibu": "ALAM MASITHOH PUTRI",
+                "jenis_kelamin": "Laki-Laki",
+                "tempat_lahir": "Kudus",
+                "tanggal_lahir": "2023-05-10",
+                "alamat": "RT 1 / RW 2",
+                "riwayat_pertumbuhan": [
+                    {
+                        "bulan_ke": 1,
+                        "berat_badan": 5,
+                        "tinggi_badan": 56,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 2,
+                        "berat_badan": 6,
+                        "tinggi_badan": 58,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 3,
+                        "berat_badan": 7,
+                        "tinggi_badan": 61,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 4,
+                        "berat_badan": 7,
+                        "tinggi_badan": 64,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 6,
+                        "berat_badan": 7,
+                        "tinggi_badan": 67,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 11,
+                        "berat_badan": 8,
+                        "tinggi_badan": 70,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 12,
+                        "berat_badan": 8,
+                        "tinggi_badan": 71,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 14,
+                        "berat_badan": 9,
+                        "tinggi_badan": 73,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 15,
+                        "berat_badan": 9,
+                        "tinggi_badan": 76,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 16,
+                        "berat_badan": 9,
+                        "tinggi_badan": 77,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 18,
+                        "berat_badan": 10,
+                        "tinggi_badan": 81,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 19,
+                        "berat_badan": 10,
+                        "tinggi_badan": 78,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 20,
+                        "berat_badan": 10,
+                        "tinggi_badan": 80,
+                        "lila": 16,
+                        "liko": 50
+                    },
+                    {
+                        "bulan_ke": 21,
+                        "berat_badan": 11,
+                        "tinggi_badan": 81,
+                        "lila": 16,
+                        "liko": 50
+                    },
+                    {
+                        "bulan_ke": 22,
+                        "berat_badan": 10,
+                        "tinggi_badan": 81,
+                        "lila": 15,
+                        "liko": 50
+                    },
+                    {
+                        "bulan_ke": 24,
+                        "berat_badan": 11,
+                        "tinggi_badan": 84,
+                        "lila": 15,
+                        "liko": 50
+                    },
+                    {
+                        "bulan_ke": 25,
+                        "berat_badan": 11,
+                        "tinggi_badan": 84,
+                        "lila": 16,
+                        "liko": 51
+                    },
+                    {
+                        "bulan_ke": 26,
+                        "berat_badan": 11,
+                        "tinggi_badan": 86,
+                        "lila": 16,
+                        "liko": 51
+                    }
+                ]
+            },
+            {
+                "nama_anak": "FAHEEL FAEYZA HAMIZAN",
+                "nama_ibu": "NOVITA",
+                "jenis_kelamin": "Laki-Laki",
+                "tempat_lahir": "Kudus",
+                "tanggal_lahir": "2022-07-02",
+                "alamat": "RT 1 / RW 2",
+                "riwayat_pertumbuhan": [
+                    {
+                        "bulan_ke": 13,
+                        "berat_badan": 8,
+                        "tinggi_badan": 71,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 15,
+                        "berat_badan": 8,
+                        "tinggi_badan": 69,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 16,
+                        "berat_badan": 9,
+                        "tinggi_badan": 73,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 18,
+                        "berat_badan": 9,
+                        "tinggi_badan": 75,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 19,
+                        "berat_badan": 9,
+                        "tinggi_badan": 76,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 20,
+                        "berat_badan": 9,
+                        "tinggi_badan": 77,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 21,
+                        "berat_badan": 10,
+                        "tinggi_badan": 77,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 22,
+                        "berat_badan": 10,
+                        "tinggi_badan": 79,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 23,
+                        "berat_badan": 10,
+                        "tinggi_badan": 79,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 24,
+                        "berat_badan": 10,
+                        "tinggi_badan": 80,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 26,
+                        "berat_badan": 10,
+                        "tinggi_badan": 82,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 27,
+                        "berat_badan": 11,
+                        "tinggi_badan": 83,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 28,
+                        "berat_badan": 11,
+                        "tinggi_badan": 84,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 30,
+                        "berat_badan": 11,
+                        "tinggi_badan": 85,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 31,
+                        "berat_badan": 12,
+                        "tinggi_badan": 87,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 32,
+                        "berat_badan": 12,
+                        "tinggi_badan": 87,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 33,
+                        "berat_badan": 11,
+                        "tinggi_badan": 88,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 35,
+                        "berat_badan": 12,
+                        "tinggi_badan": 89,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 36,
+                        "berat_badan": 12,
+                        "tinggi_badan": 90,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 39,
+                        "berat_badan": 13,
+                        "tinggi_badan": 92,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 42,
+                        "berat_badan": 15,
+                        "tinggi_badan": 93,
+                        "lila": 17,
+                        "liko": 49
+                    },
+                    {
+                        "bulan_ke": 45,
+                        "berat_badan": 15,
+                        "tinggi_badan": 95,
+                        "lila": 17,
+                        "liko": 49
+                    }
+                ]
+            },
+            {
+                "nama_anak": "KALANDRA FAZAL TASBIHA",
+                "nama_ibu": "DANI SEPTI HARYANI",
+                "jenis_kelamin": "Laki-Laki",
+                "tempat_lahir": "Kudus",
+                "tanggal_lahir": "2020-11-24",
+                "alamat": "RT 1 / RW 2",
+                "riwayat_pertumbuhan": [
+                    {
+                        "bulan_ke": 27,
+                        "berat_badan": 13,
+                        "tinggi_badan": 91,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 29,
+                        "berat_badan": 13,
+                        "tinggi_badan": 92,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 30,
+                        "berat_badan": 13,
+                        "tinggi_badan": 96,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 31,
+                        "berat_badan": 14,
+                        "tinggi_badan": 96,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 32,
+                        "berat_badan": 14,
+                        "tinggi_badan": 97,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 33,
+                        "berat_badan": 14,
+                        "tinggi_badan": 96,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 34,
+                        "berat_badan": 14,
+                        "tinggi_badan": 98,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 35,
+                        "berat_badan": 15,
+                        "tinggi_badan": 99,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 36,
+                        "berat_badan": 15,
+                        "tinggi_badan": 99,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 39,
+                        "berat_badan": 16,
+                        "tinggi_badan": 101,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 42,
+                        "berat_badan": 16,
+                        "tinggi_badan": 105,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 45,
+                        "berat_badan": 17,
+                        "tinggi_badan": 107,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 48,
+                        "berat_badan": 17,
+                        "tinggi_badan": 108,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 54,
+                        "berat_badan": 19,
+                        "tinggi_badan": 113,
+                        "lila": 18,
+                        "liko": 52
+                    },
+                    {
+                        "bulan_ke": 57,
+                        "berat_badan": 19,
+                        "tinggi_badan": 113,
+                        "lila": 18,
+                        "liko": 52
+                    },
+                    {
+                        "bulan_ke": 60,
+                        "berat_badan": 19,
+                        "tinggi_badan": 115,
+                        "lila": 18,
+                        "liko": 52
+                    }
+                ]
+            },
+            {
+                "nama_anak": "KAVIANDRA NIRANKARA HAKIM",
+                "nama_ibu": "DANI SEPTI HARYANI",
+                "jenis_kelamin": "Laki-Laki",
+                "tempat_lahir": "Kudus",
+                "tanggal_lahir": "2025-01-02",
+                "alamat": "RT 1 / RW 2",
+                "riwayat_pertumbuhan": [
+                    {
+                        "bulan_ke": 2,
+                        "berat_badan": 5,
+                        "tinggi_badan": 62,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 3,
+                        "berat_badan": 7,
+                        "tinggi_badan": 64,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 4,
+                        "berat_badan": 7,
+                        "tinggi_badan": 66,
+                        "lila": 15,
+                        "liko": 41
+                    },
+                    {
+                        "bulan_ke": 5,
+                        "berat_badan": 7,
+                        "tinggi_badan": 67,
+                        "lila": 15,
+                        "liko": 41
+                    },
+                    {
+                        "bulan_ke": 6,
+                        "berat_badan": 7,
+                        "tinggi_badan": 67,
+                        "lila": 15,
+                        "liko": 41
+                    },
+                    {
+                        "bulan_ke": 7,
+                        "berat_badan": 8,
+                        "tinggi_badan": 70,
+                        "lila": 15,
+                        "liko": 42
+                    },
+                    {
+                        "bulan_ke": 8,
+                        "berat_badan": 8,
+                        "tinggi_badan": 70,
+                        "lila": 15,
+                        "liko": 43
+                    },
+                    {
+                        "bulan_ke": 9,
+                        "berat_badan": 8,
+                        "tinggi_badan": 71,
+                        "lila": 16,
+                        "liko": 45
+                    },
+                    {
+                        "bulan_ke": 10,
+                        "berat_badan": 9,
+                        "tinggi_badan": 75,
+                        "lila": 17,
+                        "liko": 46
+                    }
+                ]
+            },
+            {
+                "nama_anak": "MUHAMMAD AEZAR ELHASIQ",
+                "nama_ibu": "DITA APRILIA PUTRI",
+                "jenis_kelamin": "Laki-Laki",
+                "tempat_lahir": "KUDUS",
+                "tanggal_lahir": "2023-10-09",
+                "alamat": "RT 1 / RW 2",
+                "riwayat_pertumbuhan": [
+                    {
+                        "bulan_ke": 1,
+                        "berat_badan": 4,
+                        "tinggi_badan": 54,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 2,
+                        "berat_badan": 5,
+                        "tinggi_badan": 61,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 3,
+                        "berat_badan": 6,
+                        "tinggi_badan": 61,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 4,
+                        "berat_badan": 7,
+                        "tinggi_badan": 63,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 5,
+                        "berat_badan": 7,
+                        "tinggi_badan": 64,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 7,
+                        "berat_badan": 8,
+                        "tinggi_badan": 69,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 8,
+                        "berat_badan": 8,
+                        "tinggi_badan": 70,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 9,
+                        "berat_badan": 8,
+                        "tinggi_badan": 70,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 10,
+                        "berat_badan": 9,
+                        "tinggi_badan": 71,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 11,
+                        "berat_badan": 9,
+                        "tinggi_badan": 73,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 13,
+                        "berat_badan": 9,
+                        "tinggi_badan": 74,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 14,
+                        "berat_badan": 9,
+                        "tinggi_badan": 75,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 15,
+                        "berat_badan": 9,
+                        "tinggi_badan": 75,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 16,
+                        "berat_badan": 9,
+                        "tinggi_badan": 78,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 17,
+                        "berat_badan": 9,
+                        "tinggi_badan": 78,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 19,
+                        "berat_badan": 9,
+                        "tinggi_badan": 78,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 20,
+                        "berat_badan": 10,
+                        "tinggi_badan": 78,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 21,
+                        "berat_badan": 10,
+                        "tinggi_badan": 78,
+                        "lila": 16,
+                        "liko": 48
+                    },
+                    {
+                        "bulan_ke": 22,
+                        "berat_badan": 10,
+                        "tinggi_badan": 84,
+                        "lila": 16,
+                        "liko": 49
+                    },
+                    {
+                        "bulan_ke": 23,
+                        "berat_badan": 10,
+                        "tinggi_badan": 84,
+                        "lila": 16,
+                        "liko": 49
+                    },
+                    {
+                        "bulan_ke": 24,
+                        "berat_badan": 10,
+                        "tinggi_badan": 84,
+                        "lila": 16,
+                        "liko": 49
+                    },
+                    {
+                        "bulan_ke": 26,
+                        "berat_badan": 11,
+                        "tinggi_badan": 84,
+                        "lila": 16,
+                        "liko": 49
+                    },
+                    {
+                        "bulan_ke": 27,
+                        "berat_badan": 11,
+                        "tinggi_badan": 86,
+                        "lila": 16,
+                        "liko": 49
+                    }
+                ]
+            },
+            {
+                "nama_anak": "MUHAMMAD KEVIN YUDHISTIRA",
+                "nama_ibu": "IDAYU PRIMAYANTI",
+                "jenis_kelamin": "Laki-Laki",
+                "tempat_lahir": "Kudus",
+                "tanggal_lahir": "2021-05-09",
+                "alamat": "RT 2 / RW 2",
+                "riwayat_pertumbuhan": [
+                    {
+                        "bulan_ke": 18,
+                        "berat_badan": 20,
+                        "tinggi_badan": 88,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 20,
+                        "berat_badan": 20,
+                        "tinggi_badan": 87,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 21,
+                        "berat_badan": 21,
+                        "tinggi_badan": 94,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 22,
+                        "berat_badan": 21,
+                        "tinggi_badan": 95,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 23,
+                        "berat_badan": 21,
+                        "tinggi_badan": 96,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 24,
+                        "berat_badan": 25,
+                        "tinggi_badan": 96,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 25,
+                        "berat_badan": 24,
+                        "tinggi_badan": 96,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 26,
+                        "berat_badan": 26,
+                        "tinggi_badan": 98,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 27,
+                        "berat_badan": 26,
+                        "tinggi_badan": 99,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 28,
+                        "berat_badan": 26,
+                        "tinggi_badan": 99,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 29,
+                        "berat_badan": 26,
+                        "tinggi_badan": 99,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 31,
+                        "berat_badan": 24,
+                        "tinggi_badan": 101,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 34,
+                        "berat_badan": 25,
+                        "tinggi_badan": 103,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 35,
+                        "berat_badan": 25,
+                        "tinggi_badan": 103,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 36,
+                        "berat_badan": 25,
+                        "tinggi_badan": 105,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 39,
+                        "berat_badan": 24,
+                        "tinggi_badan": 105,
+                        "lila": 0,
+                        "liko": 0
+                    }
+                ]
+            },
+            {
+                "nama_anak": "MUHAMMAD KHALIFANO ZAVIER",
+                "nama_ibu": "AMITA SARI",
+                "jenis_kelamin": "Laki-Laki",
+                "tempat_lahir": "KUDUS",
+                "tanggal_lahir": "2023-05-03",
+                "alamat": "RT 2 / RW 2",
+                "riwayat_pertumbuhan": [
+                    {
+                        "bulan_ke": 2,
+                        "berat_badan": 5,
+                        "tinggi_badan": 61,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 3,
+                        "berat_badan": 5,
+                        "tinggi_badan": 61,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 4,
+                        "berat_badan": 5,
+                        "tinggi_badan": 63,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 5,
+                        "berat_badan": 7,
+                        "tinggi_badan": 64,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 6,
+                        "berat_badan": 6,
+                        "tinggi_badan": 65,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 7,
+                        "berat_badan": 6,
+                        "tinggi_badan": 67,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 9,
+                        "berat_badan": 7,
+                        "tinggi_badan": 71,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 10,
+                        "berat_badan": 7,
+                        "tinggi_badan": 72,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 11,
+                        "berat_badan": 7,
+                        "tinggi_badan": 72,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 13,
+                        "berat_badan": 7,
+                        "tinggi_badan": 71,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 14,
+                        "berat_badan": 8,
+                        "tinggi_badan": 73,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 15,
+                        "berat_badan": 8,
+                        "tinggi_badan": 74,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 16,
+                        "berat_badan": 8,
+                        "tinggi_badan": 74,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 17,
+                        "berat_badan": 8,
+                        "tinggi_badan": 75,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 18,
+                        "berat_badan": 8,
+                        "tinggi_badan": 76,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 19,
+                        "berat_badan": 9,
+                        "tinggi_badan": 77,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 20,
+                        "berat_badan": 8,
+                        "tinggi_badan": 78,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 21,
+                        "berat_badan": 9,
+                        "tinggi_badan": 79,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 22,
+                        "berat_badan": 9,
+                        "tinggi_badan": 81,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 23,
+                        "berat_badan": 9,
+                        "tinggi_badan": 82,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 25,
+                        "berat_badan": 10,
+                        "tinggi_badan": 84,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 26,
+                        "berat_badan": 10,
+                        "tinggi_badan": 84,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 27,
+                        "berat_badan": 10,
+                        "tinggi_badan": 85,
+                        "lila": 14,
+                        "liko": 48
+                    },
+                    {
+                        "bulan_ke": 28,
+                        "berat_badan": 10,
+                        "tinggi_badan": 86,
+                        "lila": 14,
+                        "liko": 48
+                    },
+                    {
+                        "bulan_ke": 29,
+                        "berat_badan": 10,
+                        "tinggi_badan": 87,
+                        "lila": 15,
+                        "liko": 50
+                    },
+                    {
+                        "bulan_ke": 30,
+                        "berat_badan": 10,
+                        "tinggi_badan": 88,
+                        "lila": 15,
+                        "liko": 50
+                    },
+                    {
+                        "bulan_ke": 31,
+                        "berat_badan": 10,
+                        "tinggi_badan": 89,
+                        "lila": 15,
+                        "liko": 50
+                    },
+                    {
+                        "bulan_ke": 32,
+                        "berat_badan": 10,
+                        "tinggi_badan": 90,
+                        "lila": 15,
+                        "liko": 50
+                    },
+                    {
+                        "bulan_ke": 33,
+                        "berat_badan": 10,
+                        "tinggi_badan": 90,
+                        "lila": 15,
+                        "liko": 50
+                    }
+                ]
+            },
+            {
+                "nama_anak": "NAZEEFA JENNAIRA AZZAHRA",
+                "nama_ibu": "NAZEEFA JENNAIRA AZZAHRA",
+                "jenis_kelamin": "Perempuan",
+                "tempat_lahir": "Kudus",
+                "tanggal_lahir": "2024-05-24",
+                "alamat": "RT 3 / RW 2",
+                "riwayat_pertumbuhan": [
+                    {
+                        "bulan_ke": 8,
+                        "berat_badan": 8,
+                        "tinggi_badan": 68,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 12,
+                        "berat_badan": 8,
+                        "tinggi_badan": 68,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 13,
+                        "berat_badan": 9,
+                        "tinggi_badan": 71,
+                        "lila": 15,
+                        "liko": 45
+                    },
+                    {
+                        "bulan_ke": 14,
+                        "berat_badan": 8,
+                        "tinggi_badan": 71,
+                        "lila": 15,
+                        "liko": 44
+                    },
+                    {
+                        "bulan_ke": 17,
+                        "berat_badan": 9,
+                        "tinggi_badan": 72,
+                        "lila": 15,
+                        "liko": 45
+                    },
+                    {
+                        "bulan_ke": 18,
+                        "berat_badan": 9,
+                        "tinggi_badan": 74,
+                        "lila": 16,
+                        "liko": 45
+                    },
+                    {
+                        "bulan_ke": 19,
+                        "berat_badan": 9,
+                        "tinggi_badan": 75,
+                        "lila": 16,
+                        "liko": 45
+                    }
+                ]
+            },
+            {
+                "nama_anak": "NUR AFIYANI KHUMAIRA",
+                "nama_ibu": "ENY EMAWATI",
+                "jenis_kelamin": "Perempuan",
+                "tempat_lahir": "Kudus",
+                "tanggal_lahir": "2022-11-30",
+                "alamat": "RT 2 / RW 2",
+                "riwayat_pertumbuhan": [
+                    {
+                        "bulan_ke": 2,
+                        "berat_badan": 4,
+                        "tinggi_badan": 56,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 3,
+                        "berat_badan": 5,
+                        "tinggi_badan": 63,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 4,
+                        "berat_badan": 6,
+                        "tinggi_badan": 63,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 6,
+                        "berat_badan": 7,
+                        "tinggi_badan": 64,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 7,
+                        "berat_badan": 7,
+                        "tinggi_badan": 68,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 8,
+                        "berat_badan": 7,
+                        "tinggi_badan": 69,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 9,
+                        "berat_badan": 7,
+                        "tinggi_badan": 69,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 10,
+                        "berat_badan": 7,
+                        "tinggi_badan": 70,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 11,
+                        "berat_badan": 7,
+                        "tinggi_badan": 71,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 12,
+                        "berat_badan": 7,
+                        "tinggi_badan": 73,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 13,
+                        "berat_badan": 7,
+                        "tinggi_badan": 73,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 14,
+                        "berat_badan": 7,
+                        "tinggi_badan": 73,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 15,
+                        "berat_badan": 8,
+                        "tinggi_badan": 70,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 16,
+                        "berat_badan": 8,
+                        "tinggi_badan": 73,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 17,
+                        "berat_badan": 8,
+                        "tinggi_badan": 73,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 18,
+                        "berat_badan": 8,
+                        "tinggi_badan": 74,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 19,
+                        "berat_badan": 8,
+                        "tinggi_badan": 75,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 20,
+                        "berat_badan": 9,
+                        "tinggi_badan": 76,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 21,
+                        "berat_badan": 9,
+                        "tinggi_badan": 77,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 22,
+                        "berat_badan": 9,
+                        "tinggi_badan": 77,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 23,
+                        "berat_badan": 9,
+                        "tinggi_badan": 78,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 24,
+                        "berat_badan": 10,
+                        "tinggi_badan": 80,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 25,
+                        "berat_badan": 10,
+                        "tinggi_badan": 81,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 26,
+                        "berat_badan": 10,
+                        "tinggi_badan": 82,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 27,
+                        "berat_badan": 11,
+                        "tinggi_badan": 82,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 29,
+                        "berat_badan": 12,
+                        "tinggi_badan": 85,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 30,
+                        "berat_badan": 12,
+                        "tinggi_badan": 85,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 31,
+                        "berat_badan": 12,
+                        "tinggi_badan": 86,
+                        "lila": 17,
+                        "liko": 48
+                    },
+                    {
+                        "bulan_ke": 32,
+                        "berat_badan": 12,
+                        "tinggi_badan": 87,
+                        "lila": 18,
+                        "liko": 48
+                    },
+                    {
+                        "bulan_ke": 33,
+                        "berat_badan": 13,
+                        "tinggi_badan": 88,
+                        "lila": 18,
+                        "liko": 48
+                    },
+                    {
+                        "bulan_ke": 34,
+                        "berat_badan": 13,
+                        "tinggi_badan": 89,
+                        "lila": 18,
+                        "liko": 48
+                    },
+                    {
+                        "bulan_ke": 35,
+                        "berat_badan": 13,
+                        "tinggi_badan": 90,
+                        "lila": 18,
+                        "liko": 48
+                    },
+                    {
+                        "bulan_ke": 36,
+                        "berat_badan": 13,
+                        "tinggi_badan": 91,
+                        "lila": 18,
+                        "liko": 48
+                    }
+                ]
+            },
+            {
+                "nama_anak": "RANAKA KEENANDRA MYLLANO",
+                "nama_ibu": "CHANIFAH PUTRI HANDAYANI",
+                "jenis_kelamin": "Laki-Laki",
+                "tempat_lahir": "KUDUS",
+                "tanggal_lahir": "2024-05-31",
+                "alamat": "RT 2 / RW 2",
+                "riwayat_pertumbuhan": [
+                    {
+                        "bulan_ke": 1,
+                        "berat_badan": 3,
+                        "tinggi_badan": 51,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 2,
+                        "berat_badan": 5,
+                        "tinggi_badan": 56,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 3,
+                        "berat_badan": 5,
+                        "tinggi_badan": 58,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 4,
+                        "berat_badan": 6,
+                        "tinggi_badan": 62,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 5,
+                        "berat_badan": 6,
+                        "tinggi_badan": 63,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 6,
+                        "berat_badan": 6,
+                        "tinggi_badan": 64,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 7,
+                        "berat_badan": 6,
+                        "tinggi_badan": 64,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 8,
+                        "berat_badan": 7,
+                        "tinggi_badan": 68,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 9,
+                        "berat_badan": 7,
+                        "tinggi_badan": 69,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 11,
+                        "berat_badan": 7,
+                        "tinggi_badan": 70,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 12,
+                        "berat_badan": 8,
+                        "tinggi_badan": 70,
+                        "lila": 14,
+                        "liko": 45
+                    },
+                    {
+                        "bulan_ke": 14,
+                        "berat_badan": 8,
+                        "tinggi_badan": 70,
+                        "lila": 14,
+                        "liko": 45
+                    },
+                    {
+                        "bulan_ke": 15,
+                        "berat_badan": 8,
+                        "tinggi_badan": 73,
+                        "lila": 14,
+                        "liko": 46
+                    },
+                    {
+                        "bulan_ke": 16,
+                        "berat_badan": 8,
+                        "tinggi_badan": 73,
+                        "lila": 14,
+                        "liko": 46
+                    },
+                    {
+                        "bulan_ke": 17,
+                        "berat_badan": 9,
+                        "tinggi_badan": 73,
+                        "lila": 15,
+                        "liko": 47
+                    },
+                    {
+                        "bulan_ke": 18,
+                        "berat_badan": 9,
+                        "tinggi_badan": 73,
+                        "lila": 15,
+                        "liko": 47
+                    },
+                    {
+                        "bulan_ke": 19,
+                        "berat_badan": 9,
+                        "tinggi_badan": 77,
+                        "lila": 15,
+                        "liko": 47
+                    }
+                ]
+            },
+            {
+                "nama_anak": "SYAKIR HAIDAR PRATAMA",
+                "nama_ibu": "SILVIANA DEVIKA ASTRIDA",
+                "jenis_kelamin": "Laki-Laki",
+                "tempat_lahir": "KABUPATEN KUDUS",
+                "tanggal_lahir": "2024-12-10",
+                "alamat": "RT 2 / RW 2",
+                "riwayat_pertumbuhan": [
+                    {
+                        "bulan_ke": 1,
+                        "berat_badan": 5,
+                        "tinggi_badan": 56,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 2,
+                        "berat_badan": 7,
+                        "tinggi_badan": 63,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 4,
+                        "berat_badan": 8,
+                        "tinggi_badan": 64,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 5,
+                        "berat_badan": 9,
+                        "tinggi_badan": 64,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 6,
+                        "berat_badan": 9,
+                        "tinggi_badan": 64,
+                        "lila": 16,
+                        "liko": 45
+                    },
+                    {
+                        "bulan_ke": 7,
+                        "berat_badan": 9,
+                        "tinggi_badan": 68,
+                        "lila": 18,
+                        "liko": 45
+                    },
+                    {
+                        "bulan_ke": 8,
+                        "berat_badan": 9,
+                        "tinggi_badan": 72,
+                        "lila": 18,
+                        "liko": 45
+                    },
+                    {
+                        "bulan_ke": 9,
+                        "berat_badan": 9,
+                        "tinggi_badan": 72,
+                        "lila": 18,
+                        "liko": 45
+                    },
+                    {
+                        "bulan_ke": 10,
+                        "berat_badan": 9,
+                        "tinggi_badan": 72,
+                        "lila": 17,
+                        "liko": 45
+                    },
+                    {
+                        "bulan_ke": 11,
+                        "berat_badan": 9,
+                        "tinggi_badan": 73,
+                        "lila": 18,
+                        "liko": 45
+                    },
+                    {
+                        "bulan_ke": 12,
+                        "berat_badan": 9,
+                        "tinggi_badan": 76,
+                        "lila": 18,
+                        "liko": 46
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "rw": "03",
+        "data_anak": [
+            {
+                "nama_anak": "ARDHANI WIJAYA",
+                "nama_ibu": "KHOLIFAH",
+                "jenis_kelamin": "Laki-Laki",
+                "tempat_lahir": "Kudus",
+                "tanggal_lahir": "2022-05-29",
+                "alamat": "RT 2 / RW 3",
+                "riwayat_pertumbuhan": [
+                    {
+                        "bulan_ke": 8,
+                        "berat_badan": 8,
+                        "tinggi_badan": 68,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 10,
+                        "berat_badan": 8,
+                        "tinggi_badan": 71,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 11,
+                        "berat_badan": 9,
+                        "tinggi_badan": 73,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 12,
+                        "berat_badan": 9,
+                        "tinggi_badan": 73,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 14,
+                        "berat_badan": 9,
+                        "tinggi_badan": 73,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 16,
+                        "berat_badan": 9,
+                        "tinggi_badan": 78,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 17,
+                        "berat_badan": 9,
+                        "tinggi_badan": 78,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 18,
+                        "berat_badan": 9,
+                        "tinggi_badan": 78,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 19,
+                        "berat_badan": 10,
+                        "tinggi_badan": 78,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 20,
+                        "berat_badan": 10,
+                        "tinggi_badan": 80,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 21,
+                        "berat_badan": 10,
+                        "tinggi_badan": 80,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 22,
+                        "berat_badan": 10,
+                        "tinggi_badan": 81,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 24,
+                        "berat_badan": 11,
+                        "tinggi_badan": 82,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 25,
+                        "berat_badan": 11,
+                        "tinggi_badan": 84,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 26,
+                        "berat_badan": 11,
+                        "tinggi_badan": 85,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 27,
+                        "berat_badan": 12,
+                        "tinggi_badan": 85,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 28,
+                        "berat_badan": 11,
+                        "tinggi_badan": 85,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 29,
+                        "berat_badan": 12,
+                        "tinggi_badan": 85,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 30,
+                        "berat_badan": 13,
+                        "tinggi_badan": 87,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 33,
+                        "berat_badan": 12,
+                        "tinggi_badan": 88,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 35,
+                        "berat_badan": 12,
+                        "tinggi_badan": 89,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 36,
+                        "berat_badan": 12,
+                        "tinggi_badan": 90,
+                        "lila": 16,
+                        "liko": 49
+                    },
+                    {
+                        "bulan_ke": 39,
+                        "berat_badan": 12,
+                        "tinggi_badan": 90,
+                        "lila": 16,
+                        "liko": 49
+                    },
+                    {
+                        "bulan_ke": 42,
+                        "berat_badan": 13,
+                        "tinggi_badan": 92,
+                        "lila": 16,
+                        "liko": 50
+                    }
+                ]
+            },
+            {
+                "nama_anak": "ARSHAKA ABHIMANYU",
+                "nama_ibu": "NADIA CHARMENITA",
+                "jenis_kelamin": "Laki-Laki",
+                "tempat_lahir": "Kudus",
+                "tanggal_lahir": "2022-01-22",
+                "alamat": "RT 3 / RW 3",
+                "riwayat_pertumbuhan": [
+                    {
+                        "bulan_ke": 13,
+                        "berat_badan": 8,
+                        "tinggi_badan": 74,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 14,
+                        "berat_badan": 8,
+                        "tinggi_badan": 76,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 16,
+                        "berat_badan": 9,
+                        "tinggi_badan": 76,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 17,
+                        "berat_badan": 9,
+                        "tinggi_badan": 76,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 18,
+                        "berat_badan": 9,
+                        "tinggi_badan": 76,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 19,
+                        "berat_badan": 9,
+                        "tinggi_badan": 78,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 21,
+                        "berat_badan": 9,
+                        "tinggi_badan": 78,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 22,
+                        "berat_badan": 9,
+                        "tinggi_badan": 79,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 23,
+                        "berat_badan": 9,
+                        "tinggi_badan": 80,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 24,
+                        "berat_badan": 10,
+                        "tinggi_badan": 81,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 31,
+                        "berat_badan": 10,
+                        "tinggi_badan": 87,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 33,
+                        "berat_badan": 10,
+                        "tinggi_badan": 87,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 34,
+                        "berat_badan": 10,
+                        "tinggi_badan": 87,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 35,
+                        "berat_badan": 11,
+                        "tinggi_badan": 88,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 36,
+                        "berat_badan": 11,
+                        "tinggi_badan": 91,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 42,
+                        "berat_badan": 11,
+                        "tinggi_badan": 91,
+                        "lila": 15,
+                        "liko": 50
+                    },
+                    {
+                        "bulan_ke": 45,
+                        "berat_badan": 13,
+                        "tinggi_badan": 95,
+                        "lila": 15,
+                        "liko": 50
+                    }
+                ]
+            },
+            {
+                "nama_anak": "AYUNDHA BAYUMI GARWITA SETYARINI",
+                "nama_ibu": "NOVANDHA CHAYATUUN NUFUS MINA ASTRI",
+                "jenis_kelamin": "Perempuan",
+                "tempat_lahir": "KUDUS",
+                "tanggal_lahir": "2022-12-06",
+                "alamat": "RT 3 / RW 3",
+                "riwayat_pertumbuhan": [
+                    {
+                        "bulan_ke": 7,
+                        "berat_badan": 8,
+                        "tinggi_badan": 65,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 8,
+                        "berat_badan": 8,
+                        "tinggi_badan": 68,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 9,
+                        "berat_badan": 8,
+                        "tinggi_badan": 70,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 11,
+                        "berat_badan": 9,
+                        "tinggi_badan": 71,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 12,
+                        "berat_badan": 9,
+                        "tinggi_badan": 72,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 13,
+                        "berat_badan": 9,
+                        "tinggi_badan": 72,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 14,
+                        "berat_badan": 9,
+                        "tinggi_badan": 72,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 15,
+                        "berat_badan": 10,
+                        "tinggi_badan": 74,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 16,
+                        "berat_badan": 9,
+                        "tinggi_badan": 75,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 17,
+                        "berat_badan": 10,
+                        "tinggi_badan": 75,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 19,
+                        "berat_badan": 10,
+                        "tinggi_badan": 75,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 20,
+                        "berat_badan": 10,
+                        "tinggi_badan": 77,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 22,
+                        "berat_badan": 10,
+                        "tinggi_badan": 80,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 23,
+                        "berat_badan": 10,
+                        "tinggi_badan": 81,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 24,
+                        "berat_badan": 11,
+                        "tinggi_badan": 83,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 25,
+                        "berat_badan": 11,
+                        "tinggi_badan": 84,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 27,
+                        "berat_badan": 11,
+                        "tinggi_badan": 85,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 28,
+                        "berat_badan": 11,
+                        "tinggi_badan": 85,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 31,
+                        "berat_badan": 12,
+                        "tinggi_badan": 87,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 35,
+                        "berat_badan": 12,
+                        "tinggi_badan": 87,
+                        "lila": 15,
+                        "liko": 46
+                    },
+                    {
+                        "bulan_ke": 36,
+                        "berat_badan": 12,
+                        "tinggi_badan": 91,
+                        "lila": 16,
+                        "liko": 48
+                    },
+                    {
+                        "bulan_ke": 42,
+                        "berat_badan": 13,
+                        "tinggi_badan": 94,
+                        "lila": 16,
+                        "liko": 49
+                    }
+                ]
+            },
+            {
+                "nama_anak": "GHINA AGHNIA ASRI",
+                "nama_ibu": "EMY SULASTRI",
+                "jenis_kelamin": "Perempuan",
+                "tempat_lahir": "Kabupaten Kudus",
+                "tanggal_lahir": "2022-12-01",
+                "alamat": "RT 4 / RW 3",
+                "riwayat_pertumbuhan": [
+                    {
+                        "bulan_ke": 12,
+                        "berat_badan": 9,
+                        "tinggi_badan": 76,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 13,
+                        "berat_badan": 9,
+                        "tinggi_badan": 77,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 14,
+                        "berat_badan": 9,
+                        "tinggi_badan": 77,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 16,
+                        "berat_badan": 10,
+                        "tinggi_badan": 76,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 17,
+                        "berat_badan": 10,
+                        "tinggi_badan": 77,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 18,
+                        "berat_badan": 11,
+                        "tinggi_badan": 78,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 19,
+                        "berat_badan": 11,
+                        "tinggi_badan": 79,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 20,
+                        "berat_badan": 11,
+                        "tinggi_badan": 79,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 21,
+                        "berat_badan": 12,
+                        "tinggi_badan": 80,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 22,
+                        "berat_badan": 12,
+                        "tinggi_badan": 81,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 24,
+                        "berat_badan": 13,
+                        "tinggi_badan": 83,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 25,
+                        "berat_badan": 13,
+                        "tinggi_badan": 85,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 28,
+                        "berat_badan": 13,
+                        "tinggi_badan": 87,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 30,
+                        "berat_badan": 14,
+                        "tinggi_badan": 88,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 31,
+                        "berat_badan": 13,
+                        "tinggi_badan": 89,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 32,
+                        "berat_badan": 13,
+                        "tinggi_badan": 90,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 33,
+                        "berat_badan": 14,
+                        "tinggi_badan": 90,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 36,
+                        "berat_badan": 15,
+                        "tinggi_badan": 92,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 39,
+                        "berat_badan": 15,
+                        "tinggi_badan": 94,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 42,
+                        "berat_badan": 16,
+                        "tinggi_badan": 96,
+                        "lila": 18,
+                        "liko": 49
+                    }
+                ]
+            },
+            {
+                "nama_anak": "GRACE NATHANIA",
+                "nama_ibu": "STEFFANIA CHRISTANTI",
+                "jenis_kelamin": "Perempuan",
+                "tempat_lahir": "Kudus",
+                "tanggal_lahir": "2020-05-22",
+                "alamat": "RT 3 / RW 3",
+                "riwayat_pertumbuhan": [
+                    {
+                        "bulan_ke": 33,
+                        "berat_badan": 16,
+                        "tinggi_badan": 97,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 34,
+                        "berat_badan": 15,
+                        "tinggi_badan": 97,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 36,
+                        "berat_badan": 16,
+                        "tinggi_badan": 97,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 39,
+                        "berat_badan": 17,
+                        "tinggi_badan": 98,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 42,
+                        "berat_badan": 17,
+                        "tinggi_badan": 103,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 45,
+                        "berat_badan": 17,
+                        "tinggi_badan": 105,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 48,
+                        "berat_badan": 18,
+                        "tinggi_badan": 105,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 51,
+                        "berat_badan": 17,
+                        "tinggi_badan": 107,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 57,
+                        "berat_badan": 18,
+                        "tinggi_badan": 110,
+                        "lila": 0,
+                        "liko": 0
+                    }
+                ]
+            },
+            {
+                "nama_anak": "HAIDAR AZKANA ZAFRAN",
+                "nama_ibu": "NOOR LAILIA FEBIANI",
+                "jenis_kelamin": "Laki-Laki",
+                "tempat_lahir": "KUDUS",
+                "tanggal_lahir": "2023-06-26",
+                "alamat": "RT 5 / RW 3",
+                "riwayat_pertumbuhan": [
+                    {
+                        "bulan_ke": 1,
+                        "berat_badan": 3,
+                        "tinggi_badan": 48,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 2,
+                        "berat_badan": 4,
+                        "tinggi_badan": 55,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 3,
+                        "berat_badan": 4,
+                        "tinggi_badan": 59,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 4,
+                        "berat_badan": 5,
+                        "tinggi_badan": 59,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 5,
+                        "berat_badan": 5,
+                        "tinggi_badan": 65,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 6,
+                        "berat_badan": 5,
+                        "tinggi_badan": 67,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 7,
+                        "berat_badan": 6,
+                        "tinggi_badan": 68,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 8,
+                        "berat_badan": 6,
+                        "tinggi_badan": 68,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 11,
+                        "berat_badan": 7,
+                        "tinggi_badan": 72,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 12,
+                        "berat_badan": 7,
+                        "tinggi_badan": 72,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 13,
+                        "berat_badan": 9,
+                        "tinggi_badan": 76,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 18,
+                        "berat_badan": 8,
+                        "tinggi_badan": 78,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 19,
+                        "berat_badan": 10,
+                        "tinggi_badan": 78,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 20,
+                        "berat_badan": 10,
+                        "tinggi_badan": 83,
+                        "lila": 15,
+                        "liko": 48
+                    },
+                    {
+                        "bulan_ke": 24,
+                        "berat_badan": 11,
+                        "tinggi_badan": 85,
+                        "lila": 16,
+                        "liko": 48
+                    },
+                    {
+                        "bulan_ke": 27,
+                        "berat_badan": 12,
+                        "tinggi_badan": 88,
+                        "lila": 16,
+                        "liko": 49
+                    },
+                    {
+                        "bulan_ke": 29,
+                        "berat_badan": 12,
+                        "tinggi_badan": 88,
+                        "lila": 16,
+                        "liko": 49
+                    },
+                    {
+                        "bulan_ke": 30,
+                        "berat_badan": 12,
+                        "tinggi_badan": 88,
+                        "lila": 16,
+                        "liko": 49
+                    }
+                ]
+            },
+            {
+                "nama_anak": "JULIAN ARFHAZ ALFARENDRA",
+                "nama_ibu": "TRI SEPTIYANINGSIH",
+                "jenis_kelamin": "Laki-Laki",
+                "tempat_lahir": "Kudus",
+                "tanggal_lahir": "2023-07-25",
+                "alamat": "RT 2 / RW 3",
+                "riwayat_pertumbuhan": [
+                    {
+                        "bulan_ke": 22,
+                        "berat_badan": 11,
+                        "tinggi_badan": 82,
+                        "lila": 16,
+                        "liko": 49
+                    },
+                    {
+                        "bulan_ke": 23,
+                        "berat_badan": 12,
+                        "tinggi_badan": 83,
+                        "lila": 17,
+                        "liko": 47
+                    },
+                    {
+                        "bulan_ke": 24,
+                        "berat_badan": 12,
+                        "tinggi_badan": 84,
+                        "lila": 16,
+                        "liko": 49
+                    },
+                    {
+                        "bulan_ke": 25,
+                        "berat_badan": 12,
+                        "tinggi_badan": 84,
+                        "lila": 16,
+                        "liko": 49
+                    },
+                    {
+                        "bulan_ke": 26,
+                        "berat_badan": 12,
+                        "tinggi_badan": 87,
+                        "lila": 16,
+                        "liko": 49
+                    },
+                    {
+                        "bulan_ke": 27,
+                        "berat_badan": 12,
+                        "tinggi_badan": 88,
+                        "lila": 16,
+                        "liko": 49
+                    },
+                    {
+                        "bulan_ke": 28,
+                        "berat_badan": 12,
+                        "tinggi_badan": 90,
+                        "lila": 16,
+                        "liko": 49
+                    },
+                    {
+                        "bulan_ke": 29,
+                        "berat_badan": 12,
+                        "tinggi_badan": 90,
+                        "lila": 16,
+                        "liko": 50
+                    }
+                ]
+            },
+            {
+                "nama_anak": "MUHAMMAD MUFAZZAL ARDAN ATTAQI",
+                "nama_ibu": "ARINDA SAFITRI",
+                "jenis_kelamin": "Laki-Laki",
+                "tempat_lahir": "Kudus",
+                "tanggal_lahir": "2022-04-11",
+                "alamat": "RT 3 / RW 3",
+                "riwayat_pertumbuhan": [
+                    {
+                        "bulan_ke": 2,
+                        "berat_badan": 7,
+                        "tinggi_badan": 61,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 3,
+                        "berat_badan": 8,
+                        "tinggi_badan": 65,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 4,
+                        "berat_badan": 8,
+                        "tinggi_badan": 68,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 6,
+                        "berat_badan": 10,
+                        "tinggi_badan": 71,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 7,
+                        "berat_badan": 11,
+                        "tinggi_badan": 74,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 8,
+                        "berat_badan": 11,
+                        "tinggi_badan": 75,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 9,
+                        "berat_badan": 11,
+                        "tinggi_badan": 76,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 10,
+                        "berat_badan": 11,
+                        "tinggi_badan": 77,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 11,
+                        "berat_badan": 11,
+                        "tinggi_badan": 77,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 12,
+                        "berat_badan": 11,
+                        "tinggi_badan": 77,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 13,
+                        "berat_badan": 11,
+                        "tinggi_badan": 78,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 14,
+                        "berat_badan": 12,
+                        "tinggi_badan": 78,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 15,
+                        "berat_badan": 12,
+                        "tinggi_badan": 78,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 17,
+                        "berat_badan": 12,
+                        "tinggi_badan": 80,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 18,
+                        "berat_badan": 13,
+                        "tinggi_badan": 83,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 19,
+                        "berat_badan": 13,
+                        "tinggi_badan": 85,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 20,
+                        "berat_badan": 14,
+                        "tinggi_badan": 87,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 21,
+                        "berat_badan": 14,
+                        "tinggi_badan": 87,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 22,
+                        "berat_badan": 14,
+                        "tinggi_badan": 89,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 23,
+                        "berat_badan": 15,
+                        "tinggi_badan": 90,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 26,
+                        "berat_badan": 14,
+                        "tinggi_badan": 96,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 27,
+                        "berat_badan": 15,
+                        "tinggi_badan": 96,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 29,
+                        "berat_badan": 16,
+                        "tinggi_badan": 96,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 30,
+                        "berat_badan": 17,
+                        "tinggi_badan": 96,
+                        "lila": 18,
+                        "liko": 49
+                    },
+                    {
+                        "bulan_ke": 31,
+                        "berat_badan": 17,
+                        "tinggi_badan": 96,
+                        "lila": 17,
+                        "liko": 49
+                    },
+                    {
+                        "bulan_ke": 32,
+                        "berat_badan": 18,
+                        "tinggi_badan": 97,
+                        "lila": 18,
+                        "liko": 50
+                    },
+                    {
+                        "bulan_ke": 33,
+                        "berat_badan": 19,
+                        "tinggi_badan": 98,
+                        "lila": 19,
+                        "liko": 50
+                    },
+                    {
+                        "bulan_ke": 34,
+                        "berat_badan": 19,
+                        "tinggi_badan": 98,
+                        "lila": 18,
+                        "liko": 50
+                    },
+                    {
+                        "bulan_ke": 35,
+                        "berat_badan": 18,
+                        "tinggi_badan": 98,
+                        "lila": 18,
+                        "liko": 50
+                    },
+                    {
+                        "bulan_ke": 36,
+                        "berat_badan": 19,
+                        "tinggi_badan": 102,
+                        "lila": 18,
+                        "liko": 50
+                    }
+                ]
+            },
+            {
+                "nama_anak": "MUHAMMAD RAFFASHA NALENDRA",
+                "nama_ibu": "ELVY FARKHINA",
+                "jenis_kelamin": "Laki-Laki",
+                "tempat_lahir": "Kudus",
+                "tanggal_lahir": "2021-08-28",
+                "alamat": "RT 4 / RW 3",
+                "riwayat_pertumbuhan": [
+                    {
+                        "bulan_ke": 17,
+                        "berat_badan": 9,
+                        "tinggi_badan": 75,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 18,
+                        "berat_badan": 11,
+                        "tinggi_badan": 80,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 21,
+                        "berat_badan": 10,
+                        "tinggi_badan": 80,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 22,
+                        "berat_badan": 9,
+                        "tinggi_badan": 80,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 23,
+                        "berat_badan": 10,
+                        "tinggi_badan": 80,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 24,
+                        "berat_badan": 11,
+                        "tinggi_badan": 80,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 25,
+                        "berat_badan": 10,
+                        "tinggi_badan": 80,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 26,
+                        "berat_badan": 10,
+                        "tinggi_badan": 83,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 28,
+                        "berat_badan": 10,
+                        "tinggi_badan": 85,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 29,
+                        "berat_badan": 11,
+                        "tinggi_badan": 84,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 30,
+                        "berat_badan": 11,
+                        "tinggi_badan": 85,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 31,
+                        "berat_badan": 11,
+                        "tinggi_badan": 88,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 33,
+                        "berat_badan": 12,
+                        "tinggi_badan": 90,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 34,
+                        "berat_badan": 11,
+                        "tinggi_badan": 91,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 35,
+                        "berat_badan": 12,
+                        "tinggi_badan": 91,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 36,
+                        "berat_badan": 20,
+                        "tinggi_badan": 91,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 45,
+                        "berat_badan": 14,
+                        "tinggi_badan": 96,
+                        "lila": 15,
+                        "liko": 52
+                    },
+                    {
+                        "bulan_ke": 48,
+                        "berat_badan": 14,
+                        "tinggi_badan": 98,
+                        "lila": 15,
+                        "liko": 55
+                    },
+                    {
+                        "bulan_ke": 51,
+                        "berat_badan": 14,
+                        "tinggi_badan": 98,
+                        "lila": 16,
+                        "liko": 55
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "rw": "04",
+        "data_anak": [
+            {
+                "nama_anak": "APRILIA NUR LATIFAH",
+                "nama_ibu": "ALFINA NOOR HIDAYATUN NIKMAH",
+                "jenis_kelamin": "Perempuan",
+                "tempat_lahir": "Kudus",
+                "tanggal_lahir": "2021-08-04",
+                "alamat": "RT 4 / RW 4",
+                "riwayat_pertumbuhan": [
+                    {
+                        "bulan_ke": 25,
+                        "berat_badan": 11,
+                        "tinggi_badan": 84,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 28,
+                        "berat_badan": 14,
+                        "tinggi_badan": 84,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 31,
+                        "berat_badan": 14,
+                        "tinggi_badan": 87,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 32,
+                        "berat_badan": 14,
+                        "tinggi_badan": 88,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 34,
+                        "berat_badan": 15,
+                        "tinggi_badan": 88,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 39,
+                        "berat_badan": 15,
+                        "tinggi_badan": 92,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 51,
+                        "berat_badan": 16,
+                        "tinggi_badan": 97,
+                        "lila": 20,
+                        "liko": 47
+                    }
+                ]
+            },
+            {
+                "nama_anak": "FIONA EMMANUELLA RIJANTO",
+                "nama_ibu": "FANI DWI JAYANTI",
+                "jenis_kelamin": "Perempuan",
+                "tempat_lahir": "Kudus",
+                "tanggal_lahir": "2021-07-21",
+                "alamat": "RT 7 / RW 4",
+                "riwayat_pertumbuhan": [
+                    {
+                        "bulan_ke": 18,
+                        "berat_badan": 10,
+                        "tinggi_badan": 82,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 20,
+                        "berat_badan": 11,
+                        "tinggi_badan": 77,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 22,
+                        "berat_badan": 11,
+                        "tinggi_badan": 83,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 23,
+                        "berat_badan": 11,
+                        "tinggi_badan": 84,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 24,
+                        "berat_badan": 11,
+                        "tinggi_badan": 84,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 25,
+                        "berat_badan": 12,
+                        "tinggi_badan": 84,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 26,
+                        "berat_badan": 12,
+                        "tinggi_badan": 85,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 27,
+                        "berat_badan": 13,
+                        "tinggi_badan": 86,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 28,
+                        "berat_badan": 14,
+                        "tinggi_badan": 87,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 29,
+                        "berat_badan": 14,
+                        "tinggi_badan": 87,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 31,
+                        "berat_badan": 16,
+                        "tinggi_badan": 90,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 33,
+                        "berat_badan": 16,
+                        "tinggi_badan": 92,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 35,
+                        "berat_badan": 18,
+                        "tinggi_badan": 95,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 36,
+                        "berat_badan": 18,
+                        "tinggi_badan": 95,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 39,
+                        "berat_badan": 18,
+                        "tinggi_badan": 96,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 42,
+                        "berat_badan": 18,
+                        "tinggi_badan": 99,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 45,
+                        "berat_badan": 19,
+                        "tinggi_badan": 105,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 48,
+                        "berat_badan": 21,
+                        "tinggi_badan": 106,
+                        "lila": 23,
+                        "liko": 51
+                    }
+                ]
+            },
+            {
+                "nama_anak": "GIBRAN SAKHA YOHARA",
+                "nama_ibu": "ENDANG SETYO DEWI",
+                "jenis_kelamin": "Laki-Laki",
+                "tempat_lahir": "Kudus",
+                "tanggal_lahir": "2021-07-14",
+                "alamat": "RT 6 / RW 4",
+                "riwayat_pertumbuhan": [
+                    {
+                        "bulan_ke": 22,
+                        "berat_badan": 11,
+                        "tinggi_badan": 82,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 23,
+                        "berat_badan": 12,
+                        "tinggi_badan": 85,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 24,
+                        "berat_badan": 11,
+                        "tinggi_badan": 87,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 25,
+                        "berat_badan": 12,
+                        "tinggi_badan": 89,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 26,
+                        "berat_badan": 12,
+                        "tinggi_badan": 89,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 27,
+                        "berat_badan": 12,
+                        "tinggi_badan": 91,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 31,
+                        "berat_badan": 13,
+                        "tinggi_badan": 85,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 33,
+                        "berat_badan": 12,
+                        "tinggi_badan": 93,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 34,
+                        "berat_badan": 13,
+                        "tinggi_badan": 94,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 35,
+                        "berat_badan": 13,
+                        "tinggi_badan": 94,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 45,
+                        "berat_badan": 14,
+                        "tinggi_badan": 101,
+                        "lila": 0,
+                        "liko": 0
+                    }
+                ]
+            },
+            {
+                "nama_anak": "LIONY CLARISA WIJAYA",
+                "nama_ibu": "NABILLAH ALIFA WIJAYANTI",
+                "jenis_kelamin": "Perempuan",
+                "tempat_lahir": "KUDUS",
+                "tanggal_lahir": "2023-07-12",
+                "alamat": "RT 4 / RW 4",
+                "riwayat_pertumbuhan": [
+                    {
+                        "bulan_ke": 1,
+                        "berat_badan": 4,
+                        "tinggi_badan": 54,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 2,
+                        "berat_badan": 5,
+                        "tinggi_badan": 56,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 3,
+                        "berat_badan": 6,
+                        "tinggi_badan": 60,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 4,
+                        "berat_badan": 7,
+                        "tinggi_badan": 62,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 5,
+                        "berat_badan": 7,
+                        "tinggi_badan": 68,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 7,
+                        "berat_badan": 7,
+                        "tinggi_badan": 69,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 9,
+                        "berat_badan": 8,
+                        "tinggi_badan": 71,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 10,
+                        "berat_badan": 8,
+                        "tinggi_badan": 72,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 11,
+                        "berat_badan": 9,
+                        "tinggi_badan": 76,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 12,
+                        "berat_badan": 9,
+                        "tinggi_badan": 76,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 13,
+                        "berat_badan": 10,
+                        "tinggi_badan": 78,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 14,
+                        "berat_badan": 11,
+                        "tinggi_badan": 80,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 15,
+                        "berat_badan": 10,
+                        "tinggi_badan": 77,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 16,
+                        "berat_badan": 10,
+                        "tinggi_badan": 77,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 17,
+                        "berat_badan": 11,
+                        "tinggi_badan": 81,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 18,
+                        "berat_badan": 12,
+                        "tinggi_badan": 80,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 19,
+                        "berat_badan": 13,
+                        "tinggi_badan": 85,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 24,
+                        "berat_badan": 13,
+                        "tinggi_badan": 88,
+                        "lila": 19,
+                        "liko": 47
+                    },
+                    {
+                        "bulan_ke": 28,
+                        "berat_badan": 15,
+                        "tinggi_badan": 89,
+                        "lila": 20,
+                        "liko": 47
+                    },
+                    {
+                        "bulan_ke": 29,
+                        "berat_badan": 16,
+                        "tinggi_badan": 91,
+                        "lila": 20,
+                        "liko": 48
+                    }
+                ]
+            },
+            {
+                "nama_anak": "NADA ZUNIA PUTRI",
+                "nama_ibu": "ALFINA NOOR HIDAYATUN NIKMAH",
+                "jenis_kelamin": "Perempuan",
+                "tempat_lahir": "Kabupaten Kudus",
+                "tanggal_lahir": "2024-06-13",
+                "alamat": "RT 4 / RW 4",
+                "riwayat_pertumbuhan": [
+                    {
+                        "bulan_ke": 2,
+                        "berat_badan": 5,
+                        "tinggi_badan": 58,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 3,
+                        "berat_badan": 6,
+                        "tinggi_badan": 60,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 8,
+                        "berat_badan": 18,
+                        "tinggi_badan": 66,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 12,
+                        "berat_badan": 9,
+                        "tinggi_badan": 72,
+                        "lila": 18,
+                        "liko": 44
+                    },
+                    {
+                        "bulan_ke": 13,
+                        "berat_badan": 10,
+                        "tinggi_badan": 76,
+                        "lila": 19,
+                        "liko": 45
+                    },
+                    {
+                        "bulan_ke": 18,
+                        "berat_badan": 10,
+                        "tinggi_badan": 75,
+                        "lila": 18,
+                        "liko": 46
+                    }
+                ]
+            },
+            {
+                "nama_anak": "RAFKA EVANO KAIVANDRA",
+                "nama_ibu": "ERMA HALIDA NOVIARINI",
+                "jenis_kelamin": "Laki-Laki",
+                "tempat_lahir": "Kudus",
+                "tanggal_lahir": "2022-05-15",
+                "alamat": "RT 2 / RW 4",
+                "riwayat_pertumbuhan": [
+                    {
+                        "bulan_ke": 21,
+                        "berat_badan": 11,
+                        "tinggi_badan": 83,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 22,
+                        "berat_badan": 11,
+                        "tinggi_badan": 83,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 24,
+                        "berat_badan": 14,
+                        "tinggi_badan": 84,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 26,
+                        "berat_badan": 12,
+                        "tinggi_badan": 87,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 32,
+                        "berat_badan": 12,
+                        "tinggi_badan": 89,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 33,
+                        "berat_badan": 12,
+                        "tinggi_badan": 91,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 35,
+                        "berat_badan": 13,
+                        "tinggi_badan": 92,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 42,
+                        "berat_badan": 14,
+                        "tinggi_badan": 96,
+                        "lila": 18,
+                        "liko": 50
+                    }
+                ]
+            },
+            {
+                "nama_anak": "REVANA PUTRI RISKI",
+                "nama_ibu": "NURUL FAJARRIMA",
+                "jenis_kelamin": "Perempuan",
+                "tempat_lahir": "Kudus",
+                "tanggal_lahir": "2022-07-25",
+                "alamat": "RT 4 / RW 4",
+                "riwayat_pertumbuhan": [
+                    {
+                        "bulan_ke": 5,
+                        "berat_badan": 6,
+                        "tinggi_badan": 65,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 6,
+                        "berat_badan": 7,
+                        "tinggi_badan": 68,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 7,
+                        "berat_badan": 7,
+                        "tinggi_badan": 68,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 9,
+                        "berat_badan": 7,
+                        "tinggi_badan": 71,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 10,
+                        "berat_badan": 7,
+                        "tinggi_badan": 71,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 11,
+                        "berat_badan": 7,
+                        "tinggi_badan": 72,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 12,
+                        "berat_badan": 7,
+                        "tinggi_badan": 72,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 14,
+                        "berat_badan": 7,
+                        "tinggi_badan": 72,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 16,
+                        "berat_badan": 7,
+                        "tinggi_badan": 75,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 17,
+                        "berat_badan": 9,
+                        "tinggi_badan": 75,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 18,
+                        "berat_badan": 8,
+                        "tinggi_badan": 73,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 19,
+                        "berat_badan": 8,
+                        "tinggi_badan": 73,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 21,
+                        "berat_badan": 9,
+                        "tinggi_badan": 75,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 22,
+                        "berat_badan": 8,
+                        "tinggi_badan": 75,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 23,
+                        "berat_badan": 9,
+                        "tinggi_badan": 75,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 24,
+                        "berat_badan": 8,
+                        "tinggi_badan": 75,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 25,
+                        "berat_badan": 9,
+                        "tinggi_badan": 77,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 26,
+                        "berat_badan": 8,
+                        "tinggi_badan": 77,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 27,
+                        "berat_badan": 9,
+                        "tinggi_badan": 82,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 28,
+                        "berat_badan": 9,
+                        "tinggi_badan": 82,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 29,
+                        "berat_badan": 9,
+                        "tinggi_badan": 83,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 30,
+                        "berat_badan": 10,
+                        "tinggi_badan": 84,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 31,
+                        "berat_badan": 10,
+                        "tinggi_badan": 85,
+                        "lila": 0,
+                        "liko": 0
+                    },
+                    {
+                        "bulan_ke": 32,
+                        "berat_badan": 10,
+                        "tinggi_badan": 89,
+                        "lila": 16,
+                        "liko": 44
+                    },
+                    {
+                        "bulan_ke": 34,
+                        "berat_badan": 10,
+                        "tinggi_badan": 89,
+                        "lila": 16,
+                        "liko": 45
+                    }
+                ]
+            }
+        ]
+    }
+]
