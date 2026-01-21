@@ -1,7 +1,7 @@
 -- ==========================================================
 -- SI-PANDA Seed Data (Generated from data_anak.json)
 -- Real data from Posyandu Kudus with Z-Score calculations
--- Generated at: 2026-01-21T14:03:17.590Z
+-- Generated at: 2026-01-21T14:23:44.263Z
 -- ==========================================================
 
 -- Clear existing data
@@ -148,7 +148,7 @@ INSERT INTO "pengukuran" ("pengukuran_id", "anak_id", "tanggal", "berat_badan", 
 ('m0006021', 'a0006', '2025-07-26', 10, 75, 29, 'BB Kurang', 'Sangat Pendek', 'Obesitas', NOW(), NOW()),
 ('m0006022', 'a0006', '2025-08-26', 10, 79, 30, 'BB Kurang', 'Sangat Pendek', 'Obesitas', NOW(), NOW()),
 ('m0006023', 'a0006', '2025-09-26', 10, 80, 31, 'BB Kurang', 'Sangat Pendek', 'Gizi Lebih', NOW(), NOW()),
-('m0006024', 'a0006', '2025-11-26', 10, 22, 33, 'BB Kurang', 'Sangat Pendek', 'Obesitas', NOW(), NOW()),
+('m0006024', 'a0006', '2025-11-26', 10, 82, 33, 'BB Kurang', 'Sangat Pendek', 'Gizi Lebih', NOW(), NOW()),
 ('m0007001', 'a0007', '2023-07-28', 7, 67, 6, 'Normal', 'Normal', 'Obesitas', NOW(), NOW()),
 ('m0007002', 'a0007', '2023-08-28', 7, 67, 7, 'Normal', 'Normal', 'Obesitas', NOW(), NOW()),
 ('m0007003', 'a0007', '2023-09-28', 8, 67, 8, 'Normal', 'Normal', 'Obesitas', NOW(), NOW()),
@@ -669,7 +669,7 @@ INSERT INTO "pengukuran" ("pengukuran_id", "anak_id", "tanggal", "berat_badan", 
 ('m0036020', 'a0036', '2025-12-12', 16, 91, 29, 'Risiko BB Lebih', 'Normal', 'Obesitas', NOW(), NOW()),
 ('m0037001', 'a0037', '2024-08-13', 5, 58, 2, 'Normal', 'Normal', 'Obesitas', NOW(), NOW()),
 ('m0037002', 'a0037', '2024-09-13', 6, 60, 3, 'Normal', 'Normal', 'Obesitas', NOW(), NOW()),
-('m0037003', 'a0037', '2025-02-13', 18, 66, 8, 'Risiko BB Lebih', 'Normal', 'Obesitas', NOW(), NOW()),
+('m0037003', 'a0037', '2025-02-13', 8, 66, 8, 'Normal', 'Normal', 'Obesitas', NOW(), NOW()),
 ('m0037004', 'a0037', '2025-06-13', 9, 72, 12, 'Normal', 'Normal', 'Obesitas', NOW(), NOW()),
 ('m0037005', 'a0037', '2025-07-13', 10, 76, 13, 'Normal', 'Normal', 'Obesitas', NOW(), NOW()),
 ('m0037006', 'a0037', '2025-12-13', 10, 75, 18, 'Normal', 'Normal', 'Obesitas', NOW(), NOW()),
