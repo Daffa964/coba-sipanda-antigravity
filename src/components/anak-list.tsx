@@ -161,18 +161,10 @@ export default function AnakList({ data, posyanduList, isKader, userPosyanduId }
   return (
     <div className="flex-1 flex flex-col gap-6">
        {/* New "Page Header" Section (Title + Export) */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <h1 className="text-3xl font-black text-[#111714] tracking-tight">Data Anak</h1>
           <p className="text-[#648772] mt-1">Manajemen data balita dan pemantauan gizi Desa Kramat</p>
         </div>
-        <div className="flex items-center gap-3">
-          <button className="bg-white border border-[#dce5df] text-[#111714] px-4 py-2.5 rounded-lg text-sm font-medium flex items-center gap-2 hover:bg-slate-50 transition-colors shadow-sm">
-            <span className="material-symbols-outlined text-lg">download</span>
-            Export Data
-          </button>
-        </div>
-      </div>
 
       {/* Controls Section */}
       <div className="bg-white p-4 rounded-xl shadow-sm border border-[#f0f4f2] flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between">
