@@ -449,33 +449,34 @@ const posyanduValues = rwList.map(rw => {
 
 sql += posyanduValues + ';\n\n';
 
-// Kader names
-const kaderNames = {
-    '01': 'Ibu Sumarni',
-    '02': 'Ibu Darmi',
-    '03': 'Ibu Tumini',
-    '04': 'Ibu Lastri',
-    '05': 'Ibu Wati',
-    '06': 'Ibu Siti'
-};
+// Kader names pool (Real names from user)
+const kaderNamesPool = [
+    'Ibu Hartini', 'Ibu Siti Aminah', 'Ibu Nur Hidayah', 'Yulianti',
+    'Rina Wulandari', 'Dewi Kartika', 'Ibu Susanti', 'Dwi Astuti',
+    'Ibu Retno Widayanti', 'Ibu Mawarni', 'Ani Maryani', 'Wati Ningsih',
+    'Bu Ina Larasati', 'Ibu Eka Puspita', 'Ibu Siti Fatimah', 'Ibu Dewi Sartika'
+];
 
 // USERS
 sql += `-- USERS
 INSERT INTO "user" ("user_id", "nama", "email", "password", "role", "posyandu_id", "tanggal_dibuat", "tanggal_diubah") VALUES
 ('bidan1', 'Bidan Ratna Dewi', 'bidan@kramat.desa.id', '123', 'BIDAN', NULL, NOW(), NOW())`;
 
+let kaderIndex = 0;
 rwList.forEach((rw, i) => {
     const id = rwToPosyanduId(rw);
-    const rwKey = rw.padStart(2, '0');
-    const baseName = kaderNames[rwKey] || `Kader RW ${rw}`;
+    const rwNum = parseInt(rw);
     
-    // 1. Kader Utama (menggunakan nama yang sudah ada)
-    sql += `,\n('kader${parseInt(rw)}_1', '${baseName}', 'kaderrw${rwKey}_1@kramat.desa.id', '123', 'KADER', '${id}', NOW(), NOW())`;
-    
-    // 2. Kader Tambahan (3 orang)
-    for (let j = 2; j <= 4; j++) {
-        const memberName = `Anggota Kader RW ${rw} - ${j}`;
-        sql += `,\n('kader${parseInt(rw)}_${j}', '${memberName}', 'kaderrw${rwKey}_${j}@kramat.desa.id', '123', 'KADER', '${id}', NOW(), NOW())`;
+    // Generate 4 kaders per RW
+    for (let j = 1; j <= 4; j++) {
+        const name = kaderNamesPool[kaderIndex % kaderNamesPool.length];
+        kaderIndex++;
+        
+        // Format Email: rw{RW}.kader{URUT}@gmail.com (Simple & Easy to remember)
+        const email = `rw${rwNum}.kader${j}@gmail.com`;
+        const userId = `kader${rwNum}_${j}`;
+        
+        sql += `,\n('${userId}', '${name}', '${email}', '123', 'KADER', '${id}', NOW(), NOW())`;
     }
 });
 
