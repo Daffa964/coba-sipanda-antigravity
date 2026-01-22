@@ -1,7 +1,7 @@
 -- ==========================================================
 -- SI-PANDA Seed Data (Generated from data_anak.json)
 -- Real data from Posyandu Kudus with Z-Score calculations
--- Generated at: 2026-01-21T23:55:21.676Z
+-- Generated at: 2026-01-22T00:02:23.498Z
 -- ==========================================================
 
 -- Clear existing data
@@ -20,10 +20,22 @@ INSERT INTO "posyandu" ("posyandu_id", "nama", "tanggal_dibuat", "tanggal_diubah
 -- USERS
 INSERT INTO "user" ("user_id", "nama", "email", "password", "role", "posyandu_id", "tanggal_dibuat", "tanggal_diubah") VALUES
 ('bidan1', 'Bidan Ratna Dewi', 'bidan@kramat.desa.id', '123', 'BIDAN', NULL, NOW(), NOW()),
-('kader1', 'Ibu Sumarni', 'kaderrw01@kramat.desa.id', '123', 'KADER', 'rw01', NOW(), NOW()),
-('kader2', 'Ibu Darmi', 'kaderrw02@kramat.desa.id', '123', 'KADER', 'rw02', NOW(), NOW()),
-('kader3', 'Ibu Tumini', 'kaderrw03@kramat.desa.id', '123', 'KADER', 'rw03', NOW(), NOW()),
-('kader4', 'Ibu Lastri', 'kaderrw04@kramat.desa.id', '123', 'KADER', 'rw04', NOW(), NOW());
+('kader1_1', 'Ibu Sumarni', 'kaderrw01_1@kramat.desa.id', '123', 'KADER', 'rw01', NOW(), NOW()),
+('kader1_2', 'Anggota Kader RW 01 - 2', 'kaderrw01_2@kramat.desa.id', '123', 'KADER', 'rw01', NOW(), NOW()),
+('kader1_3', 'Anggota Kader RW 01 - 3', 'kaderrw01_3@kramat.desa.id', '123', 'KADER', 'rw01', NOW(), NOW()),
+('kader1_4', 'Anggota Kader RW 01 - 4', 'kaderrw01_4@kramat.desa.id', '123', 'KADER', 'rw01', NOW(), NOW()),
+('kader2_1', 'Ibu Darmi', 'kaderrw02_1@kramat.desa.id', '123', 'KADER', 'rw02', NOW(), NOW()),
+('kader2_2', 'Anggota Kader RW 02 - 2', 'kaderrw02_2@kramat.desa.id', '123', 'KADER', 'rw02', NOW(), NOW()),
+('kader2_3', 'Anggota Kader RW 02 - 3', 'kaderrw02_3@kramat.desa.id', '123', 'KADER', 'rw02', NOW(), NOW()),
+('kader2_4', 'Anggota Kader RW 02 - 4', 'kaderrw02_4@kramat.desa.id', '123', 'KADER', 'rw02', NOW(), NOW()),
+('kader3_1', 'Ibu Tumini', 'kaderrw03_1@kramat.desa.id', '123', 'KADER', 'rw03', NOW(), NOW()),
+('kader3_2', 'Anggota Kader RW 03 - 2', 'kaderrw03_2@kramat.desa.id', '123', 'KADER', 'rw03', NOW(), NOW()),
+('kader3_3', 'Anggota Kader RW 03 - 3', 'kaderrw03_3@kramat.desa.id', '123', 'KADER', 'rw03', NOW(), NOW()),
+('kader3_4', 'Anggota Kader RW 03 - 4', 'kaderrw03_4@kramat.desa.id', '123', 'KADER', 'rw03', NOW(), NOW()),
+('kader4_1', 'Ibu Lastri', 'kaderrw04_1@kramat.desa.id', '123', 'KADER', 'rw04', NOW(), NOW()),
+('kader4_2', 'Anggota Kader RW 04 - 2', 'kaderrw04_2@kramat.desa.id', '123', 'KADER', 'rw04', NOW(), NOW()),
+('kader4_3', 'Anggota Kader RW 04 - 3', 'kaderrw04_3@kramat.desa.id', '123', 'KADER', 'rw04', NOW(), NOW()),
+('kader4_4', 'Anggota Kader RW 04 - 4', 'kaderrw04_4@kramat.desa.id', '123', 'KADER', 'rw04', NOW(), NOW());
 
 -- ANAK DATA (39 children)
 INSERT INTO "anak" ("anak_id", "nik", "nama", "tempat_lahir", "tanggal_lahir", "jenis_kelamin", "nama_orangtua", "posyandu_id", "tanggal_dibuat", "tanggal_diubah") VALUES

@@ -467,8 +467,16 @@ INSERT INTO "user" ("user_id", "nama", "email", "password", "role", "posyandu_id
 rwList.forEach((rw, i) => {
     const id = rwToPosyanduId(rw);
     const rwKey = rw.padStart(2, '0');
-    const kaderName = kaderNames[rwKey] || `Ibu Kader ${rw}`;
-    sql += `,\n('kader${parseInt(rw)}', '${kaderName}', 'kaderrw${rwKey}@kramat.desa.id', '123', 'KADER', '${id}', NOW(), NOW())`;
+    const baseName = kaderNames[rwKey] || `Kader RW ${rw}`;
+    
+    // 1. Kader Utama (menggunakan nama yang sudah ada)
+    sql += `,\n('kader${parseInt(rw)}_1', '${baseName}', 'kaderrw${rwKey}_1@kramat.desa.id', '123', 'KADER', '${id}', NOW(), NOW())`;
+    
+    // 2. Kader Tambahan (3 orang)
+    for (let j = 2; j <= 4; j++) {
+        const memberName = `Anggota Kader RW ${rw} - ${j}`;
+        sql += `,\n('kader${parseInt(rw)}_${j}', '${memberName}', 'kaderrw${rwKey}_${j}@kramat.desa.id', '123', 'KADER', '${id}', NOW(), NOW())`;
+    }
 });
 
 sql += ';\n\n';
