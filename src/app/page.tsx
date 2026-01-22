@@ -160,48 +160,41 @@ export default function LandingPage() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
               {/* WhatsApp */}
-              <a 
-                href="https://wa.me/6281234567890" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex flex-col items-center gap-4 rounded-xl border border-[#dce5df] bg-white p-8 shadow-sm hover:shadow-md hover:border-primary/30 transition-all group cursor-pointer"
+              <div 
+                className="flex flex-col items-center gap-4 rounded-xl border border-[#dce5df] bg-white p-8 shadow-sm transition-all group cursor-default"
               >
-                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary transition-transform">
                   <span className="material-symbols-outlined text-3xl">chat</span>
                 </div>
                 <div className="flex flex-col gap-1 text-center">
                   <h3 className="text-text-main text-lg font-bold">WhatsApp</h3>
                   <p className="text-text-secondary text-base">+62 812-3456-7890</p>
                 </div>
-              </a>
+              </div>
               {/* Email */}
-              <a 
-                href="mailto:posyandu.kramat@gmail.com" 
-                className="flex flex-col items-center gap-4 rounded-xl border border-[#dce5df] bg-white p-8 shadow-sm hover:shadow-md hover:border-primary/30 transition-all group cursor-pointer"
+              <div 
+                className="flex flex-col items-center gap-4 rounded-xl border border-[#dce5df] bg-white p-8 shadow-sm transition-all group cursor-default"
               >
-                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary transition-transform">
                   <span className="material-symbols-outlined text-3xl">mail</span>
                 </div>
                 <div className="flex flex-col gap-1 text-center">
                   <h3 className="text-text-main text-lg font-bold">Email</h3>
                   <p className="text-text-secondary text-base">posyandu.kramat@gmail.com</p>
                 </div>
-              </a>
+              </div>
               {/* Location */}
-              <a 
-                href="https://maps.google.com/?q=Jl.+Nganguk+Wali+No.1,+Kramat,+Kudus,+Jawa+Tengah" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex flex-col items-center gap-4 rounded-xl border border-[#dce5df] bg-white p-8 shadow-sm hover:shadow-md hover:border-primary/30 transition-all group cursor-pointer"
+              <div 
+                className="flex flex-col items-center gap-4 rounded-xl border border-[#dce5df] bg-white p-8 shadow-sm transition-all group cursor-default"
               >
-                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary transition-transform">
                   <span className="material-symbols-outlined text-3xl">location_on</span>
                 </div>
                 <div className="flex flex-col gap-1 text-center">
                   <h3 className="text-text-main text-lg font-bold">Alamat</h3>
                   <p className="text-text-secondary text-sm leading-relaxed">Jl. Nganguk Wali No.1, Nganguk, Kramat, Kec. Kota Kudus, Kabupaten Kudus, Jawa Tengah 59312</p>
                 </div>
-              </a>
+              </div>
             </div>
           </div>
         </section>
