@@ -261,7 +261,8 @@ coba-sipanda-antigravity/
 │   ├── 04-seed-from-json.sql   # SQL seed dari file JSON
 │   └── seed-production.sql     # SQL seed untuk production
 │
-├── public/                     # Aset statis
+├── public/
+│   └── logo-sipanda.png        # Logo SI-PANDA
 │
 ├── src/
 │   ├── app/
@@ -319,9 +320,7 @@ coba-sipanda-antigravity/
 │
 ├── package.json
 ├── tsconfig.json
-├── next.config.ts
-├── DEPLOY.md                   # Panduan deployment
-└── data_anak.json              # Data anak (sumber seed)
+└── next.config.ts
 ```
 
 ---
@@ -378,9 +377,9 @@ coba-sipanda-antigravity/
 
 ## ☁️ Deployment
 
-Aplikasi ini di-deploy menggunakan **Vercel** + **Supabase**. Panduan lengkap tersedia di file [`DEPLOY.md`](./DEPLOY.md).
+Aplikasi ini di-deploy menggunakan **Vercel** + **Supabase**.
 
-### Ringkasan Deployment
+### Langkah Deployment
 
 1. Buat project database di **Supabase** (region: Singapore)
 2. Deploy repository ke **Vercel**
