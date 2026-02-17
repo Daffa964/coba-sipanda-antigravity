@@ -171,9 +171,33 @@ export default function QRCodeGenerator({
       // Info Labels & Values
       const labelSize = '11px'
       const valueSize = '18px'
-      const gap = 48
+      const baseGap = 40 // Reduced slightly to accommodate potential 2-line names
+      const maxWidth = baseWidth - contentX - 20 // Available width for text
       
       let cursorY = contentY
+
+      // Helper function to wrap text and return new Y position
+      const drawWrappedText = (text: string, x: number, y: number, maxWidth: number, lineHeight: number) => {
+        const words = text.split(' ')
+        let line = ''
+        let currentY = y
+
+        for (let i = 0; i < words.length; i++) {
+          const testLine = line + words[i] + ' '
+          const metrics = ctx.measureText(testLine)
+          const testWidth = metrics.width
+          
+          if (testWidth > maxWidth && i > 0) {
+            ctx.fillText(line, x, currentY)
+            line = words[i] + ' '
+            currentY += lineHeight
+          } else {
+            line = testLine
+          }
+        }
+        ctx.fillText(line, x, currentY)
+        return currentY + lineHeight
+      }
 
       // Child Name
       ctx.fillStyle = theme.textSecondary
@@ -182,9 +206,10 @@ export default function QRCodeGenerator({
       
       ctx.fillStyle = theme.text
       ctx.font = `bold ${valueSize} Inter, sans-serif`
-      ctx.fillText(childName || '-', contentX, cursorY + 20)
+      // Draw wrapped text for child name
+      const nameEndY = drawWrappedText(childName?.toUpperCase() || '-', contentX, cursorY + 20, maxWidth, 22)
       
-      cursorY += gap
+      cursorY = nameEndY + 15 // Gap after name
 
       // Birth Date
       ctx.fillStyle = theme.textSecondary
@@ -195,7 +220,7 @@ export default function QRCodeGenerator({
       ctx.font = `bold ${valueSize} Inter, sans-serif`
       ctx.fillText(dateOfBirth ? formatDate(dateOfBirth) : '-', contentX, cursorY + 20)
       
-      cursorY += gap
+      cursorY += baseGap
 
       // Parent Name
       ctx.fillStyle = theme.textSecondary
@@ -204,7 +229,8 @@ export default function QRCodeGenerator({
       
       ctx.fillStyle = theme.text
       ctx.font = `bold ${valueSize} Inter, sans-serif`
-      ctx.fillText(parentName || '-', contentX, cursorY + 20)
+      // Also potentially wrap parent name
+      drawWrappedText(parentName?.toUpperCase() || '-', contentX, cursorY + 20, maxWidth, 20)
 
       // Footer / Chip
       const chipWidth = 90
