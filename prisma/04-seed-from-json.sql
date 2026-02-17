@@ -20,22 +20,22 @@ INSERT INTO "posyandu" ("posyandu_id", "nama", "tanggal_dibuat", "tanggal_diubah
 -- USERS
 INSERT INTO "user" ("user_id", "nama", "email", "password", "role", "posyandu_id", "tanggal_dibuat", "tanggal_diubah") VALUES
 ('bidan1', 'Bidan Ratna Dewi', 'bidan@kramat.desa.id', '123', 'BIDAN', NULL, NOW(), NOW()),
-('kader1_1', 'Ibu Hartini', 'rw1.kader1@gmail.com', '123', 'KADER', 'rw01', NOW(), NOW()),
-('kader1_2', 'Ibu Siti Aminah', 'rw1.kader2@gmail.com', '123', 'KADER', 'rw01', NOW(), NOW()),
-('kader1_3', 'Ibu Nur Hidayah', 'rw1.kader3@gmail.com', '123', 'KADER', 'rw01', NOW(), NOW()),
-('kader1_4', 'Yulianti', 'rw1.kader4@gmail.com', '123', 'KADER', 'rw01', NOW(), NOW()),
-('kader2_1', 'Rina Wulandari', 'rw2.kader1@gmail.com', '123', 'KADER', 'rw02', NOW(), NOW()),
-('kader2_2', 'Dewi Kartika', 'rw2.kader2@gmail.com', '123', 'KADER', 'rw02', NOW(), NOW()),
-('kader2_3', 'Ibu Susanti', 'rw2.kader3@gmail.com', '123', 'KADER', 'rw02', NOW(), NOW()),
-('kader2_4', 'Dwi Astuti', 'rw2.kader4@gmail.com', '123', 'KADER', 'rw02', NOW(), NOW()),
-('kader3_1', 'Ibu Retno Widayanti', 'rw3.kader1@gmail.com', '123', 'KADER', 'rw03', NOW(), NOW()),
-('kader3_2', 'Ibu Mawarni', 'rw3.kader2@gmail.com', '123', 'KADER', 'rw03', NOW(), NOW()),
-('kader3_3', 'Ani Maryani', 'rw3.kader3@gmail.com', '123', 'KADER', 'rw03', NOW(), NOW()),
-('kader3_4', 'Wati Ningsih', 'rw3.kader4@gmail.com', '123', 'KADER', 'rw03', NOW(), NOW()),
-('kader4_1', 'Bu Ina Larasati', 'rw4.kader1@gmail.com', '123', 'KADER', 'rw04', NOW(), NOW()),
-('kader4_2', 'Ibu Eka Puspita', 'rw4.kader2@gmail.com', '123', 'KADER', 'rw04', NOW(), NOW()),
-('kader4_3', 'Ibu Siti Fatimah', 'rw4.kader3@gmail.com', '123', 'KADER', 'rw04', NOW(), NOW()),
-('kader4_4', 'Ibu Dewi Sartika', 'rw4.kader4@gmail.com', '123', 'KADER', 'rw04', NOW(), NOW());
+('kader1_1', 'Ibu Hartini', 'rw1.kader1@kramat.desa.id', '123', 'KADER', 'rw01', NOW(), NOW()),
+('kader1_2', 'Ibu Siti Aminah', 'rw1.kader2@kramat.desa.id', '123', 'KADER', 'rw01', NOW(), NOW()),
+('kader1_3', 'Ibu Nur Hidayah', 'rw1.kader3@kramat.desa.id', '123', 'KADER', 'rw01', NOW(), NOW()),
+('kader1_4', 'Yulianti', 'rw1.kader4@kramat.desa.id', '123', 'KADER', 'rw01', NOW(), NOW()),
+('kader2_1', 'Rina Wulandari', 'rw2.kader1@kramat.desa.id', '123', 'KADER', 'rw02', NOW(), NOW()),
+('kader2_2', 'Dewi Kartika', 'rw2.kader2@kramat.desa.id', '123', 'KADER', 'rw02', NOW(), NOW()),
+('kader2_3', 'Ibu Susanti', 'rw2.kader3@kramat.desa.id', '123', 'KADER', 'rw02', NOW(), NOW()),
+('kader2_4', 'Dwi Astuti', 'rw2.kader4@kramat.desa.id', '123', 'KADER', 'rw02', NOW(), NOW()),
+('kader3_1', 'Ibu Retno Widayanti', 'rw3.kader1@kramat.desa.id', '123', 'KADER', 'rw03', NOW(), NOW()),
+('kader3_2', 'Ibu Mawarni', 'rw3.kader2@kramat.desa.id', '123', 'KADER', 'rw03', NOW(), NOW()),
+('kader3_3', 'Ani Maryani', 'rw3.kader3@kramat.desa.id', '123', 'KADER', 'rw03', NOW(), NOW()),
+('kader3_4', 'Wati Ningsih', 'rw3.kader4@kramat.desa.id', '123', 'KADER', 'rw03', NOW(), NOW()),
+('kader4_1', 'Bu Ina Larasati', 'rw4.kader1@kramat.desa.id', '123', 'KADER', 'rw04', NOW(), NOW()),
+('kader4_2', 'Ibu Eka Puspita', 'rw4.kader2@kramat.desa.id', '123', 'KADER', 'rw04', NOW(), NOW()),
+('kader4_3', 'Ibu Siti Fatimah', 'rw4.kader3@kramat.desa.id', '123', 'KADER', 'rw04', NOW(), NOW()),
+('kader4_4', 'Ibu Dewi Sartika', 'rw4.kader4@kramat.desa.id', '123', 'KADER', 'rw04', NOW(), NOW());
 
 -- ANAK DATA (39 children)
 INSERT INTO "anak" ("anak_id", "nik", "nama", "tempat_lahir", "tanggal_lahir", "jenis_kelamin", "nama_orangtua", "posyandu_id", "tanggal_dibuat", "tanggal_diubah") VALUES
