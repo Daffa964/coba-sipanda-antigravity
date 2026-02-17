@@ -242,11 +242,7 @@ export default function QRCodeGenerator({
       ctx.lineTo(gap / 2, baseHeight - 20)
       ctx.stroke()
       
-      // Scissor icon (optional text for now)
-      ctx.fillStyle = '#9E9E9E'
-      ctx.font = '10px Inter, sans-serif'
-      ctx.textAlign = 'center'
-      ctx.fillText('Gunting / Lipat Disini', gap/2, baseHeight - 5)
+      // Removed "Gunting / Lipat Disini" text as requested
       ctx.restore()
 
       // === DRAW BACK (RIGHT SIDE) ===
@@ -333,7 +329,7 @@ export default function QRCodeGenerator({
         ) : (
           <span className="material-symbols-outlined text-[20px]">print</span>
         )}
-        <span>Cetak Kartu (Depan & Belakang)</span>
+        <span>Cetak Kartu</span>
       </button>
     </div>
   )
