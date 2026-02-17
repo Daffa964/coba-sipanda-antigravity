@@ -95,8 +95,9 @@ export default function QRCodeGenerator({
     }
   }
 
-  const handleDownloadFront = async () => {
-    setIsDownloadingFront(true)
+  const handleDownloadCombined = async () => {
+    if (!qrRef.current) return
+    setIsDownloadingFront(true) // Reusing this state for the combined download
     try {
       const canvas = document.createElement('canvas')
       const ctx = canvas.getContext('2d')
@@ -105,29 +106,35 @@ export default function QRCodeGenerator({
       const scale = 2
       const baseWidth = 500
       const baseHeight = 315
-      canvas.width = baseWidth * scale
+      const gap = 40 // Space between front and back
+      
+      // Canvas size = (Front Width + Gap + Back Width) x Height
+      canvas.width = (baseWidth * 2 + gap) * scale
       canvas.height = baseHeight * scale
       ctx.scale(scale, scale)
 
+      // Fill white background for total canvas
+      ctx.fillStyle = '#FFFFFF'
+      ctx.fillRect(0, 0, baseWidth * 2 + gap, baseHeight)
+
+      // === DRAW FRONT (LEFT SIDE) ===
+      ctx.save()
+      ctx.translate(0, 0) // Front logic assumes (0,0)
       const theme = getThemeColors()
       drawBaseCard(ctx, baseWidth, baseHeight, theme)
 
-      // === HEADER ===
+      // ... FRONT CONTENT (Copied & adapted from handleDownloadFront) ...
       const headerY = 45
-      
-      // Title
       ctx.fillStyle = theme.text
       ctx.font = 'bold 24px Inter, sans-serif'
       ctx.textAlign = 'right'
       ctx.fillText('KARTU ANAK', baseWidth - 30, headerY)
 
-      // Subtitle (Posyandu Name)
       const cleanPosyanduName = posyanduName?.replace(/posyandu/gi, '').trim() || '-'
       ctx.fillStyle = theme.textSecondary
       ctx.font = '14px Inter, sans-serif'
       ctx.fillText(`Posyandu ${cleanPosyanduName}`, baseWidth - 30, headerY + 20)
 
-      // Divider Line
       ctx.strokeStyle = 'rgba(255,255,255,0.3)'
       ctx.lineWidth = 1
       ctx.beginPath()
@@ -135,59 +142,45 @@ export default function QRCodeGenerator({
       ctx.lineTo(baseWidth - 30, headerY + 35)
       ctx.stroke()
 
-      // === CONTENT ===
       const contentY = 130
-      const contentX = 170 // Start of text area (after avatar)
-
-      // Avatar Circle (Left Side)
+      const contentX = 170
       const avatarX = 85
       const avatarY = 165
       const avatarRadius = 55
 
-      // Avatar Border Ring
+      // Avatar
       ctx.beginPath()
       ctx.arc(avatarX, avatarY, avatarRadius + 4, 0, Math.PI * 2)
       ctx.strokeStyle = 'rgba(255,255,255,0.8)'
       ctx.lineWidth = 3
       ctx.stroke()
-
-      // Avatar Background
       ctx.beginPath()
       ctx.arc(avatarX, avatarY, avatarRadius, 0, Math.PI * 2)
       ctx.fillStyle = theme.accent
       ctx.fill()
-      
-      // Avatar Text (Initial)
       ctx.fillStyle = theme.background[1]
       ctx.font = 'bold 48px Inter, sans-serif'
       ctx.textAlign = 'center'
       ctx.textBaseline = 'middle'
       ctx.fillText(childName?.charAt(0).toUpperCase() || 'A', avatarX, avatarY + 2)
-      
-      // Reset Text Alignment
       ctx.textAlign = 'left'
       ctx.textBaseline = 'alphabetic'
 
-      // Info Labels & Values
+      // Text Data
       const labelSize = '11px'
       const valueSize = '18px'
-      const baseGap = 40 // Reduced slightly to accommodate potential 2-line names
-      const maxWidth = baseWidth - contentX - 20 // Available width for text
-      
+      const baseGap = 40
+      const maxWidth = baseWidth - contentX - 20
       let cursorY = contentY
 
-      // Helper function to wrap text and return new Y position
       const drawWrappedText = (text: string, x: number, y: number, maxWidth: number, lineHeight: number) => {
         const words = text.split(' ')
         let line = ''
         let currentY = y
-
         for (let i = 0; i < words.length; i++) {
           const testLine = line + words[i] + ' '
           const metrics = ctx.measureText(testLine)
-          const testWidth = metrics.width
-          
-          if (testWidth > maxWidth && i > 0) {
+          if (metrics.width > maxWidth && i > 0) {
             ctx.fillText(line, x, currentY)
             line = words[i] + ' '
             currentY += lineHeight
@@ -199,88 +192,68 @@ export default function QRCodeGenerator({
         return currentY + lineHeight
       }
 
-      // Child Name
       ctx.fillStyle = theme.textSecondary
       ctx.font = `${labelSize} Inter, sans-serif`
       ctx.fillText('NAMA LENGKAP', contentX, cursorY)
-      
       ctx.fillStyle = theme.text
       ctx.font = `bold ${valueSize} Inter, sans-serif`
-      // Draw wrapped text for child name
       const nameEndY = drawWrappedText(childName?.toUpperCase() || '-', contentX, cursorY + 20, maxWidth, 22)
-      
-      cursorY = nameEndY + 15 // Gap after name
+      cursorY = nameEndY + 15
 
-      // Birth Date
       ctx.fillStyle = theme.textSecondary
       ctx.font = `${labelSize} Inter, sans-serif`
       ctx.fillText('TANGGAL LAHIR', contentX, cursorY)
-      
       ctx.fillStyle = theme.text
       ctx.font = `bold ${valueSize} Inter, sans-serif`
       ctx.fillText(dateOfBirth ? formatDate(dateOfBirth) : '-', contentX, cursorY + 20)
-      
       cursorY += baseGap
 
-      // Parent Name
       ctx.fillStyle = theme.textSecondary
       ctx.font = `${labelSize} Inter, sans-serif`
       ctx.fillText('ORANG TUA', contentX, cursorY)
-      
       ctx.fillStyle = theme.text
       ctx.font = `bold ${valueSize} Inter, sans-serif`
-      // Also potentially wrap parent name
       drawWrappedText(parentName?.toUpperCase() || '-', contentX, cursorY + 20, maxWidth, 20)
 
-      // Footer / Chip
+      // Chip
       const chipWidth = 90
       const chipHeight = 24
       const chipX = baseWidth - chipWidth - 30
       const chipY = baseHeight - chipHeight - 25
-
       ctx.fillStyle = 'rgba(255,255,255,0.2)'
       ctx.beginPath()
       ctx.roundRect(chipX, chipY, chipWidth, chipHeight, 12)
       ctx.fill()
-
       ctx.fillStyle = '#FFFFFF'
       ctx.font = 'bold 10px Inter, sans-serif'
       ctx.textAlign = 'center'
       ctx.fillText(gender === 'LAKI_LAKI' ? 'LAKI-LAKI' : 'PEREMPUAN', chipX + chipWidth/2, chipY + 16)
+      
+      ctx.restore() // End Front Draw
 
-      // Download
-      const link = document.createElement('a')
-      link.download = `Kartu_Depan_${childName?.replace(/\s+/g, '_') || 'anak'}.png`
-      link.href = canvas.toDataURL('image/png')
-      link.click()
+      // === DRAW CUT LINE (MIDDLE) ===
+      ctx.save()
+      ctx.translate(baseWidth, 0)
+      ctx.strokeStyle = '#BDBDBD'
+      ctx.lineWidth = 2
+      ctx.setLineDash([10, 10]) // Dashed line
+      ctx.beginPath()
+      ctx.moveTo(gap / 2, 20)
+      ctx.lineTo(gap / 2, baseHeight - 20)
+      ctx.stroke()
+      
+      // Scissor icon (optional text for now)
+      ctx.fillStyle = '#9E9E9E'
+      ctx.font = '10px Inter, sans-serif'
+      ctx.textAlign = 'center'
+      ctx.fillText('Gunting / Lipat Disini', gap/2, baseHeight - 5)
+      ctx.restore()
 
-    } catch (e) {
-      console.error(e)
-    } finally {
-      setIsDownloadingFront(false)
-    }
-  }
-
-  const handleDownloadBack = async () => {
-    if (!qrRef.current) return
-    setIsDownloadingBack(true)
-    try {
-      const canvas = document.createElement('canvas')
-      const ctx = canvas.getContext('2d')
-      if (!ctx) return
-
-      const scale = 2
-      const baseWidth = 500
-      const baseHeight = 315
-      canvas.width = baseWidth * scale
-      canvas.height = baseHeight * scale
-      ctx.scale(scale, scale)
-
-      const theme = getThemeColors()
+      // === DRAW BACK (RIGHT SIDE) ===
+      ctx.save()
+      ctx.translate(baseWidth + gap, 0) // Move origin to right side
       drawBaseCard(ctx, baseWidth, baseHeight, theme)
 
-      // === CONTENT ===
-      // White Card for QR
       const cardSize = 240
       const cardX = (baseWidth - cardSize) / 2
       const cardY = (baseHeight - cardSize) / 2 + 10
@@ -294,29 +267,24 @@ export default function QRCodeGenerator({
       ctx.fill()
       ctx.shadowColor = 'transparent'
 
-      // QR Code
       const qrSize = 160
       const qrX = (baseWidth - qrSize) / 2
       const qrY = (baseHeight - qrSize) / 2
 
-      // Render QR SVG
       const svgElement = qrRef.current.querySelector('svg')
       if (svgElement) {
         const svgData = new XMLSerializer().serializeToString(svgElement)
         const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' })
         const svgUrl = URL.createObjectURL(svgBlob)
-        
         const img = new Image()
         await new Promise((resolve) => {
           img.onload = resolve
           img.src = svgUrl
         })
-        
         ctx.drawImage(img, qrX, qrY, qrSize, qrSize)
         URL.revokeObjectURL(svgUrl)
       }
 
-      // Instruction Text (Inside White Card)
       ctx.fillStyle = theme.background[1]
       ctx.font = 'bold 12px Inter, sans-serif'
       ctx.textAlign = 'center'
@@ -326,22 +294,23 @@ export default function QRCodeGenerator({
       ctx.font = '10px Inter, sans-serif'
       ctx.fillText('SI-PANDA Desa Kramat', baseWidth / 2, cardY + cardSize - 20)
 
-      // Header on Top
       ctx.fillStyle = '#FFFFFF'
       ctx.textAlign = 'center'
       ctx.font = 'bold 18px Inter, sans-serif'
       ctx.fillText('KARTU PEMANTAUAN GIZI', baseWidth / 2, 45)
 
-      // Download
+      ctx.restore() // End Back Draw
+
+      // === DOWNLOAD ===
       const link = document.createElement('a')
-      link.download = `Kartu_Belakang_${childName?.replace(/\s+/g, '_') || 'anak'}.png`
+      link.download = `Kartu_Lengkap_${childName?.replace(/\s+/g, '_') || 'anak'}.png`
       link.href = canvas.toDataURL('image/png')
       link.click()
 
     } catch (e) {
       console.error(e)
     } finally {
-      setIsDownloadingBack(false)
+      setIsDownloadingFront(false)
     }
   }
 
@@ -354,33 +323,18 @@ export default function QRCodeGenerator({
         <p className="text-center text-xs text-gray-400 mt-2 font-mono">Scan untuk melihat</p>
       </div>
       
-      <div className="flex gap-2 w-full">
-        <button
-          onClick={handleDownloadFront}
-          disabled={isDownloadingFront}
-          className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-white border border-gray-200 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-50 transition-all shadow-sm disabled:opacity-50"
-        >
-          {isDownloadingFront ? (
-            <span className="w-4 h-4 border-2 border-gray-400 border-t-transparent rounded-full animate-spin"></span>
-          ) : (
-            <span className="material-symbols-outlined text-[18px]">badge</span>
-          )}
-          <span>Depan</span>
-        </button>
-
-        <button
-          onClick={handleDownloadBack}
-          disabled={isDownloadingBack}
-          className="flex-1 flex items-center justify-center gap-2 px-3 py-2 bg-gradient-to-r from-indigo-600 to-indigo-500 text-white rounded-lg text-sm font-medium hover:from-indigo-700 hover:to-indigo-600 transition-all shadow-md hover:shadow-lg disabled:opacity-50"
-        >
-          {isDownloadingBack ? (
-            <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-          ) : (
-             <span className="material-symbols-outlined text-[18px]">qr_code</span>
-          )}
-          <span>Belakang</span>
-        </button>
-      </div>
+      <button
+        onClick={handleDownloadCombined}
+        disabled={isDownloadingFront}
+        className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-indigo-600 to-indigo-500 text-white rounded-xl text-sm font-medium hover:from-indigo-700 hover:to-indigo-600 transition-all shadow-lg hover:shadow-indigo-200/50 disabled:opacity-50"
+      >
+        {isDownloadingFront ? (
+          <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+        ) : (
+          <span className="material-symbols-outlined text-[20px]">print</span>
+        )}
+        <span>Cetak Kartu (Depan & Belakang)</span>
+      </button>
     </div>
   )
 }
