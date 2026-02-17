@@ -44,58 +44,55 @@ export default function QRCodeGenerator({
   const getThemeColors = () => {
     if (gender === 'LAKI_LAKI') {
       return {
-        primary: '#1565C0', // Blue 800
-        secondary: '#E3F2FD', // Blue 50
-        accent: '#2196F3', // Blue 500
-        gradientStart: '#E3F2FD',
-        gradientEnd: '#BBDEFB',
+        background: ['#2962FF', '#1565C0'], // Vivid Blue Gradient
+        text: '#FFFFFF',
+        textSecondary: '#BBDEFB',
+        accent: '#E3F2FD',
+        circle: 'rgba(255, 255, 255, 0.1)'
       }
     } else {
       return {
-        primary: '#AD1457', // Pink 800
-        secondary: '#FCE4EC', // Pink 50
-        accent: '#E91E63', // Pink 500
-        gradientStart: '#FCE4EC',
-        gradientEnd: '#F8BBD0',
+        background: ['#F50057', '#C2185B'], // Vivid Pink Gradient
+        text: '#FFFFFF',
+        textSecondary: '#F8BBD0',
+        accent: '#FCE4EC',
+        circle: 'rgba(255, 255, 255, 0.1)'
       }
     }
   }
 
   const drawBaseCard = (ctx: CanvasRenderingContext2D, width: number, height: number, theme: any) => {
-     // Background gradient
-     const gradient = ctx.createLinearGradient(0, 0, width, height)
-     gradient.addColorStop(0, theme.gradientStart)
-     gradient.addColorStop(1, theme.gradientEnd)
-     ctx.fillStyle = gradient
-     ctx.fillRect(0, 0, width, height)
+    // 1. Background Gradient
+    const gradient = ctx.createLinearGradient(0, 0, width, height)
+    gradient.addColorStop(0, theme.background[0])
+    gradient.addColorStop(1, theme.background[1])
+    ctx.fillStyle = gradient
+    ctx.fillRect(0, 0, width, height)
 
-     // Decorative circles
-     const circleColor = gender === 'LAKI_LAKI' ? 'rgba(33, 150, 243, 0.05)' : 'rgba(233, 30, 99, 0.05)'
-     ctx.fillStyle = circleColor
-     ctx.beginPath()
-     ctx.arc(-50, -50, 150, 0, Math.PI * 2)
-     ctx.fill()
-     ctx.beginPath()
-     ctx.arc(width + 50, height + 50, 180, 0, Math.PI * 2)
-     ctx.fill()
+    // 2. Decorative Circles (Subtle Pattern)
+    ctx.fillStyle = theme.circle
+    
+    // Top Right Large
+    ctx.beginPath()
+    ctx.arc(width - 40, -40, 200, 0, Math.PI * 2)
+    ctx.fill()
+    
+    // Bottom Left Small
+    ctx.beginPath()
+    ctx.arc(40, height + 40, 150, 0, Math.PI * 2)
+    ctx.fill()
 
-     // Card Border/Frame
-     const cardX = 16
-     const cardY = 16
-     const cardWidth = width - 32
-     const cardHeight = height - 32
-     const radius = 16
-
-     ctx.fillStyle = '#ffffff'
-     ctx.shadowColor = 'rgba(0, 0, 0, 0.1)'
-     ctx.shadowBlur = 10
-     ctx.shadowOffsetY = 4
-     ctx.beginPath()
-     ctx.roundRect(cardX, cardY, cardWidth, cardHeight, radius)
-     ctx.fill()
-     ctx.shadowColor = 'transparent'
-     
-     return { cardX, cardY, cardWidth, cardHeight }
+    // 3. Noise/Texture (Optional simple dot pattern)
+    ctx.fillStyle = 'rgba(255,255,255,0.03)'
+    for(let i=0; i<width; i+=20) {
+      for(let j=0; j<height; j+=20) {
+        if((i+j)%40 === 0) {
+           ctx.beginPath()
+           ctx.arc(i, j, 2, 0, Math.PI*2)
+           ctx.fill()
+        }
+      }
+    }
   }
 
   const handleDownloadFront = async () => {
@@ -106,103 +103,124 @@ export default function QRCodeGenerator({
       if (!ctx) return
 
       const scale = 2
-      const baseWidth = 500 // Standard ID Card ratio equivalent
+      const baseWidth = 500
       const baseHeight = 315
       canvas.width = baseWidth * scale
       canvas.height = baseHeight * scale
       ctx.scale(scale, scale)
 
       const theme = getThemeColors()
-      const { cardX, cardY, cardWidth, cardHeight } = drawBaseCard(ctx, baseWidth, baseHeight, theme)
+      drawBaseCard(ctx, baseWidth, baseHeight, theme)
 
       // === HEADER ===
-      // Colored Header Bar
-      ctx.fillStyle = theme.primary
-      ctx.beginPath()
-      ctx.roundRect(cardX, cardY, cardWidth, 60, [16, 16, 0, 0])
-      ctx.fill()
-
-      // Header Text
-      ctx.fillStyle = '#FFFFFF'
-      ctx.font = 'bold 18px Inter, sans-serif'
-      ctx.textAlign = 'center'
-      ctx.fillText('KARTU IDENTITAS ANAK', baseWidth / 2, cardY + 28)
+      const headerY = 45
       
-      ctx.font = '12px Inter, sans-serif'
-      ctx.fillText(`POSYANDU ${posyanduName?.toUpperCase() || '-'}`, baseWidth / 2, cardY + 48)
+      // Title
+      ctx.fillStyle = theme.text
+      ctx.font = 'bold 24px Inter, sans-serif'
+      ctx.textAlign = 'right'
+      ctx.fillText('KARTU ANAK', baseWidth - 30, headerY)
+
+      // Subtitle (Posyandu Name)
+      const cleanPosyanduName = posyanduName?.replace(/posyandu/gi, '').trim() || '-'
+      ctx.fillStyle = theme.textSecondary
+      ctx.font = '14px Inter, sans-serif'
+      ctx.fillText(`Posyandu ${cleanPosyanduName}`, baseWidth - 30, headerY + 20)
+
+      // Divider Line
+      ctx.strokeStyle = 'rgba(255,255,255,0.3)'
+      ctx.lineWidth = 1
+      ctx.beginPath()
+      ctx.moveTo(30, headerY + 35)
+      ctx.lineTo(baseWidth - 30, headerY + 35)
+      ctx.stroke()
 
       // === CONTENT ===
-      const contentY = cardY + 85
-      
-      // Avatar Placeholder (Left)
-      const avatarX = cardX + 40
-      const avatarY = contentY + 40
-      const avatarRadius = 45
+      const contentY = 130
+      const contentX = 170 // Start of text area (after avatar)
 
-      ctx.save()
+      // Avatar Circle (Left Side)
+      const avatarX = 85
+      const avatarY = 165
+      const avatarRadius = 55
+
+      // Avatar Border Ring
       ctx.beginPath()
-      ctx.arc(avatarX + avatarRadius, avatarY, avatarRadius, 0, Math.PI * 2)
-      ctx.fillStyle = theme.secondary
-      ctx.fill()
-      ctx.clip()
+      ctx.arc(avatarX, avatarY, avatarRadius + 4, 0, Math.PI * 2)
+      ctx.strokeStyle = 'rgba(255,255,255,0.8)'
+      ctx.lineWidth = 3
+      ctx.stroke()
 
-      // Initial if no image
+      // Avatar Background
+      ctx.beginPath()
+      ctx.arc(avatarX, avatarY, avatarRadius, 0, Math.PI * 2)
       ctx.fillStyle = theme.accent
-      ctx.font = 'bold 40px Inter, sans-serif'
+      ctx.fill()
+      
+      // Avatar Text (Initial)
+      ctx.fillStyle = theme.background[1]
+      ctx.font = 'bold 48px Inter, sans-serif'
       ctx.textAlign = 'center'
       ctx.textBaseline = 'middle'
-      ctx.fillText(childName?.charAt(0).toUpperCase() || 'A', avatarX + avatarRadius, avatarY)
-      ctx.restore()
-
-      // Info Fields (Right)
-      const labelX = cardX + 130
-      const valueX = labelX
-      let currentY = contentY + 10
-      const lineHeight = 38
-
-      // Name
-      ctx.fillStyle = '#757575'
-      ctx.font = '10px Inter, sans-serif'
-      ctx.textAlign = 'left'
-      ctx.fillText('NAMA LENGKAP', labelX, currentY)
+      ctx.fillText(childName?.charAt(0).toUpperCase() || 'A', avatarX, avatarY + 2)
       
-      ctx.fillStyle = '#212121'
-      ctx.font = 'bold 16px Inter, sans-serif'
-      ctx.fillText(childName || '-', valueX, currentY + 18)
+      // Reset Text Alignment
+      ctx.textAlign = 'left'
+      ctx.textBaseline = 'alphabetic'
 
-      currentY += lineHeight
+      // Info Labels & Values
+      const labelSize = '11px'
+      const valueSize = '18px'
+      const gap = 48
+      
+      let cursorY = contentY
 
-      // TTL
-      ctx.fillStyle = '#757575'
-      ctx.font = '10px Inter, sans-serif'
-      ctx.fillText('TANGGAL LAHIR', labelX, currentY)
+      // Child Name
+      ctx.fillStyle = theme.textSecondary
+      ctx.font = `${labelSize} Inter, sans-serif`
+      ctx.fillText('NAMA LENGKAP', contentX, cursorY)
+      
+      ctx.fillStyle = theme.text
+      ctx.font = `bold ${valueSize} Inter, sans-serif`
+      ctx.fillText(childName || '-', contentX, cursorY + 20)
+      
+      cursorY += gap
 
-      ctx.fillStyle = '#212121'
-      ctx.font = 'bold 14px Inter, sans-serif'
-      ctx.fillText(dateOfBirth ? formatDate(dateOfBirth) : '-', valueX, currentY + 18)
+      // Birth Date
+      ctx.fillStyle = theme.textSecondary
+      ctx.font = `${labelSize} Inter, sans-serif`
+      ctx.fillText('TANGGAL LAHIR', contentX, cursorY)
+      
+      ctx.fillStyle = theme.text
+      ctx.font = `bold ${valueSize} Inter, sans-serif`
+      ctx.fillText(dateOfBirth ? formatDate(dateOfBirth) : '-', contentX, cursorY + 20)
+      
+      cursorY += gap
 
-      currentY += lineHeight
+      // Parent Name
+      ctx.fillStyle = theme.textSecondary
+      ctx.font = `${labelSize} Inter, sans-serif`
+      ctx.fillText('ORANG TUA', contentX, cursorY)
+      
+      ctx.fillStyle = theme.text
+      ctx.font = `bold ${valueSize} Inter, sans-serif`
+      ctx.fillText(parentName || '-', contentX, cursorY + 20)
 
-      // Parent
-      ctx.fillStyle = '#757575'
-      ctx.font = '10px Inter, sans-serif'
-      ctx.fillText('NAMA ORANG TUA', labelX, currentY)
+      // Footer / Chip
+      const chipWidth = 90
+      const chipHeight = 24
+      const chipX = baseWidth - chipWidth - 30
+      const chipY = baseHeight - chipHeight - 25
 
-      ctx.fillStyle = '#212121'
-      ctx.font = 'bold 14px Inter, sans-serif'
-      ctx.fillText(parentName || '-', valueX, currentY + 18)
-
-      // Gender Icon/Badge on bottom right
-      ctx.fillStyle = theme.secondary
+      ctx.fillStyle = 'rgba(255,255,255,0.2)'
       ctx.beginPath()
-      ctx.roundRect(cardX + cardWidth - 90, cardY + cardHeight - 30, 80, 24, 12)
+      ctx.roundRect(chipX, chipY, chipWidth, chipHeight, 12)
       ctx.fill()
 
-      ctx.fillStyle = theme.primary
+      ctx.fillStyle = '#FFFFFF'
       ctx.font = 'bold 10px Inter, sans-serif'
       ctx.textAlign = 'center'
-      ctx.fillText(gender === 'LAKI_LAKI' ? 'LAKI-LAKI' : 'PEREMPUAN', cardX + cardWidth - 50, cardY + cardHeight - 14)
-
+      ctx.fillText(gender === 'LAKI_LAKI' ? 'LAKI-LAKI' : 'PEREMPUAN', chipX + chipWidth/2, chipY + 16)
 
       // Download
       const link = document.createElement('a')
@@ -233,22 +251,27 @@ export default function QRCodeGenerator({
       ctx.scale(scale, scale)
 
       const theme = getThemeColors()
-      const { cardX, cardY, cardWidth, cardHeight } = drawBaseCard(ctx, baseWidth, baseHeight, theme)
+      drawBaseCard(ctx, baseWidth, baseHeight, theme)
 
-      // QR Code Section
-      // Center the QR code
-      const qrSize = 140
-      const qrX = cardX + (cardWidth - qrSize) / 2
-      const qrY = cardY + (cardHeight - qrSize) / 2 - 20
+      // === CONTENT ===
+      // White Card for QR
+      const cardSize = 240
+      const cardX = (baseWidth - cardSize) / 2
+      const cardY = (baseHeight - cardSize) / 2 + 10
 
-      // White box for QR
-      ctx.fillStyle = '#ffffff'
-      ctx.shadowColor = 'rgba(0,0,0,0.05)'
-      ctx.shadowBlur = 4
+      ctx.fillStyle = '#FFFFFF'
+      ctx.shadowColor = 'rgba(0,0,0,0.2)'
+      ctx.shadowBlur = 20
+      ctx.shadowOffsetY = 10
       ctx.beginPath()
-      ctx.roundRect(qrX - 10, qrY - 10, qrSize + 20, qrSize + 20, 12)
+      ctx.roundRect(cardX, cardY, cardSize, cardSize, 24)
       ctx.fill()
       ctx.shadowColor = 'transparent'
+
+      // QR Code
+      const qrSize = 160
+      const qrX = (baseWidth - qrSize) / 2
+      const qrY = (baseHeight - qrSize) / 2
 
       // Render QR SVG
       const svgElement = qrRef.current.querySelector('svg')
@@ -267,28 +290,21 @@ export default function QRCodeGenerator({
         URL.revokeObjectURL(svgUrl)
       }
 
-      // Title
-      ctx.fillStyle = theme.primary
-      ctx.font = 'bold 20px Inter, sans-serif'
-      ctx.textAlign = 'center'
-      ctx.fillText('SI-PANDA', baseWidth / 2, cardY + 35)
-
-      ctx.fillStyle = '#757575'
-      ctx.font = '12px Inter, sans-serif'
-      ctx.fillText('Sistem Informasi Pemantauan Anak Daerah', baseWidth / 2, cardY + 55)
-
-      // Instructions bottom
-      ctx.fillStyle = '#424242'
+      // Instruction Text (Inside White Card)
+      ctx.fillStyle = theme.background[1]
       ctx.font = 'bold 12px Inter, sans-serif'
       ctx.textAlign = 'center'
-      ctx.fillText('Scan QR Code ini untuk melihat', baseWidth / 2, cardY + cardHeight - 45)
-      ctx.fillText('riwayat kesehatan dan pertumbuhan anak', baseWidth / 2, cardY + cardHeight - 30)
+      ctx.fillText('SCAN UNTUK MELIHAT DATA', baseWidth / 2, cardY + cardSize - 35)
 
-      // Copyright
       ctx.fillStyle = '#9E9E9E'
       ctx.font = '10px Inter, sans-serif'
-      ctx.fillText('© SI-PANDA Desa Kramat', baseWidth / 2, cardY + cardHeight - 10)
+      ctx.fillText('SI-PANDA Desa Kramat', baseWidth / 2, cardY + cardSize - 20)
 
+      // Header on Top
+      ctx.fillStyle = '#FFFFFF'
+      ctx.textAlign = 'center'
+      ctx.font = 'bold 18px Inter, sans-serif'
+      ctx.fillText('KARTU PEMANTAUAN GIZI', baseWidth / 2, 45)
 
       // Download
       const link = document.createElement('a')
