@@ -66,7 +66,16 @@ export default async function KaderChildDetailPage({ params }: { params: Promise
                     {anak.gender === 'LAKI_LAKI' ? '♂' : '♀'}
                  </div>
                  <div>
-                    <h1 className="text-2xl font-bold text-gray-900">{anak.name}</h1>
+                    <div className="flex items-center gap-3">
+                        <h1 className="text-2xl font-bold text-gray-900">{anak.name}</h1>
+                        <Link 
+                            href={`/posyandu/${id}/anak?edit=${anak.id}`}
+                            className="text-xs bg-gray-100 hover:bg-gray-200 text-gray-600 px-2 py-1 rounded flex items-center gap-1 transition-colors"
+                        >
+                            <span className="material-symbols-outlined text-sm">edit</span>
+                            Edit
+                        </Link>
+                    </div>
                     <div className="flex items-center gap-3 text-sm text-gray-500 mt-1">
                        <span className="bg-gray-100 px-2 py-0.5 rounded text-gray-600 font-mono">{anak.nik}</span>
                        <span>•</span>

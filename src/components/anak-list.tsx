@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import Link from 'next/link'
 import AnakForm from './anak-form'
 import { useRouter, useSearchParams } from 'next/navigation'
@@ -114,6 +114,22 @@ export default function AnakList({ data, posyanduList, isKader, userPosyanduId }
       return matchSearch && matchPosyandu && matchStatus
     })
   }, [data, searchTerm, rwFilter, statusFilter])
+
+  // Handle Edit Query Param
+  useEffect(() => {
+    const editId = searchParams.get('edit')
+    if (editId) {
+        const childToEdit = data.find(c => c.id === editId)
+        if (childToEdit) {
+            setEditingChild(childToEdit)
+            setIsModalOpen(true)
+            // Optional: Remove query param without refresh
+            const newSearchParams = new URLSearchParams(searchParams.toString())
+            newSearchParams.delete('edit')
+            window.history.replaceState(null, '', `?${newSearchParams.toString()}`)
+        }
+    }
+  }, [searchParams, data])
 
   // Pagination Logic
   const totalItems = filteredData.length
