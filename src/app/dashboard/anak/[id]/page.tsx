@@ -90,6 +90,7 @@ export default async function ChildDetailPage({ params }: { params: { id: string
                         name={anak.name} 
                         status={historyData[0]?.zScoreBBU || 'Belum Ada Data'} 
                         linkId={id} 
+                        phoneNumber={anak.phoneNumber}
                       />
                    </div>
                 </div>

@@ -12,6 +12,7 @@ const AnakSchema = z.object({
   dateOfBirth: z.string().refine((date) => new Date(date).toString() !== 'Invalid Date', 'Tanggal lahir tidak valid'),
   gender: z.enum(['LAKI_LAKI', 'PEREMPUAN']),
   parentName: z.string().min(1, 'Nama Orang Tua wajib diisi'),
+  phoneNumber: z.string().optional(),
   posyanduId: z.string().min(1, 'Posyandu wajib dipilih'),
 })
 
@@ -66,6 +67,7 @@ export async function createAnak(prevState: any, formData: FormData) {
     dateOfBirth: formData.get('dateOfBirth'),
     gender: formData.get('gender'),
     parentName: formData.get('parentName'),
+    phoneNumber: formData.get('phoneNumber'),
     posyanduId: formData.get('posyanduId'),
   }
 
@@ -102,6 +104,7 @@ export async function createAnak(prevState: any, formData: FormData) {
         dateOfBirth: new Date(validated.data.dateOfBirth),
         gender: validated.data.gender,
         parentName: validated.data.parentName,
+        phoneNumber: validated.data.phoneNumber,
         posyanduId: finalPosyanduId,
       },
     })
@@ -134,6 +137,7 @@ export async function updateAnak(prevState: any, formData: FormData) {
     dateOfBirth: formData.get('dateOfBirth'),
     gender: formData.get('gender'),
     parentName: formData.get('parentName'),
+    phoneNumber: formData.get('phoneNumber'),
     posyanduId: formData.get('posyanduId'),
   }
 
@@ -164,6 +168,7 @@ export async function updateAnak(prevState: any, formData: FormData) {
         dateOfBirth: new Date(validated.data.dateOfBirth),
         gender: validated.data.gender,
         parentName: validated.data.parentName,
+        phoneNumber: validated.data.phoneNumber,
         posyanduId: validated.data.posyanduId,
       },
     })

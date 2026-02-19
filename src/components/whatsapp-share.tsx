@@ -1,6 +1,6 @@
 'use client'
 
-export default function WhatsAppShare({ name, status, linkId }: { name: string, status: string, linkId: string }) {
+export default function WhatsAppShare({ name, status, linkId, phoneNumber }: { name: string, status: string, linkId: string, phoneNumber?: string | null }) {
   
   function handleShare() {
     const origin = window.location.origin
@@ -8,7 +8,14 @@ export default function WhatsAppShare({ name, status, linkId }: { name: string, 
     const text = `Halo Ibu/Wali dari *${name}*,\n\nBerikut adalah laporan terkini dari SI-PANDA Posyandu Desa Kramat:\n\nNama: ${name}\nStatus Gizi Terakhir: *${status}*\n\nLihat detail kartu digital disini:\n${url}\n\nTerima kasih.`
     
     // Open WA
-    window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank')
+    const phoneParam = phoneNumber ? phoneNumber.replace(/\D/g, '') : ''
+    // Check if phone number is valid (at least 10 digits)
+    if (phoneParam.length >= 10) {
+       window.open(`https://wa.me/${phoneParam}?text=${encodeURIComponent(text)}`, '_blank')
+    } else {
+       // Fallback to manual contact selection
+       window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank')
+    }
   }
 
   return (

@@ -58,6 +58,7 @@ model Anak {
   dateOfBirth  DateTime @map("tanggal_lahir")
   gender       Gender   @map("jenis_kelamin")
   parentName   String   @map("nama_orangtua")
+  phoneNumber  String?  @map("nomor_telepon")
   posyanduId   String   @map("posyandu_id")
   createdAt    DateTime @default(now()) @map("tanggal_dibuat")
   updatedAt    DateTime @updatedAt @map("tanggal_diubah")

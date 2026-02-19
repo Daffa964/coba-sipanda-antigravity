@@ -16,6 +16,7 @@ type AnakData = {
   dateOfBirth: Date | string
   gender: string
   parentName: string
+  phoneNumber?: string | null
   posyanduId: string
 }
 
@@ -176,6 +177,17 @@ export default function AnakForm({ posyanduList, defaultPosyanduId, onSuccess, i
               defaultValue={editData?.parentName || ''}
               className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:bg-white focus:ring-2 focus:ring-indigo-100 focus:border-indigo-500 outline-none transition" 
             />
+          </div>
+
+          <div>
+            <input 
+              name="phoneNumber" 
+              type="tel" 
+              placeholder="Nomor WhatsApp Orang Tua (Contoh: 628123456789)" 
+              defaultValue={editData?.phoneNumber || ''}
+              className="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 focus:bg-white focus:ring-2 focus:ring-indigo-100 focus:border-indigo-500 outline-none transition" 
+            />
+            <p className="text-xs text-gray-400 mt-1 pl-1">Gunakan format internasional (62) tanpa status (+)</p>
           </div>
 
           {!defaultPosyanduId && posyanduList && (
