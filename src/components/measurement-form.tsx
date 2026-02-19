@@ -18,7 +18,7 @@ export default function MeasurementForm({ anakId }: { anakId: string }) {
     
     if (res.success) {
       setMessage({ type: 'success', text: 'Data pengukuran berhasil disimpan!' })
-      // Reload to refresh history and charts
+      // Reload untuk memperbarui riwayat dan grafik
       window.location.reload()
     } else {
       setMessage({ type: 'error', text: res.error || 'Terjadi kesalahan' })
@@ -50,7 +50,7 @@ export default function MeasurementForm({ anakId }: { anakId: string }) {
               />
            </div>
            <div>
-              {/* Spacer for alignment or Age Display in future */}
+              {/* Spacer untuk perataan atau Tampilan Umur di masa depan */}
            </div>
         </div>
 

@@ -26,38 +26,56 @@ export async function createMeasurement(prevState: any, formData: FormData) {
   }
 
   try {
-    // 1. Get Child Data for DOB and Gender
+    // 1. Ambil Data Anak untuk Tanggal Lahir dan Jenis Kelamin
     const anak = await prisma.anak.findUnique({
       where: { id: validated.data.anakId }
     })
 
     if (!anak) return { success: false, error: 'Data anak tidak ditemukan' }
 
-    // 2. Calculate Age in Months
+    // 2. Hitung Umur dalam Bulan
     const measureDate = new Date(validated.data.date)
     const birthDate = new Date(anak.dateOfBirth)
     
-    // Simple month diff
+    // Cek apakah pengukuran sudah ada untuk bulan dan tahun ini
+    const existingMeasurement = await prisma.measurement.findFirst({
+        where: {
+            anakId: validated.data.anakId,
+            date: {
+                gte: new Date(measureDate.getFullYear(), measureDate.getMonth(), 1),
+                lt: new Date(measureDate.getFullYear(), measureDate.getMonth() + 1, 1)
+            }
+        }
+    })
+
+    if (existingMeasurement) {
+        return { 
+            success: false, 
+            error: `Data pengukuran untuk bulan ${measureDate.toLocaleString('id-ID', { month: 'long', year: 'numeric' })} sudah ada. Silahkan edit data yang sudah ada.` 
+        }
+    }
+    
+    // Selisih bulan sederhana
     let ageInMonths = (measureDate.getFullYear() - birthDate.getFullYear()) * 12
     ageInMonths -= birthDate.getMonth()
     ageInMonths += measureDate.getMonth()
     
     if (ageInMonths < 0) ageInMonths = 0
 
-    // 3. Calculate Z-Scores
-    // WAZ (Weight-for-Age) -> Underweight
+    // 3. Hitung Z-Scores
+    // BB/U (Berat Badan menurut Umur) -> Gizi Buruk/Kurang/Baik/Lebih
     const zScoreBBU_Val = calculateZScore(validated.data.weight, ageInMonths, anak.gender, 'WAZ')
     const statusBBU = getNutritionalStatus(zScoreBBU_Val).status
 
-    // HAZ (Height-for-Age) -> Stunting
+    // TB/U (Tinggi Badan menurut Umur) -> Pendek/Sangat Pendek/Normal/Tinggi
     const zScoreTBU_Val = calculateZScore(validated.data.height, ageInMonths, anak.gender, 'HAZ')
     const statusTBU = getStuntingStatus(zScoreTBU_Val).status
 
-    // WHZ (Weight-for-Height) -> Wasting
+    // BB/TB (Berat Badan menurut Tinggi Badan) -> Gizi Buruk/Kurang/Baik/Risiko Lebih/Obesitas
     const zScoreBBTB_Val = calculateZScore(validated.data.weight, validated.data.height, anak.gender, 'WHZ')
     const statusBBTB = getWastingStatus(zScoreBBTB_Val).status
 
-    // 4. Save to DB
+    // 4. Simpan ke Database
     await prisma.measurement.create({
       data: {
         anakId: validated.data.anakId,
@@ -79,6 +97,90 @@ export async function createMeasurement(prevState: any, formData: FormData) {
     return { success: false, error: 'Gagal menyimpan pengukuran' }
   }
 }
+
+export async function updateMeasurement(id: string, anakId: string, formData: FormData) {
+    const data = {
+      anakId,
+      date: formData.get('date'),
+      weight: parseFloat(formData.get('weight') as string),
+      height: parseFloat(formData.get('height') as string),
+    }
+  
+    const validated = MeasurementSchema.safeParse(data)
+    if (!validated.success) {
+      return { success: false, error: validated.error.issues[0].message }
+    }
+  
+    try {
+      // 1. Ambil Data Anak untuk Tanggal Lahir dan Jenis Kelamin
+      const anak = await prisma.anak.findUnique({
+        where: { id: validated.data.anakId }
+      })
+  
+      if (!anak) return { success: false, error: 'Data anak tidak ditemukan' }
+  
+      // 2. Hitung Umur dalam Bulan
+      const measureDate = new Date(validated.data.date)
+      const birthDate = new Date(anak.dateOfBirth)
+      
+      // Cek apakah pengukuran lain sudah ada untuk bulan/tahun ini (kecuali yang sedang diedit)
+      const existingMeasurement = await prisma.measurement.findFirst({
+        where: {
+            anakId: validated.data.anakId,
+            id: { not: id },
+            date: {
+                gte: new Date(measureDate.getFullYear(), measureDate.getMonth(), 1),
+                lt: new Date(measureDate.getFullYear(), measureDate.getMonth() + 1, 1)
+            }
+        }
+      })
+
+      if (existingMeasurement) {
+        return { 
+            success: false, 
+            error: `Data pengukuran untuk bulan ${measureDate.toLocaleString('id-ID', { month: 'long', year: 'numeric' })} sudah ada.` 
+        }
+      }
+
+      // Selisih bulan sederhana
+      let ageInMonths = (measureDate.getFullYear() - birthDate.getFullYear()) * 12
+      ageInMonths -= birthDate.getMonth()
+      ageInMonths += measureDate.getMonth()
+      
+      if (ageInMonths < 0) ageInMonths = 0
+  
+      // 3. Hitung Z-Scores
+      const zScoreBBU_Val = calculateZScore(validated.data.weight, ageInMonths, anak.gender, 'WAZ')
+      const statusBBU = getNutritionalStatus(zScoreBBU_Val).status
+  
+      const zScoreTBU_Val = calculateZScore(validated.data.height, ageInMonths, anak.gender, 'HAZ')
+      const statusTBU = getStuntingStatus(zScoreTBU_Val).status
+  
+      const zScoreBBTB_Val = calculateZScore(validated.data.weight, validated.data.height, anak.gender, 'WHZ')
+      const statusBBTB = getWastingStatus(zScoreBBTB_Val).status
+  
+      // 4. Perbarui di Database
+      await prisma.measurement.update({
+        where: { id },
+        data: {
+          date: measureDate,
+          weight: validated.data.weight,
+          height: validated.data.height,
+          ageInMonths,
+          zScoreBBU: statusBBU,
+          zScoreTBU: statusTBU,
+          zScoreBBTB: statusBBTB,
+        }
+      })
+  
+      revalidatePath(`/dashboard/anak/${validated.data.anakId}`)
+      return { success: true, message: 'Data pengukuran berhasil diperbarui' }
+  
+    } catch (error) {
+      console.error('Update Measurement error:', error)
+      return { success: false, error: 'Gagal memperbarui pengukuran' }
+    }
+  }
 
 export async function getMeasurementHistory(anakId: string) {
   try {

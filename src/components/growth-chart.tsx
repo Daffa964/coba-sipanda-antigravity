@@ -28,10 +28,10 @@ type Measurement = {
 const CustomDot = (props: any) => {
   const { cx, cy, payload, type, gender } = props
   
-  // Only render dots for actual measurements, not reference lines
+  // Hanya render titik untuk pengukuran aktual, bukan garis referensi
   if (!payload.date) return null;
 
-  // Calculate dynamic status for visual consistency
+  // Hitung status dinamis untuk konsistensi visual
   let statusInfo = { color: '#94a3b8', status: 'Unknown' }
   
   if (type === 'weight') {
@@ -42,7 +42,7 @@ const CustomDot = (props: any) => {
       statusInfo = getStuntingStatus(z)
   }
   
-  // Map color class to hex
+  // Memetakan class warna ke hex
   const hexColor = statusInfo.color.includes('green') ? '#10b981' :
                    statusInfo.color.includes('orange') ? '#f59e0b' :
                    statusInfo.color.includes('yellow') ? '#eab308' :
@@ -55,17 +55,17 @@ const CustomDot = (props: any) => {
 
 const CustomTooltip = ({ active, payload, label, gender }: any) => {
   if (active && payload && payload.length) {
-    // Find actual measurement data item (prioritize line data over range area)
+    // Cari item data pengukuran aktual (prioritaskan data garis daripada area rentang)
     const measurement = payload.find((p: any) => 
       (p.dataKey === 'weight' || p.dataKey === 'height') && p.payload.date
     ) || payload.find((p: any) => p.payload.date)
     
-    // If hovering over empty space or just reference area, might be different
+    // Jika mengarahkan kursor ke ruang kosong atau hanya area referensi, mungkin berbeda
     if (!measurement) return null
     
     const data = measurement.payload
     
-    // Dynamic Calc
+    // Perhitungan Dinamis
     let statusInfo = { color: '', status: '' }
     let unit = ''
     
@@ -95,7 +95,7 @@ const CustomTooltip = ({ active, payload, label, gender }: any) => {
              </div>
            </div>
            
-           {/* Show Reference Limits if available */}
+           {/* Tampilkan Batas Referensi jika tersedia */}
            {data.upperLimit && (
              <div className="text-xs text-slate-400 border-t border-slate-100 pt-1 mt-1">
                Batas Aman: {data.lowerLimit} - {data.upperLimit} {unit}
@@ -111,12 +111,12 @@ const CustomTooltip = ({ active, payload, label, gender }: any) => {
 
 export function GrowthChart({ measurements, gender }: { measurements: Measurement[], gender: Gender }) {
   
-  // 1. Get Reference Data
+  // 1. Ambil Data Referensi
   const wazRef = getGrowthReference(gender, 'WAZ')
   const hazRef = getGrowthReference(gender, 'HAZ')
 
-  // 2. Merge Data
-  // Create a map of age -> reference data
+  // 2. Gabungkan Data
+  // Buat peta umur -> data referensi
   const wazMap = new Map(wazRef.map(r => [r.ageInMonths, r]))
   const hazMap = new Map(hazRef.map(r => [r.ageInMonths, r]))
 
@@ -127,13 +127,13 @@ export function GrowthChart({ measurements, gender }: { measurements: Measuremen
   
   const measurementsMap = new Map(measurements.map(m => [m.ageInMonths, m]))
 
-  // ComposedChart can handle data with missing keys.
-  // We construct data array covering the max age of the child + some buffer.
-  const maxAge = Math.max(...measurements.map(m => m.ageInMonths), 24) // Min 2 yr view
+  // ComposedChart dapat menangani data dengan kunci yang hilang.
+  // Kami menyusun array data yang mencakup umur maksimal anak + beberapa buffer.
+  const maxAge = Math.max(...measurements.map(m => m.ageInMonths), 24) // Tampilan min 2 tahun
   
   const chartData = []
   
-  // Simple Linear Interpolator
+  // Interpolator Linear Sederhana
   const interpolate = (age: number, refs: any[]) => {
       const upperIdx = refs.findIndex(r => r.ageInMonths >= age)
       if (upperIdx === -1) return refs[refs.length-1]
@@ -152,16 +152,16 @@ export function GrowthChart({ measurements, gender }: { measurements: Measuremen
   for (let i = 0; i <= maxAge + 5; i++) {
      const mData = measurementsMap.get(i)
      
-     // Interpolate references
+     // Interpolasi referensi
      const wRef = interpolate(i, wazRef)
      const hRef = interpolate(i, hazRef)
 
      chartData.push({
          ageInMonths: i,
-         // Measurement Data (if exists)
+         // Data Pengukuran (jika ada)
          ...mData,
          dateStr: mData ? new Date(mData.date).toLocaleDateString('id-ID', { day: 'numeric', month: 'short' }) : '',
-         // Reference Data (Range)
+         // Data Referensi (Rentang)
          wazRange: [parseFloat(wRef.lowerLimit.toFixed(2)), parseFloat(wRef.upperLimit.toFixed(2))],
          hazRange: [parseFloat(hRef.lowerLimit.toFixed(2)), parseFloat(hRef.upperLimit.toFixed(2))],
      })
@@ -169,7 +169,7 @@ export function GrowthChart({ measurements, gender }: { measurements: Measuremen
 
   return (
     <div className="grid gap-8 md:grid-cols-2 mb-8">
-      {/* Weight Chart */}
+      {/* Grafik Berat */}
       <div className="bg-white p-6 rounded-3xl shadow-sm border border-slate-200">
         <div className="mb-6 border-b border-slate-100 pb-4">
             <h3 className="text-lg font-extrabold text-slate-800 flex items-center gap-2">
@@ -215,7 +215,7 @@ export function GrowthChart({ measurements, gender }: { measurements: Measuremen
         </div>
       </div>
 
-      {/* Height Chart */}
+      {/* Grafik Tinggi */}
       <div className="bg-white p-6 rounded-3xl shadow-sm border border-slate-200">
         <div className="mb-6 border-b border-slate-100 pb-4">
             <h3 className="text-lg font-extrabold text-slate-800 flex items-center gap-2">

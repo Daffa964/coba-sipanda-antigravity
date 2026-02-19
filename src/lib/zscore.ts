@@ -1,29 +1,6 @@
 export type Gender = 'LAKI_LAKI' | 'PEREMPUAN'
 
-// Inverse Box-Cox to get value from Z-Score
-// Value = M * (1 + L * S * Z)^(1/L)
-function calculateValueFromZScore(z: number, L: number, M: number, S: number): number {
-  return M * Math.pow((1 + L * S * z), 1 / L)
-}
 
-export function getGrowthReference(gender: Gender, type: 'WAZ' | 'HAZ') {
-  const standards = type === 'WAZ' 
-    ? (gender === 'LAKI_LAKI' ? WAZ_BOYS : WAZ_GIRLS)
-    : (gender === 'LAKI_LAKI' ? HAZ_BOYS : HAZ_GIRLS)
-
-  const zUpper = type === 'WAZ' ? 1 : 3 // BB/U +1SD (Permenkes), TB/U +3SD
-  const zLower = -2
-
-  return Object.entries(standards).map(([month, params]) => {
-    const { L, M, S } = params
-    return {
-      ageInMonths: parseInt(month),
-      upperLimit: parseFloat(calculateValueFromZScore(zUpper, L, M, S).toFixed(2)),
-      lowerLimit: parseFloat(calculateValueFromZScore(zLower, L, M, S).toFixed(2)),
-      median: parseFloat(M.toFixed(2))
-    }
-  }).sort((a, b) => a.ageInMonths - b.ageInMonths)
-}
 
 // Simplified WHO Standards
 // Source: WHO Child Growth Standards
@@ -563,7 +540,32 @@ export const WHZ_GIRLS: Record<number, { L: number; M: number; S: number }> = {
   110.0: { L: -0.3833, M: 18.3324, S: 0.09401 },
 }
 
-// Helper to get standard
+// Inverse Box-Cox untuk mendapatkan nilai dari Z-Score
+// Nilai = M * (1 + L * S * Z)^(1/L)
+function calculateValueFromZScore(z: number, L: number, M: number, S: number): number {
+  return M * Math.pow((1 + L * S * z), 1 / L)
+}
+
+export function getGrowthReference(gender: Gender, type: 'WAZ' | 'HAZ') {
+  const standards = type === 'WAZ' 
+    ? (gender === 'LAKI_LAKI' ? WAZ_BOYS : WAZ_GIRLS)
+    : (gender === 'LAKI_LAKI' ? HAZ_BOYS : HAZ_GIRLS)
+
+  const zUpper = type === 'WAZ' ? 1 : 3 // BB/U +1SD (Permenkes), TB/U +3SD
+  const zLower = -2
+
+  return Object.entries(standards).map(([month, params]) => {
+    const { L, M, S } = params
+    return {
+      ageInMonths: parseInt(month),
+      upperLimit: parseFloat(calculateValueFromZScore(zUpper, L, M, S).toFixed(2)),
+      lowerLimit: parseFloat(calculateValueFromZScore(zLower, L, M, S).toFixed(2)),
+      median: parseFloat(M.toFixed(2))
+    }
+  }).sort((a, b) => a.ageInMonths - b.ageInMonths)
+}
+
+// Helper untuk mengambil standar
 function getStandard(
     value: number, 
     gender: Gender, 
@@ -575,11 +577,11 @@ function getStandard(
   else if (type === 'HAZ') standards = gender === 'LAKI_LAKI' ? HAZ_BOYS : HAZ_GIRLS;
   else standards = gender === 'LAKI_LAKI' ? WHZ_BOYS : WHZ_GIRLS; // WHZ
 
-  // Find nearest key
+  // Cari kunci terdekat
   const keys = Object.keys(standards).map(Number).sort((a, b) => a - b)
   
-  // For WHZ, value is Height. For Others, value is Month.
-  // We use the same finding logic: nearest neighbor
+  // Untuk BB/TB, nilai adalah Tinggi. Untuk lainnya, nilai adalah Bulan.
+  // Kami menggunakan logika pencarian yang sama: tetangga terdekat
   const nearest = keys.reduce((prev, curr) => {
     return (Math.abs(curr - value) < Math.abs(prev - value) ? curr : prev)
   })
@@ -593,23 +595,23 @@ export function calculateZScore(
   gender: Gender,           // Laki-laki / Perempuan
   type: 'WAZ' | 'HAZ' | 'WHZ' = 'WAZ' // Jenis Grafik
 ): number {
-  // Determine what we are looking up.
-  // if type == WHZ, basisValue is Height. measurementValue is Weight.
-  // if type == HAZ, basisValue is Month. measurementValue is Height.
-  // if type == WAZ, basisValue is Month. measurementValue is Weight.
+  // Tentukan apa yang kita cari.
+  // jika tipe == BB/TB, basisValue adalah Tinggi. measurementValue adalah Berat.
+  // jika tipe == TB/U, basisValue adalah Bulan. measurementValue adalah Tinggi.
+  // jika tipe == BB/U, basisValue adalah Bulan. measurementValue adalah Berat.
   
   const std = getStandard(basisValue, gender, type)
   if (!std) return 0
 
   const { L, M, S } = std
   
-  // Box-Cox Formula
+  // Rumus Box-Cox
   const zScore = (Math.pow(measurementValue / M, L) - 1) / (L * S)
   return parseFloat(zScore.toFixed(2))
 }
 
 export function getNutritionalStatus(zScore: number): { status: string; color: string } {
-  // BB/U (Weight-for-Age) - Permenkes No 2 2020
+  // BB/U (Berat Badan menurut Umur) - Permenkes No 2 2020
   if (zScore < -3) return { status: 'BB Sangat Kurang', color: 'bg-red-600 text-white' }
   if (zScore < -2) return { status: 'BB Kurang', color: 'bg-orange-500 text-white' }
   if (zScore > 1) return { status: 'Risiko BB Lebih', color: 'bg-yellow-500 text-white' }
@@ -617,15 +619,15 @@ export function getNutritionalStatus(zScore: number): { status: string; color: s
 }
 
 export function getStuntingStatus(zScore: number): { status: string; color: string } {
-    // TB/U (Height-for-Age) - Permenkes No 2 2020
+    // TB/U (Tinggi Badan menurut Umur) - Permenkes No 2 2020
     if (zScore < -3) return { status: 'Sangat Pendek', color: 'bg-red-600 text-white' }
-    if (zScore < -2) return { status: 'Pendek', color: 'bg-red-500 text-white' } // Still red/danger for stunting
+    if (zScore < -2) return { status: 'Pendek', color: 'bg-red-500 text-white' } // Tetap merah/bahaya untuk stunting
     if (zScore > 3) return { status: 'Tinggi', color: 'bg-blue-500 text-white' }
     return { status: 'Normal', color: 'bg-green-500 text-white' }
 }
 
 export function getWastingStatus(zScore: number): { status: string; color: string } {
-    // BB/TB (Weight-for-Height)
+    // BB/TB (Berat Badan menurut Tinggi Badan)
     if (zScore < -3) return { status: 'Gizi Buruk', color: 'bg-red-600 text-white' }
     if (zScore < -2) return { status: 'Gizi Kurang', color: 'bg-orange-500 text-white' }
     if (zScore > 3) return { status: 'Obesitas', color: 'bg-red-600 text-white' }
