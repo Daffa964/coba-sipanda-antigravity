@@ -50,7 +50,7 @@ export default function MeasurementHistory({ data, readonly = false }: { data: M
                 <th className="p-4 whitespace-nowrap">Status (BB/U)</th>
                 <th className="p-4 whitespace-nowrap">Status (TB/U)</th>
                 <th className="p-4 whitespace-nowrap">Status (BB/TB)</th>
-                <th className="p-4 whitespace-nowrap">Status (BB/TB)</th>
+
                 {!readonly && <th className="p-4 text-center">Aksi</th>}
               </tr>
             </thead>
