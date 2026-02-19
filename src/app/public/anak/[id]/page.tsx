@@ -7,9 +7,16 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import BackButton from '@/components/back-button'
 import ParentRecommendation from '@/components/parent-recommendation'
+import { cookies } from 'next/headers'
+import { verifySession } from '@/lib/auth'
 
 export default async function PublicChildPage({ params }: { params: { id: string } }) {
   const { id } = await params
+  
+  // Check Session
+  const cookieStore = await cookies()
+  const cookie = cookieStore.get('session')?.value
+  const session = cookie ? await verifySession(cookie) : null
   
   const anak = await prisma.anak.findUnique({
     where: { id },
@@ -35,7 +42,18 @@ export default async function PublicChildPage({ params }: { params: { id: string
                 <div className="h-8 w-8 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500"></div>
                 <span className="font-bold text-gray-900 tracking-tight">SI-PANDA Public</span>
              </div>
-             <BackButton href="/" label="Kembali ke Utama" className="text-xs bg-indigo-50 border-indigo-100 text-indigo-600 hover:bg-indigo-100" />
+             <div className="flex items-center gap-3">
+                {session && (session.role === 'ADMIN' || session.role === 'BIDAN' || session.role === 'KADER') && (
+                    <Link 
+                        href={session.role === 'KADER' ? `/posyandu/${session.posyanduId}/anak/${id}` : `/dashboard/anak/${id}`}
+                        className="flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full text-sm font-medium transition-colors shadow-sm"
+                    >
+                        <span className="material-symbols-outlined text-[18px]">edit</span>
+                        Edit Data
+                    </Link>
+                )}
+                <BackButton href="/" label="Kembali ke Utama" className="text-xs bg-indigo-50 border-indigo-100 text-indigo-600 hover:bg-indigo-100" />
+             </div>
           </div>
        </header>
 

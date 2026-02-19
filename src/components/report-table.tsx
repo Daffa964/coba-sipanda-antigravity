@@ -9,8 +9,8 @@ export default function ReportTable({ measurements }: { measurements: any[] }) {
   }
 
   return (
-    <div className="overflow-x-auto bg-white rounded-xl border border-gray-200 shadow-sm">
-      <table className="w-full text-sm text-left">
+    <div className="overflow-x-auto bg-white rounded-xl border border-gray-200 shadow-sm print:overflow-visible print:border-none print:shadow-none">
+      <table className="w-full text-sm text-left print:text-xs">
         <thead className="bg-gray-50 text-gray-500 font-semibold border-b border-gray-200">
           <tr>
             <th className="px-4 py-3">No</th>
