@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { createMeasurement } from '@/actions/measurement'
 import { useRouter } from 'next/navigation'
 
-export default function MeasurementForm({ anakId }: { anakId: string }) {
+export default function MeasurementForm({ anakId, onSuccess }: { anakId: string, onSuccess?: (measurementId?: string) => void }) {
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null)
   const router = useRouter()
@@ -18,8 +18,16 @@ export default function MeasurementForm({ anakId }: { anakId: string }) {
     
     if (res.success) {
       setMessage({ type: 'success', text: 'Data pengukuran berhasil disimpan!' })
-      // Reload untuk memperbarui riwayat dan grafik
-      window.location.reload()
+      
+      if (onSuccess) {
+          // Tunggu sebentar agar user lihat pesan sukses
+          setTimeout(() => {
+             onSuccess()
+          }, 1000)
+      } else {
+          // Default: Reload
+          window.location.reload()
+      }
     } else {
       setMessage({ type: 'error', text: res.error || 'Terjadi kesalahan' })
       setLoading(false)

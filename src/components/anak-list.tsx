@@ -3,6 +3,7 @@
 import { useState, useMemo, useEffect } from 'react'
 import Link from 'next/link'
 import AnakForm from './anak-form'
+import MeasurementForm from './measurement-form'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { deleteAnak } from '@/actions/anak'
 
@@ -45,6 +46,7 @@ export default function AnakList({ data, posyanduList, isKader, userPosyanduId }
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [editingChild, setEditingChild] = useState<AnakWithPosyandu | null>(null)
   const [deletingChild, setDeletingChild] = useState<AnakWithPosyandu | null>(null)
+  const [measuringChild, setMeasuringChild] = useState<AnakWithPosyandu | null>(null)
   const [isDeleting, setIsDeleting] = useState(false)
 
   // Calculate Age Helpers
@@ -322,6 +324,15 @@ export default function AnakList({ data, posyanduList, isKader, userPosyanduId }
                                           >
                                               <span className="material-symbols-outlined text-[20px]">visibility</span>
                                           </Link>
+                                          {isKader && (
+                                              <button 
+                                                onClick={() => setMeasuringChild(child)}
+                                                className="size-8 flex items-center justify-center text-[#648772] hover:text-purple-600 hover:bg-purple-50 rounded-md transition-colors" 
+                                                title="Input Pengukuran Baru"
+                                              >
+                                                  <span className="material-symbols-outlined text-[20px]">clinical_notes</span>
+                                              </button>
+                                          )}
                                           {!isKader && (
                                               <button 
                                                 onClick={() => {
@@ -433,6 +444,36 @@ export default function AnakList({ data, posyanduList, isKader, userPosyanduId }
                         posyanduId: editingChild.posyanduId
                       } : undefined}
                    />
+              </div>
+           </div>
+       )}
+
+
+
+       {/* Measurement Modal */}
+       {measuringChild && (
+           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+              <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={() => setMeasuringChild(null)}></div>
+              <div className="relative w-full max-w-lg bg-white rounded-2xl shadow-xl p-1">
+                   <button 
+                      onClick={() => setMeasuringChild(null)}
+                      className="absolute top-4 right-4 p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full transition z-10"
+                   >
+                     <span className="material-symbols-outlined">close</span>
+                   </button>
+                   <div className="max-h-[90vh] overflow-y-auto">
+                        <div className="p-6 pb-0">
+                            <h3 className="text-lg font-bold text-gray-900 mb-1">Input Pengukuran</h3>
+                            <p className="text-sm text-gray-500">Masukan data pengukuran terbaru untuk <strong>{measuringChild.name}</strong></p>
+                        </div>
+                        <MeasurementForm 
+                            anakId={measuringChild.id} 
+                            onSuccess={() => {
+                                // Redirect to detail page
+                                window.location.href = `/posyandu/${userPosyanduId}/anak/${measuringChild.id}`
+                            }}
+                        />
+                   </div>
               </div>
            </div>
        )}
