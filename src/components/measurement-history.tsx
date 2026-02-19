@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { getNutritionalStatus } from '@/lib/zscore'
+import { updateMeasurement, deleteMeasurement } from '@/actions/measurement'
 import MeasurementEditDialog from './measurement-edit-dialog'
 
 type Measurement = {
@@ -81,13 +82,32 @@ export default function MeasurementHistory({ data }: { data: Measurement[] }) {
                      ) : <span className="text-gray-300">-</span>}
                   </td>
                   <td className="p-4 text-center">
-                    <button 
-                      onClick={() => setEditingMeasurement(m)}
-                      className="p-2 text-indigo-600 hover:bg-indigo-50 rounded-lg transition"
-                      title="Edit Data"
-                    >
-                      <span className="material-symbols-outlined text-xl">edit</span>
-                    </button>
+                    <div className="flex justify-center gap-2">
+                      <button 
+                        onClick={() => setEditingMeasurement(m)}
+                        className="p-2 text-indigo-600 hover:bg-indigo-50 rounded-lg transition"
+                        title="Edit Data"
+                      >
+                        <span className="material-symbols-outlined text-xl">edit</span>
+                      </button>
+                      <button 
+                        onClick={async () => {
+                          if (confirm('Apakah Anda yakin ingin menghapus data pengukuran ini?')) {
+                            const res = await deleteMeasurement(m.id)
+                            if (res.success) {
+                               alert('Data berhasil dihapus')
+                               window.location.reload()
+                            } else {
+                               alert(res.error || 'Gagal menghapus data')
+                            }
+                          }
+                        }}
+                        className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition"
+                        title="Hapus Data"
+                      >
+                        <span className="material-symbols-outlined text-xl">delete</span>
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}

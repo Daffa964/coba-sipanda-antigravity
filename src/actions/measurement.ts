@@ -193,3 +193,26 @@ export async function getMeasurementHistory(anakId: string) {
     return { success: false, data: [] }
   }
 }
+
+export async function deleteMeasurement(id: string) {
+  try {
+    const measurement = await prisma.measurement.findUnique({
+      where: { id },
+      select: { anakId: true }
+    })
+
+    if (!measurement) {
+      return { success: false, error: 'Data pengukuran tidak ditemukan' }
+    }
+
+    await prisma.measurement.delete({
+      where: { id }
+    })
+
+    revalidatePath(`/dashboard/anak/${measurement.anakId}`)
+    return { success: true, message: 'Data pengukuran berhasil dihapus' }
+  } catch (error) {
+    console.error('Delete Measurement error:', error)
+    return { success: false, error: 'Gagal menghapus pengukuran' }
+  }
+}
