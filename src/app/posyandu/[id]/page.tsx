@@ -93,7 +93,7 @@ export default async function KaderPosyanduPage({ params }: { params: { id: stri
                     Wilayah: {posyandu.name}, Desa Kramat
                  </p>
               </div>
-              <Link href={`/posyandu/${id}/anak/new`} className="flex items-center justify-center gap-2 rounded-lg h-12 px-6 bg-primary hover:bg-[#1bc660] text-black text-sm font-bold leading-normal transition-colors shadow-lg shadow-primary/20">
+              <Link href={`/posyandu/${id}/anak`} className="flex items-center justify-center gap-2 rounded-lg h-12 px-6 bg-primary hover:bg-[#1bc660] text-black text-sm font-bold leading-normal transition-colors shadow-lg shadow-primary/20">
                  <span className="material-symbols-outlined">add</span>
                  <span>Input Pengukuran Baru</span>
               </Link>
