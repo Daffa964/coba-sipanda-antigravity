@@ -1,7 +1,5 @@
 export type Gender = 'LAKI_LAKI' | 'PEREMPUAN'
 
-
-
 // Simplified WHO Standards
 // Source: WHO Child Growth Standards
 
@@ -605,8 +603,17 @@ export function calculateZScore(
 
   const { L, M, S } = std
   
+  let zScore = 0;
+  
   // Rumus Box-Cox
-  const zScore = (Math.pow(measurementValue / M, L) - 1) / (L * S)
+  // Proteksi jika nilai L adalah 0 (Sesuai panduan WHO)
+  if (L === 0) {
+      zScore = Math.log(measurementValue / M) / S;
+  } else {
+      // Rumus Box-Cox utama
+      zScore = (Math.pow(measurementValue / M, L) - 1) / (L * S);
+  }
+  
   return parseFloat(zScore.toFixed(2))
 }
 
@@ -627,10 +634,11 @@ export function getStuntingStatus(zScore: number): { status: string; color: stri
 }
 
 export function getWastingStatus(zScore: number): { status: string; color: string } {
-    // BB/TB (Berat Badan menurut Tinggi Badan)
+    // BB/TB (Berat Badan menurut Tinggi Badan) - Permenkes No 2 2020
     if (zScore < -3) return { status: 'Gizi Buruk', color: 'bg-red-600 text-white' }
     if (zScore < -2) return { status: 'Gizi Kurang', color: 'bg-orange-500 text-white' }
     if (zScore > 3) return { status: 'Obesitas', color: 'bg-red-600 text-white' }
     if (zScore > 2) return { status: 'Gizi Lebih', color: 'bg-yellow-500 text-white' }
+    if (zScore > 1) return { status: 'Risiko Gizi Lebih', color: 'bg-yellow-400 text-black' } // <-- Tambahkan baris ini
     return { status: 'Gizi Baik', color: 'bg-green-500 text-white' }
 }
