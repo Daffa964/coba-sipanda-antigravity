@@ -17,7 +17,7 @@ type Measurement = {
   zScoreBBTB: string | null
 }
 
-export default function MeasurementHistory({ data }: { data: Measurement[] }) {
+export default function MeasurementHistory({ data, readonly = false }: { data: Measurement[], readonly?: boolean }) {
   const [editingMeasurement, setEditingMeasurement] = useState<Measurement | null>(null)
 
   if (data.length === 0) {
@@ -50,7 +50,8 @@ export default function MeasurementHistory({ data }: { data: Measurement[] }) {
                 <th className="p-4 whitespace-nowrap">Status (BB/U)</th>
                 <th className="p-4 whitespace-nowrap">Status (TB/U)</th>
                 <th className="p-4 whitespace-nowrap">Status (BB/TB)</th>
-                <th className="p-4 text-center">Aksi</th>
+                <th className="p-4 whitespace-nowrap">Status (BB/TB)</th>
+                {!readonly && <th className="p-4 text-center">Aksi</th>}
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
@@ -81,6 +82,7 @@ export default function MeasurementHistory({ data }: { data: Measurement[] }) {
                      </span>
                      ) : <span className="text-gray-300">-</span>}
                   </td>
+                  {!readonly && (
                   <td className="p-4 text-center">
                     <div className="flex justify-center gap-2">
                       <button 
@@ -109,6 +111,7 @@ export default function MeasurementHistory({ data }: { data: Measurement[] }) {
                       </button>
                     </div>
                   </td>
+                  )}
                 </tr>
               ))}
             </tbody>
