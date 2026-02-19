@@ -111,7 +111,7 @@ export async function createAnak(prevState: any, formData: FormData) {
     return { success: true, message: 'Data anak berhasil ditambahkan' }
   } catch (error) {
     console.error('Create anak error:', error)
-    return { success: false, error: 'Gagal menyimpan data anak' }
+    return { success: false, error: `Gagal menyimpan data anak: ${error instanceof Error ? error.message : String(error)}` }
   }
 }
 
