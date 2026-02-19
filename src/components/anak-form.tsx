@@ -57,17 +57,21 @@ export default function AnakForm({ posyanduList, defaultPosyanduId, onSuccess, i
     if (res.success) {
       setSuccess(res.message || 'Berhasil')
       if (onSuccess) {
+        // If there's an onSuccess callback (e.g. closing modal), wait a bit then call it.
+        // We keep loading=true to prevent user from clicking again.
         setTimeout(() => {
              onSuccess()
+             setLoading(false)
              setSuccess(null)
         }, 1500)
       } else {
+        // If reloading, keep loading=true until the page reloads
         window.location.reload() 
       }
     } else {
       setError(res.error || 'Gagal')
+      setLoading(false)
     }
-    setLoading(false)
   }
 
   const containerClasses = isModal 

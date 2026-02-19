@@ -18,12 +18,12 @@ export default function MeasurementForm({ anakId }: { anakId: string }) {
     
     if (res.success) {
       setMessage({ type: 'success', text: 'Data pengukuran berhasil disimpan!' })
-      // Reset form handled by native form reset or reload
-      // window.location.reload() // Reload to refresh history
+      // Reload to refresh history and charts
+      window.location.reload()
     } else {
       setMessage({ type: 'error', text: res.error || 'Terjadi kesalahan' })
+      setLoading(false)
     }
-    setLoading(false)
   }
 
   return (
@@ -58,7 +58,7 @@ export default function MeasurementForm({ anakId }: { anakId: string }) {
           <div>
             <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5 pl-1">Berat (Kg)</label>
             <div className="relative">
-               <input name="weight" type="number" step="0.1" min="0" placeholder="0.0" required 
+               <input name="weight" type="number" step="0.01" min="0" placeholder="0.00" required 
                  className="w-full pl-4 pr-10 py-3 rounded-xl bg-gray-50 border border-gray-200 text-gray-900 focus:bg-white focus:ring-2 focus:ring-indigo-100 focus:border-indigo-500 outline-none transition" 
                />
                <span className="absolute right-4 top-3.5 text-gray-400 text-sm font-medium">kg</span>
@@ -77,8 +77,16 @@ export default function MeasurementForm({ anakId }: { anakId: string }) {
         </div>
 
         <button type="submit" disabled={loading} 
-          className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3.5 rounded-xl transition transform active:scale-[0.98] disabled:opacity-70 shadow-lg shadow-indigo-200 mt-2">
-          {loading ? 'Menyimpan...' : 'Simpan Pengukuran'}
+          className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold py-3.5 rounded-xl transition transform active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed shadow-lg shadow-indigo-200 mt-2">
+          {loading ? (
+             <span className="flex items-center justify-center gap-2">
+                <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Menyimpan...
+             </span>
+          ) : 'Simpan Pengukuran'}
         </button>
       </form>
     </div>
