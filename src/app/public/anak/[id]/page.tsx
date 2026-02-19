@@ -50,7 +50,7 @@ export default async function PublicChildPage({ params }: { params: { id: string
                   </div>
                   
                   <h1 className="text-3xl font-bold text-gray-900 mt-4">{anak.name}</h1>
-                  <span className="text-gray-500 font-medium mb-6">Putra/Putri dari Ibu {anak.parentName}</span>
+                  <span className="text-gray-500 font-medium mb-6">{anak.gender === 'LAKI_LAKI' ? 'Putra' : 'Putri'} dari Ibu {anak.parentName}</span>
 
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-3 w-full max-w-2xl">
                      <div className="bg-gray-50 p-3 rounded-2xl text-center border border-gray-100">
