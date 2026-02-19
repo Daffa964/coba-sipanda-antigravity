@@ -14,6 +14,7 @@ type AnakWithPosyandu = {
   dateOfBirth: Date
   gender: string
   parentName: string
+  phoneNumber?: string | null
   posyanduId: string
   posyandu: { id: string; name: string }
   measurements: {
@@ -412,6 +413,7 @@ export default function AnakList({ data, posyanduList, isKader, userPosyanduId }
                         dateOfBirth: editingChild.dateOfBirth,
                         gender: editingChild.gender,
                         parentName: editingChild.parentName,
+                        phoneNumber: editingChild.phoneNumber,
                         posyanduId: editingChild.posyanduId
                       } : undefined}
                    />
