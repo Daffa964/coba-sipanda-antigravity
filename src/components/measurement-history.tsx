@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from 'react'
 import { getNutritionalStatus } from '@/lib/zscore'
 import MeasurementEditDialog from './measurement-edit-dialog'
